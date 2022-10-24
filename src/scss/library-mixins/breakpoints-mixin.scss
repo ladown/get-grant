@@ -1,0 +1,173 @@
+$breakpoints-values-variable: (
+	small-mobile: 440,
+	large-mobile: 580,
+	small-tablet: 820,
+	medium-tablet: 980,
+	large-tablet: 1120,
+	small-desktop: 1280,
+	large-desktop: 1440,
+	mackbook: 1700,
+	hd: 1920,
+) !default;
+$breakpoints-ie8: false !default;
+
+@function breakpoints-parse($string) {
+	$from: 'from ';
+	$to: 'to ';
+	$string: meta.inspect($string);
+	$has-min: false;
+	$has-max: false;
+
+	@if type-of(string.index($string, $from)) == number {
+		$has-min: true;
+	}
+
+	@if type-of(string.index($string, $to)) == number {
+		$has-max: true;
+	}
+
+	@if $has-min and $has-max {
+		$min-breakpoint: string.slice($string, string.length($from) + 1, string.index($string, $to) - 2);
+		$max-breakpoint: string.slice($string, string.index($string, $to) + string.length($to));
+
+		@return ($min-breakpoint, $max-breakpoint);
+	} @else if $has-min == false {
+		$max-breakpoint: string.slice($string, string.length($to) + 1);
+
+		@return (false, $max-breakpoint);
+	} @else if $has-max == false {
+		$min-breakpoint: string.slice($string, string.length($from) + 1);
+
+		@return ($min-breakpoint, false);
+	}
+
+	@return (false, false);
+}
+
+@function string-to-number($string) {
+	$digits: '0123456789';
+	$number: 0;
+	$negative: false;
+	$units: (
+		'%': 1%,
+		'ch': 1ch,
+		'cm': 1cm,
+		'em': 1em,
+		'ex': 1ex,
+		'in': 1in,
+		'mm': 1mm,
+		'pc': 1pc,
+		'pica': 1pica,
+		'pt': 1pt,
+		'px': 1px,
+		'rem': 1rem,
+		'vmax': 1vmax,
+		'vmin': 1vmin,
+		'vh': 1vh,
+		'vw': 1vw,
+	);
+	$unit: null;
+
+	@if string.index($string, '-') == 1 {
+		$negative: true;
+		$string: string.slice($string, 2);
+	}
+
+	@for $i from 1 through string.length($string) {
+		$digit: string.slice($string, $i, $i);
+		$index: string.index($digits, $digit);
+
+		@if type-of($index) == number {
+			$number: $number * 10 + ($index - 1);
+		} @else {
+			$unit: string.unquote('#{$unit}#{$digit}');
+		}
+	}
+
+	@if $negative {
+		$number: $number * (-1);
+	}
+
+	@if $unit and map-has-key($units, $unit) {
+		$number: $number * map.get($units, $unit);
+	}
+
+	@if $string == $unit {
+		@return false;
+	}
+
+	@return $number;
+}
+
+@function breakpoints-values($value) {
+	@if map-has-key($breakpoints-values-variable, $value) {
+		$value: map.get($breakpoints-values-variable, $value);
+
+		@if unitless($value) {
+			$value: $value * 1px;
+		}
+	}
+
+	@if type-of($value) == string {
+		$value: string-to-number($value);
+	}
+
+	@if type-of($value) != number {
+		@return false;
+	}
+
+	@return $value;
+}
+
+@function set-max-breakpoint($max-breakpoint) {
+	@if $max-breakpoint != false {
+		@if unit($max-breakpoint) == px {
+			$max-breakpoint: $max-breakpoint;
+		} @else {
+			$max-breakpoint: $max-breakpoint;
+		}
+	}
+
+	@return $max-breakpoint;
+}
+
+@mixin breakpoint($string) {
+	$string: breakpoints-parse($string);
+	$min-breakpoint: breakpoints-values(list.nth($string, 1));
+	$max-breakpoint: breakpoints-values(list.nth($string, 2));
+	$max-breakpoint: set-max-breakpoint($max-breakpoint);
+
+	@if $min-breakpoint == false and $max-breakpoint == false or $max-breakpoint == false and $breakpoints-ie8 {
+		@content;
+	} @else if $min-breakpoint == false {
+		@media only screen and (max-width: $max-breakpoint) {
+			@content;
+		}
+	} @else if $max-breakpoint == false {
+		@media only screen and (min-width: $min-breakpoint) {
+			@content;
+		}
+	} @else {
+		@media only screen and (min-width: $min-breakpoint) and (max-width: $max-breakpoint) {
+			@content;
+		}
+	}
+}
+
+@mixin to($media-query) {
+	@include breakpoint(to $media-query) {
+		@content;
+	}
+}
+
+@mixin from($media-query) {
+	@include breakpoint(from $media-query) {
+		@content;
+	}
+}
+
+@mixin from-to($min, $max) {
+	@include breakpoint(from $min to $max) {
+		@content;
+	}
+}

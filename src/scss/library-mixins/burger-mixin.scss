@@ -1,0 +1,89 @@
+@mixin burger($width: 30px, $height: 5px, $gutter: 3px, $color: #000, $border-radius: 0, $transition-duration: 0.25s) {
+	$burger-height: $height !global;
+	$burger-gutter: $gutter !global;
+
+	position: relative;
+	margin-top: $height + $gutter;
+	margin-bottom: $height + $gutter;
+	user-select: none;
+
+	&,
+	&::before,
+	&::after {
+		@if $border-radius != 0 {
+			border-radius: $border-radius;
+		}
+
+		display: block;
+		width: $width;
+		height: $height;
+		pointer-events: none;
+		background-color: $color;
+		outline: 1px solid transparent;
+		transition-timing-function: ease-in;
+		transition-duration: $transition-duration;
+		transition-property: background-color, transform;
+	}
+
+	&::before,
+	&::after {
+		position: absolute;
+		content: '';
+		will-change: transform;
+	}
+
+	&::before {
+		top: -($height + $gutter);
+	}
+
+	&::after {
+		top: $height + $gutter;
+	}
+}
+
+@mixin burger-parts {
+	&,
+	&::before,
+	&::after {
+		@content;
+	}
+}
+
+@mixin burger-top {
+	&::before {
+		@content;
+	}
+}
+
+@mixin burger-middle {
+	& {
+		@content;
+	}
+}
+
+@mixin burger-bottom {
+	&::after {
+		@content;
+	}
+}
+
+@mixin burger-to-cross($color: auto) {
+	& {
+		background-color: transparent;
+	}
+
+	@if $color != auto {
+		&::before,
+		&::after {
+			background-color: $color;
+		}
+	}
+
+	&::before {
+		transform: translateY($burger-gutter + $burger-height) rotate(45deg);
+	}
+
+	&::after {
+		transform: translateY(-($burger-gutter + $burger-height)) rotate(-45deg);
+	}
+}

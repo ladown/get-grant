@@ -1,0 +1,11 @@
+mixin breadcrumbs(data = {})
+	+b.NAV.breadcrumbs(class=`${data.mods ? `_${data.mods.join(' _')}` : ''}`)&attributes(attributes)
+		+e.wrap.wrap.flex._nowrap._vertical
+			each link, index in data
+				if index === data.length - 1
+					+e.link #{ link.text }
+				else
+					+e.A.link.flex._nowrap._vertical(href=link.href) #{ link.text }
+					if index !== data.length - 1
+						+e.divider
+							+icon(data.divider)

@@ -1,0 +1,196 @@
+:root {
+	--wrapper-offset: 100rem;
+	--wrapper-size: 1920rem;
+
+	@include to(1120px) {
+		--wrapper-offset: 40px;
+	}
+
+	@include to(580px) {
+		--wrapper-offset: 20px;
+	}
+}
+
+html {
+	font-size: #{div(100, div(1920, 1))}vw;
+
+	@include from(1921px) {
+		font-size: 1px;
+	}
+
+	@include to(1440px) {
+		font-size: #{div(100, div(1440, 0.9))}vw;
+	}
+
+	@include to(1120px) {
+		font-size: #{div(100, div(1120, 0.8))}vw;
+	}
+
+	@include to(980px) {
+		font-size: 0.7px;
+	}
+
+	@include to(580px) {
+		font-size: 1px;
+	}
+
+	@include to(440px) {
+		font-size: #{div(100, div(440, 1))}vw;
+	}
+
+	&.js-lock {
+		overflow: hidden;
+		touch-action: none;
+	}
+}
+
+body {
+	position: relative;
+	font-family: monospace;
+	font-size: 17rem;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 1.2;
+	color: #000;
+
+	@include to(1440px) {
+		font-size: 19rem;
+	}
+
+	@include to(580px) {
+		font-size: 14rem;
+		line-height: 1.1;
+	}
+}
+
+img,
+svg {
+	max-width: 100%;
+	vertical-align: top;
+}
+
+.wrap {
+	width: 100%;
+	max-width: calc(var(--wrapper-size) + (var(--wrapper-offset) * 2));
+	padding: 0 var(--wrapper-offset);
+	margin: 0 auto;
+}
+
+.icon {
+	width: 100%;
+}
+
+.flex {
+	display: flex;
+	flex-flow: row wrap;
+
+	&_inline {
+		display: inline-flex;
+	}
+
+	&_column {
+		flex-direction: column;
+	}
+
+	&_nowrap {
+		flex-wrap: nowrap;
+	}
+
+	&_center {
+		justify-content: center;
+	}
+
+	&_justify {
+		justify-content: space-between;
+	}
+
+	&_left {
+		justify-content: flex-start;
+	}
+
+	&_right {
+		justify-content: flex-end;
+	}
+
+	&_start {
+		align-items: flex-start;
+	}
+
+	&_vertical {
+		align-items: center;
+	}
+
+	&_end {
+		align-items: flex-end;
+	}
+}
+
+.text-left {
+	text-align: left;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.text-right {
+	text-align: right;
+}
+
+.text-uppercase {
+	text-transform: uppercase;
+}
+
+.text-underline {
+	text-decoration: underline;
+}
+
+.object-fit {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.mobile-hidden {
+	@include to(580px) {
+		display: none !important;
+	}
+}
+
+.tablet-hidden {
+	@include to(980px) {
+		display: none !important;
+	}
+}
+
+.main-content {
+	overflow: hidden;
+}
+
+.invisible-container {
+	position: absolute;
+	top: -9999px;
+	left: -9999px;
+	z-index: -1;
+	width: 0;
+	height: 0;
+	overflow: hidden;
+}
+
+.no-select {
+	user-select: none;
+}
+
+.no-pe {
+	pointer-events: none;
+}
+
+.overflow-y {
+	overflow: hidden;
+	overflow-x: hidden;
+	overflow-y: auto;
+	-webkit-overflow-scrolling: touch;
+}
