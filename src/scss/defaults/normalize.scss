@@ -107,6 +107,12 @@ select {
 	text-transform: none;
 }
 
+input {
+	border-radius: 0;
+
+	@extend %fix-border-radius;
+}
+
 button {
 	cursor: pointer;
 	background: transparent;

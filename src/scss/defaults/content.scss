@@ -1,21 +1,17 @@
-.content p,
-.p {
+.list {
+	list-style-type: none;
 }
 
-.content ul,
-.ul {
+.medium-weight {
+	font-weight: 500;
 }
 
-.content li,
-.li {
-}
-
-.content b,
 .b {
+	font-weight: 600;
 }
 
-.content strong,
 .strong {
+	font-weight: 700;
 }
 
 h1,
@@ -24,28 +20,83 @@ h3,
 h4,
 h5,
 h6 {
+	font-weight: 500;
 }
 
-.h1,
-.content h1 {
+.h1 {
+	font-size: 48rem;
+	line-height: 1.2;
+
+	@include to(980px) {
+		font-size: 36rem;
+	}
+
+	@include to(580px) {
+		font-size: 24rem;
+	}
 }
 
-.h2,
-.content h2 {
+.h2 {
+	font-size: 40rem;
+	line-height: 1.1;
+
+	@include to(980px) {
+		font-size: 32rem;
+	}
+
+	@include to(580px) {
+		font-size: 24rem;
+	}
 }
 
-.h3,
-.content h3 {
+.h3 {
+	font-size: 32px;
+	line-height: 1.2;
+
+	@include to(98px) {
+		font-size: 26rem;
+	}
+
+	@include to(580px) {
+		font-size: 20rem;
+	}
 }
 
-.h4,
-.content h4 {
+.h4 {
+	font-size: 28rem;
+	line-height: 1.2;
+
+	@include to(980px) {
+		font-size: 22rem;
+	}
+
+	@include to(580px) {
+		font-size: 16rem;
+	}
 }
 
-.h5,
-.content h5 {
+.h5 {
+	font-size: 24rem;
+	line-height: 1.1;
+
+	@include to(980px) {
+		font-size: 20rem;
+	}
+
+	@include to(580px) {
+		font-size: 16rem;
+	}
 }
 
-.h6,
-.content h6 {
+.h6 {
+	font-size: 20rem;
+	line-height: 1.1;
+
+	@include to(980px) {
+		font-size: 18rem;
+	}
+
+	@include to(580px) {
+		font-size: 16rem;
+	}
 }

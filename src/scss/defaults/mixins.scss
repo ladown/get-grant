@@ -1,0 +1,4 @@
+@mixin set-wrapper-size() {
+	max-width: calc(var(--wrapper-size) + (2 * var(--wrapper-offset)));
+	padding: 0 var(--wrapper-offset);
+}

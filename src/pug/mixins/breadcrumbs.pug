@@ -1,11 +1,11 @@
-mixin breadcrumbs(data = {})
-	+b.NAV.breadcrumbs(class=`${data.mods ? `_${data.mods.join(' _')}` : ''}`)&attributes(attributes)
+mixin breadcrumbs(props = {})
+	+b.NAV.breadcrumbs(class=`${props.mods ? `_${props.mods.join(' _')}` : ''}`)&attributes(attributes)
 		+e.wrap.wrap.flex._nowrap._vertical
-			each link, index in data
-				if index === data.length - 1
+			each link, index in props
+				if index === props.length - 1
 					+e.link #{ link.text }
 				else
 					+e.A.link.flex._nowrap._vertical(href=link.href) #{ link.text }
-					if index !== data.length - 1
+					if index !== props.length - 1
 						+e.divider
-							+icon(data.divider)
+							+icon(props.divider)

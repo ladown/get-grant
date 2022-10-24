@@ -18,5 +18,6 @@ module.exports = {
 		'block-opening-brace-space-before': 'always',
 		'selector-attribute-operator-space-after': 'never',
 		'selector-attribute-operator-space-before': 'never',
+		'selector-class-pattern': null,
 	},
 };

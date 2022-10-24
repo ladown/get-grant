@@ -1,10 +1,10 @@
-mixin button(data = {})
-	+e({tag: data.href ? 'a' : 'button'}).button.button__(
-		href=data.href
-		class=`${data.mods ? `_${data.mods.join(' _')}` : ''}`)&attributes(attributes)
-		if data.icon
+mixin button(props = {})
+	+e({tag: props.href ? 'a' : 'button'}).button.button__(
+		href=props.href
+		class=`${props.mods ? `_${props.mods.join(' _')}` : ''}`)&attributes(attributes)
+		if props.icon
 			+e.SPAN.icon
-				+icon(data.icon)
+				+icon(props.icon)
 		+e.SPAN.text
 			if block
 				block
