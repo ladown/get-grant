@@ -1,0 +1,266 @@
+.cases {
+	padding: var(--section-offset-top) 0;
+
+	&__wrap {
+		display: grid;
+		grid-template-columns: 1fr auto;
+		align-items: center;
+	}
+
+	&__title {
+		flex: 1;
+		align-self: center;
+		max-width: 100%;
+		margin-right: 32rem;
+
+		@extend %text-overflow;
+
+		@include to(980px) {
+			margin-right: 24rem;
+		}
+
+		@include to(580px) {
+			margin-right: 16rem;
+		}
+	}
+
+	&__slider-nav {
+		@include from(581px) {
+			flex: 0 0 auto;
+		}
+
+		@include to(580px) {
+			grid-row: 3 / 4;
+			grid-column: 1 / 3;
+			width: fit-content;
+			margin: 20rem auto 0;
+		}
+	}
+
+	&__slider {
+		grid-column: span 2;
+		max-width: 100%;
+		margin-top: 60rem;
+		overflow: hidden;
+		border-radius: 10rem;
+
+		@include to(980px) {
+			margin-top: 40rem;
+		}
+
+		@include to(580px) {
+			margin-top: 20rem;
+		}
+	}
+
+	&__slide {
+		@include to(768px) {
+			flex-direction: column;
+		}
+
+		&-cell {
+			position: relative;
+			padding: 30rem;
+			overflow: hidden;
+			border-radius: 10rem;
+
+			@include to(980px) {
+				padding: 25rem;
+			}
+
+			@include to(580px) {
+				padding: 20rem;
+			}
+
+			&_photo {
+				z-index: 1;
+
+				@include from(769px) {
+					flex: 0 0 auto;
+					width: 470rem;
+					min-height: 340rem;
+				}
+
+				@include to(768px) {
+					min-height: 250rem;
+					padding-bottom: 50rem;
+				}
+
+				@include to(580px) {
+					min-height: 200rem;
+					padding-bottom: 45rem;
+				}
+			}
+
+			&_content {
+				z-index: 2;
+				background-color: #fff;
+
+				@include from(769px) {
+					flex: 1;
+				}
+
+				@include to(768px) {
+					min-height: 200rem;
+					margin-top: -30rem;
+				}
+			}
+		}
+
+		&-photo {
+			img {
+				z-index: -1;
+			}
+		}
+
+		&-logo {
+			img {
+				max-height: 100%;
+			}
+		}
+
+		&-features {
+			padding-top: 32rem;
+			margin-top: auto;
+		}
+
+		&-feature {
+			font-size: 21rem;
+			line-height: 1.3;
+
+			@include to(980px) {
+				font-size: 16rem;
+			}
+
+			@include to(580px) {
+				font-size: 12rem;
+			}
+
+			&:not(:last-child) {
+				margin-bottom: 10rem;
+
+				@include to(580px) {
+					margin-bottom: 5rem;
+				}
+			}
+		}
+
+		&-text {
+			font-size: 21rem;
+			line-height: 1.3;
+			color: $color;
+
+			@include to(980px) {
+				font-size: 16rem;
+			}
+
+			@include to(580px) {
+				font-size: 12rem;
+			}
+		}
+
+		&-footer {
+			padding-top: 16rem;
+			margin-top: auto;
+		}
+
+		&-rec {
+			&-icon {
+				flex: 0 0 auto;
+				width: 18rem;
+				height: 22rem;
+				margin-right: 10rem;
+				fill: transparent;
+				stroke: $color;
+				stroke-linecap: round;
+				stroke-linejoin: round;
+				stroke-width: 2;
+				transition: stroke $default-transition-duration $default-transition-function;
+
+				@include to(980px) {
+					width: 15rem;
+					height: 18rem;
+				}
+
+				@include to(580px) {
+					width: 11rem;
+					height: 14rem;
+					margin-right: 5rem;
+					stroke-width: 1;
+				}
+
+				.cases__slide-rec:hover & {
+					stroke: $color-blue;
+				}
+			}
+
+			&-text {
+				font-size: 21rem;
+				line-height: 1.3;
+				color: $color;
+				transition: color $default-transition-duration $default-transition-function;
+
+				@include to(980px) {
+					font-size: 16rem;
+				}
+
+				@include to(580px) {
+					font-size: 12rem;
+				}
+
+				.cases__slide-rec:hover & {
+					color: $color-blue;
+				}
+			}
+		}
+
+		&-link {
+			display: flex;
+			flex: 0 0 auto;
+			width: 40rem;
+			height: 40rem;
+			fill: transparent;
+			stroke: #3173db;
+			stroke-linecap: round;
+			stroke-linejoin: round;
+			stroke-width: 2;
+			transition: stroke $default-transition-duration $default-transition-function;
+
+			@include to(980px) {
+				width: 30rem;
+				height: 30rem;
+			}
+
+			@include to(580px) {
+				width: 20rem;
+				height: 20rem;
+			}
+
+			&:hover {
+				stroke: $color-blue;
+			}
+		}
+	}
+
+	&__more {
+		transition: color $default-transition-duration $default-transition-function;
+
+		&:hover {
+			color: $color-blue;
+		}
+
+		@include from(581px) {
+			width: fit-content;
+			margin-top: 30rem;
+		}
+
+		@include from(981px) {
+			margin-top: 60rem;
+		}
+
+		@include to(580px) {
+			grid-row: 1 / 2;
+			grid-column: 2 / 3;
+		}
+	}
+}

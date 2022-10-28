@@ -1,0 +1,101 @@
+.button {
+	padding: 24rem 32rem;
+	background-color: #fff;
+	border-radius: 10rem;
+	transition: $default-transition-duration $default-transition-function;
+
+	@extend %flex-center;
+
+	@include to(980px) {
+		padding: 18rem 24rem;
+	}
+
+	@include to(580px) {
+		padding: 12rem 16rem;
+	}
+
+	&:not(.button_gradient):hover {
+		background-color: $color-blue;
+	}
+
+	&_small {
+		padding: 12rem 24rem;
+
+		@include to(580px) {
+			padding: 10rem 20rem;
+		}
+	}
+
+	&_gradient {
+		background: linear-gradient(93.64deg, rgb(134 215 217 / 80%) 7.24%, rgb(88 151 251 / 80%) 75.63%);
+
+		&:hover {
+			opacity: 0.8;
+		}
+	}
+
+	&_no-radius {
+		border-radius: 0;
+	}
+
+	&_transparent {
+		background: transparent;
+		border: 1px solid #fff;
+
+		&:hover {
+			border-color: $color-blue;
+		}
+	}
+
+	&__text {
+		flex: 1;
+		font-size: 16rem;
+		line-height: 1.1;
+		color: $color;
+		transition: $default-transition-duration $default-transition-function;
+
+		@include to(580px) {
+			font-size: 14rem;
+		}
+
+		.button:not(.button_gradient):hover & {
+			color: #fff;
+		}
+
+		.button_font-halvar & {
+			font-family: HalvarBreitschrift, sans-serif;
+		}
+
+		.button_small & {
+			font-size: 14rem;
+
+			@include to(580px) {
+				font-size: 12rem;
+				line-height: 1.2;
+			}
+		}
+
+		.button_big & {
+			font-size: 20rem;
+			line-height: 1.2;
+
+			@include to(580px) {
+				font-size: 16rem;
+			}
+		}
+
+		.button_gradient &,
+		.button_transparent & {
+			color: #fff;
+		}
+	}
+
+	&__icon {
+		flex: 0 0 auto;
+		margin-right: 16rem;
+
+		@include to(980px) {
+			margin-right: 10rem;
+		}
+	}
+}

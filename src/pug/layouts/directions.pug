@@ -1,0 +1,97 @@
+-
+	const directionsData = {
+		title: 'Приоритетные направления поддержки',
+		tabs: [
+			'Сквозные цифровые технологии',
+			'Дорожные карты НТИ',
+		],
+		content: [
+			[
+				{
+					photo: require('Images/direction-item-1.jpg'),
+					caption: 'Большие данные',
+				},
+				{
+					photo: require('Images/direction-item-2.jpg'),
+					caption: 'Нейротехнологии и искусственный интеллект',
+				},
+				{
+					photo: require('Images/direction-item-3.jpg'),
+					caption: 'Системы распределенного реестра',
+				},
+				{
+					photo: require('Images/direction-item-4.jpg'),
+					caption: 'Квантовые технологии',
+				},
+				{
+					photo: require('Images/direction-item-5.jpg'),
+					caption: 'Новые производственные технологии',
+				},
+				{
+					photo: require('Images/direction-item-6.jpg'),
+					caption: 'Промышленный интернет',
+				},
+				{
+					photo: require('Images/direction-item-7.jpg'),
+					caption: 'Компоненты робототехники и сенсорика',
+				},
+				{
+					photo: require('Images/direction-item-8.jpg'),
+					caption: 'Технологии беспроводной связи',
+				},
+			],
+			[
+				{
+					photo: require('Images/direction-item-9.jpg'),
+					caption: '«Кружковое движение»',
+				},
+				{
+					photo: require('Images/direction-item-10.jpg'),
+					caption: '«Технет»',
+				},
+				{
+					photo: require('Images/direction-item-11.jpg'),
+					caption: '«Хелснет»',
+				},
+				{
+					photo: require('Images/direction-item-12.jpg'),
+					caption: '«Нейронет»',
+				},
+				{
+					photo: require('Images/direction-item-13.jpg'),
+					caption: '«Маринет»',
+				},
+				{
+					photo: require('Images/direction-item-14.jpg'),
+					caption: '«Автонет»',
+				},
+				{
+					photo: require('Images/direction-item-15.jpg'),
+					caption: '«Энерджинет»',
+				},
+				{
+					photo: require('Images/direction-item-16.jpg'),
+					caption: '«Аэронет»',
+				},
+			],
+		],
+	};
+
++b.SECTION.directions.js-tabs
+	- const { title, tabs, content } = directionsData;
+	+e.wrap.wrap
+		+e.H2.title.h2.font-halvar.color-blue #{ title }
+		+e.tabs.flex._vertical.js-tabs-parent
+			each item, index in tabs
+				+e.BUTTON.tab.js-tabs-button(class=index === 0 && 'is-active') #{ item }
+		+e.content
+			each itemContent, index in content
+				+e.tab-content.js-tabs-content
+					each item in itemContent
+						+e.item
+							+e.item-inner
+								+e.item-caption #{ item.caption }
+								+e.item-photo
+									img.object-fit(
+										src=item.photo
+										alt='directions item photo')

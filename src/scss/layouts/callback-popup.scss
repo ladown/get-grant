@@ -1,0 +1,142 @@
+.callback-popup {
+	position: fixed;
+	inset: 0;
+	z-index: 100;
+	display: none;
+	opacity: 0;
+
+	&__overlay {
+		position: absolute;
+		inset: 0;
+		z-index: 1;
+		background: rgb(0 0 0 / 30%);
+	}
+
+	&__wrap {
+		position: relative;
+		z-index: 2;
+		width: 100%;
+		max-width: 550rem;
+		height: 100%;
+		padding: 100rem 60rem;
+		margin-left: auto;
+		background-color: #fff;
+		transform: translateX(100%);
+
+		@include to(980px) {
+			padding: 70rem 40rem;
+		}
+
+		@include to(580px) {
+			max-width: 75vw;
+			padding: 40rem 20rem;
+		}
+	}
+
+	&__close {
+		position: absolute;
+		top: 32rem;
+		right: 32rem;
+		width: 48rem;
+		height: 48rem;
+		fill: transparent;
+		stroke: #000;
+		stroke-width: 1.5;
+		transition: stroke $default-transition-duration $default-transition-function;
+
+		@include to(980px) {
+			top: 16rem;
+			right: 16rem;
+			width: 40rem;
+			height: 40rem;
+		}
+
+		@include to(580px) {
+			top: 6rem;
+			right: 6rem;
+			width: 32rem;
+			height: 32rem;
+		}
+
+		&:hover {
+			stroke: $color-blue;
+		}
+
+		svg {
+			width: 28rem;
+			height: 28rem;
+
+			@include to(580px) {
+				width: 20rem;
+				height: 20rem;
+			}
+		}
+	}
+
+	&__title {
+		color: $color;
+	}
+
+	&__form {
+		margin-top: 60rem;
+
+		@include to(980px) {
+			margin-top: 40rem;
+		}
+
+		@include to(580px) {
+			margin-top: 20rem;
+		}
+
+		&-footer {
+			margin-top: 48rem;
+
+			@include to(980px) {
+				margin-top: 36rem;
+			}
+
+			@include to(580px) {
+				margin-top: 24rem;
+			}
+		}
+	}
+
+	&__field {
+		&:not(:last-child) {
+			margin-bottom: 48rem;
+
+			@include to(980px) {
+				margin-bottom: 36rem;
+			}
+
+			@include to(580px) {
+				margin-bottom: 24rem;
+			}
+		}
+	}
+
+	&__button {
+		width: 100%;
+		max-width: 250rem;
+	}
+
+	&__policy {
+		margin-top: 20rem;
+		font-size: 14rem;
+		line-height: 1.4;
+		color: #808080;
+
+		@include to(580px) {
+			margin-top: 16rem;
+			font-size: 10rem;
+		}
+
+		a {
+			transition: color $default-transition-duration $default-transition-function;
+
+			&:hover {
+				color: $color-blue;
+			}
+		}
+	}
+}

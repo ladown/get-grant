@@ -1,0 +1,15 @@
+mixin field(props = {})
+	+e.LABEL.field.field__(
+		class=`${props.modes ? `_${props.modes.join(' _')}` : ''}${props.type === 'file' ? '_file' : ''} js-field-wrap flex`)&attributes(attributes)
+		if props.isTextarea
+			+e.TEXTAREA.item.js-field(
+				name=props.name
+				placeholder=props.placeholder)
+		else
+			+e.INPUT.item.js-field(
+				class=`${props.jsClass ? props.jsClass : ''}`
+				type=props.type
+				inputmode=props.inputmode
+				name=props.name
+				placeholder=props.placeholder
+				maxlength=props.type === 'tel' && '18')

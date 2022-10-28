@@ -15,7 +15,7 @@ module.exports = {
 
 	output: {
 		path: paths.build.default,
-		publicPath: '/',
+		publicPath: 'auto',
 		filename: 'js/[name].[contenthash:8].js',
 		chunkFilename: 'js/[name].[id].js',
 		clean: true,
@@ -57,6 +57,14 @@ module.exports = {
 			extractCss: {
 				filename: 'css/[name].[contenthash:8].css',
 			},
+			postprocess(content) {
+				return content.replaceAll(
+					/(?:^|[^а-яёА-ЯЁ0-9_])(в|без|а|до|из|к|я|на|по|о|от|перед|при|через|с|у|за|над|об|под|про|для|и|или|со)(?:^|[^а-яёА-ЯЁ0-9_])/g,
+					(match) => {
+						return match.slice(-1) === ' ' ? `${match.substr(0, match.length - 1)}&nbsp;` : match;
+					},
+				);
+			},
 		}),
 	],
 
@@ -91,7 +99,8 @@ module.exports = {
 
 			{
 				test: /\.(jpe?g|png|gif|svg|webp)$/i,
-				exclude: [/sprite/, /favicon/],
+				include: /img/,
+				exclude: [/sprite/, /icons/],
 				type: 'asset/resource',
 				generator: {
 					filename: 'img/[name][ext]',

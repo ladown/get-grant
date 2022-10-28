@@ -2,7 +2,7 @@
 	--section-offset-top: 100rem;
 	--section-offset-bottom: 120rem;
 	--wrapper-offset: 16rem;
-	--wrapper-size: 1140rem;
+	--wrapper-size: 1140px;
 
 	@include to(980px) {
 		--section-offset-top: 75rem;
@@ -19,11 +19,11 @@ html {
 	font-size: 1px;
 
 	@include to(1200px) {
-		font-size: #{div(100, div(1440, 1))}vw;
+		font-size: #{div(100, div(1440, 1.2))}vw;
 	}
 
 	@include to(980px) {
-		font-size: 0.7px;
+		font-size: 0.8px;
 	}
 
 	@include to(580px) {
@@ -42,7 +42,8 @@ body {
 	font-style: normal;
 	font-weight: 400;
 	line-height: 1.25;
-	color: $color;
+	color: #fff;
+	background-color: $color;
 
 	@include to(580px) {
 		font-size: 14rem;
@@ -129,6 +130,8 @@ svg {
 
 .text-underline {
 	text-decoration: underline;
+	text-decoration-thickness: 0.1em;
+	text-underline-offset: 0.25em;
 }
 
 .object-fit {
@@ -179,4 +182,12 @@ svg {
 	overflow-x: hidden;
 	overflow-y: auto;
 	-webkit-overflow-scrolling: touch;
+}
+
+.font-halvar {
+	font-family: HalvarBreitschrift, sans-serif;
+}
+
+.color-blue {
+	color: $color-blue;
 }

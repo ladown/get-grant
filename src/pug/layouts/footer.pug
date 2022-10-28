@@ -1,1 +1,176 @@
+-
+	const footerData = {
+		logo: {
+			name: 'logo',
+			viewBox: '0 0 137 22',
+		},
+		nav: [
+			[
+				{
+					label: 'Конкурсы',
+				},
+				{
+					links: [
+						{
+							href: '#',
+							text: 'Развитие',
+						},
+						{
+							href: '#',
+							text: 'Коммерциализация',
+						},
+					],
+				},
+			],
+			[
+				{
+					label: 'Отчетность',
+				},
+				{
+					links: [
+						{
+							href: '#',
+							text: 'Развитие',
+						},
+						{
+							href: '#',
+							text: 'Коммерциализация',
+						},
+					],
+				},
+			],
+			[
+				{
+					label: 'О нас',
+				},
+				{
+					links: [
+						{
+							href: '#',
+							text: 'О компании',
+						},
+						{
+							href: '#',
+							text: 'Наши кейсы',
+						},
+						{
+							href: '#',
+							text: 'Полезная информация',
+						},
+					],
+				},
+			],
+		],
+
+		contacts: [
+			{
+				icon: {
+					name: 'geolocation',
+					viewBox: '0 0 14 17',
+				},
+				text: 'Москва, ул. Малая Тульская, д. 25с38, 4 этаж, офис 4.1'
+			},
+			{
+				icon: {
+					name: 'whatsapp',
+					viewBox: '0 0 15 15',
+				},
+				href: '#',
+				text: '+7 (499) 647-41-08',
+			},
+			{
+				icon: {
+					name: 'phone',
+					viewBox: '0 0 15 15',
+				},
+				href: 'tel:+74996474108',
+				text: '+7 (499) 647-41-08',
+			},
+			{
+				icon: {
+					name: 'telegram',
+					viewBox: '0 0 20 17',
+				},
+				href: '#',
+				text: '@get_grant_ru',
+			},
+			{
+				icon: {
+					name: 'email',
+					viewBox: '0 0 15 15',
+				},
+				href: 'mailto:info@get-grant.ru',
+				text: 'info@get-grant.ru',
+			},
+		],
+		form: {
+			title: 'Закажите обратный звонок',
+			field: {
+				type: 'tel',
+				inputmode: 'tel',
+				name: 'phone',
+				placeholder: '+7 (___) ___-__-__',
+			},
+			button: {
+				modes: ['transparent'],
+				text: 'Оставить заявку',
+			},
+			policy: 'Нажимая кнопку «Оставить заявку», Вы даете свое согласие на обработку <a href="#" class="text-underline">персональных данных</a>.',
+		},
+		subblock: {
+			items: [
+				{
+					text: `© Все права защищены. ${new Date().getFullYear()} г.`,
+				},
+				{
+					href: '#',
+					text: 'Политика конфиденциальности',
+				},
+				{
+					href: '#',
+					text: 'Карта сайта',
+				},
+			],
+		}
+	};
+
 +b.FOOTER.footer
+	- const { logo, nav, contacts, form, subblock } = footerData;
+	+e.main
+		+e.wrap._main.wrap
+			+e.main-row.flex._nowrap._start
+				+e.A.logo.flex(href='/')
+					+icon(logo)
+				+e.NAV.nav.flex._nowrap._start
+					each navCol in nav
+						+e.nav-col
+							each navContent in navCol
+								if !navContent.links
+									+e.nav-label.font-halvar.h6 #{ navContent.label }
+								else
+									+e.nav-links.flex._start._column._nowrap
+										each navLink in navContent.links
+											+e.A.nav-link(href=navLink.href) #{ navLink.text }
+			+e.main-row.flex._nowrap._start
+				+e.contacts
+					+e.contacts-title.font-halvar.h6 Контакты
+					+e.contacts-items
+						each item in contacts
+							+e.contacts-item
+								+e.contacts-icon
+									+icon(item.icon)
+								+e({tag: !item.href ? 'address' : 'a'}).contacts-link.flex(href=item.href)
+									| #{ item.text }
+				+e.FORM.form.flex._vertical(action='#')
+					+e.form-title.font-halvar.h6 #{ form.title }
+					+field(form.field)
+					+button(form.button)
+						| #{ form.button.text }
+					+e.form-policy !{ form.policy }
+	+e.subblock
+		+e.wrap._subblock.wrap
+			+e.subblock-row.flex._vertical._justify._nowrap
+				each item in subblock.items
+					+e({tag: item.href ? 'a' : 'div'}).subblock-item(href=item.href class=`${item.href ? 'text-underline' : ''}`) #{ item.text }
+			+e.subblock-row
+				+e.subblock-text Get-grant.ru - независимая консалтинговая компания. Не является аффилированной с Фондом Содействия Инновациям структурой.

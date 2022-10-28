@@ -1,0 +1,12 @@
+mixin slider-nav(props)
+	-
+		const prevClass = [
+			`${props.id ? `js-slider-${props.id}-prev` : '' }`,
+		];
+		const nextClass = [
+			`${props.id ? `js-slider-${props.id}-next` : '' }`,
+		];
+
+	+e.slider-nav.flex.slider-nav&attributes(attributes)
+		+slider-button(props.button).slider-button_prev(class=prevClass.join(' '))
+		+slider-button(props.button).slider-button_next(class=nextClass.join(' '))

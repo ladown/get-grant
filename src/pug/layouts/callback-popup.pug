@@ -1,0 +1,47 @@
+-
+	const callbackPopupData = {
+		title: 'Заполните заявку, <br/>и мы свяжемся с вами',
+		fields: [
+			{
+				modes: ['dark'],
+				type: 'text',
+				name: 'name',
+				placeholder: 'Ваше имя',
+			},
+			{
+				modes: ['dark'],
+				type: 'tel',
+				inputmode: 'tel',
+				name: 'phone',
+				placeholder: '+7 (___) ___-__-__',
+			},
+			{
+				modes: ['dark'],
+				type: 'email',
+				inputmode: 'email',
+				name: 'email',
+				placeholder: 'Электронная почта',
+			},
+		],
+		button: {
+			modes: ['gradient'],
+			text: 'Отправить',
+		},
+		policy: 'Нажимая на кнопку, вы даете <a href="#" class="text-underline">согласие на обработку персональных данных</a> и соглашаетесь с <a href="#" class="text-underline">политикой конфиденциальности</a>.',
+	};
+
++b.SECTION.callback-popup.js-popup
+	- const { title, fields, button, policy } = callbackPopupData;
+	+e.overlay.js-popup-close
+	+e.wrap.js-popup-wrap.overflow-y
+		+e.BUTTON.close.js-popup-close
+			+icon({name: 'close', viewBox: '0 0 28 28'}).no-pe
+		+e.H2.title.font-halvar.h4 !{ title }
+		+e.FORM.form(action='#')
+			+e.fields
+				each field in fields
+					+field(field)
+			+e.form-footer.flex._nowrap._column._start
+				+button(button)
+					| #{ button.text }
+				+e.policy !{ policy }

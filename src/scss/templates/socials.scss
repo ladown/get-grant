@@ -1,0 +1,46 @@
+.socials {
+	gap: 10rem;
+
+	&__item {
+		stroke-linecap: round;
+		stroke-linejoin: round;
+
+		&:hover {
+			.icon:not(.icon-whatsapp) {
+				stroke: $color-blue;
+			}
+
+			.icon-whatsapp {
+				fill: $color-blue;
+			}
+		}
+
+		.icon {
+			width: 20rem;
+			height: 20rem;
+			transition-timing-function: $default-transition-function;
+			transition-duration: $default-transition-duration;
+			transition-property: stroke, fill;
+
+			@include to(580px) {
+				width: 15rem;
+				height: 15rem;
+			}
+
+			&:not(.icon-whatsapp) {
+				fill: transparent;
+				stroke: #fff;
+				stroke-width: 1;
+			}
+
+			&-telegram {
+				width: 20rem;
+				height: 17rem;
+			}
+
+			&-whatsapp {
+				fill: #fff;
+			}
+		}
+	}
+}

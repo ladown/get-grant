@@ -18,6 +18,10 @@ module.exports = {
 		'block-opening-brace-space-before': 'always',
 		'selector-attribute-operator-space-after': 'never',
 		'selector-attribute-operator-space-before': 'never',
+		'declaration-colon-newline-after': null,
 		'selector-class-pattern': null,
+		'no-descending-specificity': null,
+		'block-no-empty': null,
+		'no-empty-source': null,
 	},
 };

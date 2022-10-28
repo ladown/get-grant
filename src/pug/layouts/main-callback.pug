@@ -1,0 +1,38 @@
+-
+	const mainCallbackData = {
+		title: 'Узнайте, под какое направление подходит ваш проект',
+		field: {
+			type: 'tel',
+			inputmode: 'tel',
+			name: 'phone',
+			placeholder: '+7 (___) ___-__-__',
+		},
+		button: {
+			modes: ['transparent'],
+			text: 'Оставить заявку',
+		},
+		policy: 'Нажимая кнопку «Оставить заявку», Вы даете свое согласие на обработку <a href="#" class="text-underline">персональных данных</a>.',
+		background: {
+			default: require('Images/callback-background.jpg'),
+			mobile: require('Images/callback-background-mobile.jpg'),
+		},
+	};
+
++b.SECTION.main-callback
+	- const { title, field, button, policy, background } = mainCallbackData;
+	+e.wrap.wrap
+		+e.box
+			+e.content
+				+e.H2.title.h2.font-halvar #{ title }
+				+e.FORM.form.flex._nowrap._vertical(action='#')
+					+field(field)
+					+button(button)
+						| #{ button.text }
+					+e.policy !{ policy }
+			+e.PICTURE.background.no-pe
+				source(
+					srcset=background.mobile
+					media='(max-width: 580px)')
+				img.object-fit(
+					src=background.default
+					alt='hero-background')

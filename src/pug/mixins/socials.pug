@@ -1,0 +1,5 @@
+mixin socials(props = {})
+	+e.socials.socials__.flex._nowrap._vertical
+		each social in props
+			+e.A.item.flex(href=social.url)
+				+icon(social.icon)

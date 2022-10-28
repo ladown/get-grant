@@ -1,0 +1,26 @@
+mixin callback(props = {})
+	+b.SECTION.callback(class=`${props.modes ? `${props.modes.join(' _')}` : ''}`)
+		+e.wrap.wrap
+			+e.box.flex._nowrap._start._justify
+				+e.cell._left
+					+e.H2.title.h2.font-halvar
+						if props.title
+							| #{ props.title }
+						else
+							| Получите бесплатную консультацию
+				+e.cell._right
+					+e.FORM.form(action='#')
+						+e.fields.flex._column._nowrap._start
+							each field in props.fields
+								+field(field)
+						+e.form-footer.flex._nowrap._vertical
+							+button(props.button)
+								| #{ props.button.text }
+							+e.policy !{ props.policy }
+				+e.PICTURE.background.no-pe
+					source(
+						srcset=require('Images/backgrounds/callback-bg-mobile.png')
+						media='(max-width: 580px)')
+					img.object-fit(
+						src=require('Images/backgrounds/callback-bg.png')
+						alt='callback-background')

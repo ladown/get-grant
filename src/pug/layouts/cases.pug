@@ -1,0 +1,101 @@
+-
+	const casesData = {
+		title: 'Кейсы',
+		items: [
+			{
+				logo: 'Images/proaction-logo.png',
+				photo: 'Images/case-item-1.jpg',
+				features: [
+					'Программа: Развитие-НТИ',
+					'Сумма гранта: 20000000₽',
+				],
+				text: 'Разработка модулей платформы «Proaction» с использованием нейросетей для тестирования и оценки кандидатов на трудоустройство и принятия управленческих решений.'
+			},
+			{
+				logo: 'Images/expasoft-logo.svg',
+				photo: 'Images/case-item-2.jpg',
+				features: [
+					'Программа: Развитие-НТИ',
+					'Сумма гранта: 20000000₽',
+				],
+				text: 'Разработка no-code интеллектуальной системы контроля нарушений заданных сценариев производственных бизнес-процессов с применением видео аналитики и ML алгоритмов.'
+			},
+			{
+				logo: 'Images/forpeople-logo.svg',
+				photo: 'Images/case-item-3.jpg',
+				features: [
+					'Программа: Развитие-ЦТ',
+					'Сумма гранта: 14000000₽',
+				],
+				text: 'Доработка системы HR-аналитики и рекомендательного сервиса с элементами искусственного интеллекта по управлению и повышению эффективности источников подбора Channel AI.'
+			},
+			{
+				logo: 'Images/acsma-logo.svg',
+				photo: 'Images/case-item-4.jpg',
+				features: [
+					'Программа: Развитие-НТИ/Маяк',
+					'Сумма гранта: 30000000₽',
+				],
+				text: 'Разработка устройства измерения концентрации глюкозы в крови (КГК) пациента с удаленным мониторингом (функцией передачи данных на смартфон или в медицинскую информационную систему).'
+			},
+			{
+				logo: 'Images/basis-logo.png',
+				photo: 'Images/case-item-5.jpg',
+				features: [
+					'Программа: Развитие-ЦТ',
+					'Сумма гранта: 20000000₽',
+				],
+				text: 'Разработка средств комплексной автоматизации и управления данными сбытовых сетей автодилеров и вендоров с использованием средств интеллектуального управления процессами с применением алгоритмов анализа и обработки данных на основе байесовских сетей.'
+			},
+			{
+				logo: 'Images/poliinform-logo.png',
+				photo: 'Images/case-item-6.jpg',
+				features: [
+					'Программа: Развитие-ЦТ',
+					'Сумма гранта: 20000000₽',
+				],
+				text: 'Разработка и тестирование программно-измерительного комплекса CMD-04F с применением БПЛА в качестве носителя для автономной бесконтактной магнитометрической диагностики металлических трубопроводов и резервуаров'
+			},
+			{
+				logo: 'Images/konnekt-logo.png',
+				photo: 'Images/case-item-6.jpg',
+				features: [
+					'Программа: Развитие-ЦТ',
+					'Сумма гранта: 20000000₽',
+				],
+				text: 'Разработка платформы «SaaS CDP» по сбору и анализу данных о потребителях для обогащения, персонализации и автоматизации маркетинга на основе технологий Big Data, ML и BI.'
+			},
+		],
+	};
+
++b.SECTION.cases
+	- const { title, items } = casesData;
+	+e.wrap.wrap
+		+e.H2.title.h2 #{ title }
+		+slider-nav({id: 'cases'})
+		+e.slider.swiper.js-slider-cases
+			.swiper-wrapper
+				each slide in items
+					+e.slide.swiper-slide.flex._row._nowrap
+						+e.slide-cell._photo.flex._column._nowrap
+							+e.slide-photo
+								img.object-fit(
+									src=require(slide.photo)
+									alt='slide photo')
+							+e.slide-logo
+								img(
+									src=require(slide.logo)
+									alt='slide logo')
+							+e.slide-features
+								each feature in slide.features
+									+e.slide-feature.medium-weight.font-halvar #{ feature }
+						+e.slide-cell._content.flex._column._nowrap
+							+e.slide-text.font-halvar #{ slide.text }
+							+e.slide-footer.flex._nowrap._justify
+								+e.A.slide-rec.flex._vertical(href='#')
+									+e.slide-rec-icon
+										+icon({ name: 'document', viewBox: '0 0 18 22', })
+									+e.slide-rec-text.text-underline Рекомендательное письмо
+								+e.A.slide-link(href='#')
+									+icon({ name: 'arrowToTop', viewBox: '0 0 40 40', })
+		+e.A.more.text-underline.h5.font-halvar(href='#') смотреть все

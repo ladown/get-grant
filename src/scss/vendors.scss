@@ -1,1 +1,4 @@
-// @import 'swiper/css';
+@use 'swiper/css';
+@use 'swiper/css/pagination';
+@use 'swiper/css/navigation';
+@use 'swiper/css/autoplay';

@@ -1,7 +1,7 @@
 mixin button(props = {})
 	+e({tag: props.href ? 'a' : 'button'}).button.button__(
 		href=props.href
-		class=`${props.mods ? `_${props.mods.join(' _')}` : ''}`)&attributes(attributes)
+		class=`${props.modes ? `_${props.modes.join(' _')}` : ''}`)&attributes(attributes)
 		if props.icon
 			+e.SPAN.icon
 				+icon(props.icon)

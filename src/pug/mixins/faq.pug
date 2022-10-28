@@ -1,0 +1,23 @@
+mixin faq(props = {})
+	+b.SECTION.faq
+		+e.wrap.wrap
+			+e.header.flex._nowrap._vertical
+				+e.H2.title.h2.font-halvar FAQ
+				+slider-nav({id: 'faq'})
+				+e.A.link.text-underline(href='#') Посмотреть больше полезных материалов
+			+e.slider
+				.swiper.js-slider-faq
+					.swiper-wrapper
+						each slide in props.items
+							+e.slide.swiper-slide
+								+e.slide-progress
+									span.js-progress-faq
+								+e.slide-caption.h6.strong #{ slide.caption }
+								+e.slide-content
+									each contentItem in slide.content
+										if contentItem.list
+											+e.UL.slide-list.list__
+												each item in contentItem.list
+													+e.LI.item #{ item }
+										if contentItem.text
+											+e.slide-text #{ contentItem.text }

@@ -1,0 +1,69 @@
+-
+	const reasonsData = {
+		title: 'Почему GetGrant',
+		items: [
+			{
+				photo: require('Images/reasons-item-1.jpg'),
+			},
+			{
+				modes: ['light'],
+				text: 'Работаем за Success Fee, помогая довести проект до конечного результата',
+			},
+			{
+				modes: ['dark', 'photo-hidden'],
+				photo: require('Images/reasons-item-3.jpg'),
+				caption: '+800 млн ₽',
+				text: 'Общая сумма привлеченных средств',
+			},
+			{
+				text: 'Get-grant — это команда профессионалов из различных отраслей экономики. Для каждого проекта подбирается команда аналитиков, исходя из специфики проекта.',
+			},
+			{
+				modes: ['blue'],
+				caption: '30+',
+				text: 'отраслевых экспертов',
+			},
+			{
+				text: 'Наша компания работает не только с грантовой поддержкой от Фонда содействия инновациям, но и с другими институтами развития: Сколково, РФРИТ, Минпромторг и т.д',
+			},
+			{
+				modes: ['blue'],
+				caption: '100+',
+				text: 'довольных клиентов',
+			},
+			{
+				modes: ['dark'],
+				text: 'Get-grant не просто помогает разработать документы, но и проводит вебинары для повышения информированности о доступных мерах государственной поддержки.',
+			},
+			{
+				photo: require('Images/reasons-item-2.jpg'),
+				link: {
+					href: '#',
+					text: 'О компании',
+				},
+			},
+		],
+	};
+
+
++b.SECTION.reasons
+	- const { title, items } = reasonsData;
+	+e.wrap.wrap
+		+e.H2.title.h2.color-blue.font-halvar #{ title }
+		+e.items.flex
+			each item in items
+				+e.item(class=`${item.modes ? `_${item.modes.join(' _')}` : ''} flex _nowrap _column _right _start`)
+					if item.caption
+						+e.item-caption.strong.h2.font-halvar #{ item.caption }
+					if item.text
+						+e.item-text.h6 #{ item.text }
+					if item.link
+						+e.A.item-link.flex._vertical._nowrap(href=item.link.href)
+							+e.item-link-text.h6 #{ item.link.text }
+							+e.item-link-icon
+								+icon({name: 'arrowToTop', viewBox: '0 0 11 11'})
+					if item.photo
+						+e.item-photo
+							img.object-fit(
+								src=item.photo
+								alt='reasons photo')

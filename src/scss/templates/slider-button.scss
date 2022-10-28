@@ -1,0 +1,60 @@
+.slider-button {
+	flex: 0 0 auto;
+	width: 70rem;
+	height: 40rem;
+	background-color: $color;
+	fill: #fff;
+	transition-timing-function: $default-transition-function;
+	transition-duration: $default-transition-duration;
+	transition-property: background-color, opacity;
+
+	@extend %flex-center;
+
+	@include to(980px) {
+		width: 55rem;
+		height: 30rem;
+	}
+
+	@include to(580px) {
+		width: 40rem;
+		height: 20rem;
+	}
+
+	&:not(.swiper-button-disabled):hover {
+		background-color: $color-blue;
+	}
+
+	svg {
+		width: 33rem;
+		height: 8rem;
+
+		@include to(980px) {
+			width: 26rem;
+		}
+
+		@include to(580px) {
+			width: 19rem;
+			height: 9rem;
+		}
+	}
+
+	&_prev {
+		border: 1px solid #fff;
+		border-right: none;
+		border-radius: 5rem 0 0 5rem;
+	}
+
+	&_next {
+		border: 1px solid #fff;
+		border-left: none;
+		border-radius: 0 5rem 5rem 0;
+
+		svg {
+			transform: scale(-1);
+		}
+	}
+
+	&.swiper-button-disabled {
+		opacity: 0.6;
+	}
+}

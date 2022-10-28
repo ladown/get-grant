@@ -1,0 +1,242 @@
+.work {
+	position: relative;
+	z-index: 1;
+	padding: var(--section-offset-top) 0 var(--section-offset-bottom);
+	overflow: hidden;
+
+	&__features {
+		gap: 50rem;
+		margin-top: 60rem;
+
+		@include to(980px) {
+			gap: 35rem;
+			margin-top: 40rem;
+		}
+
+		@include to(768px) {
+			flex-direction: column;
+		}
+
+		@include to(580px) {
+			gap: 25rem;
+			margin-top: 20rem;
+		}
+	}
+
+	&__feature {
+		@include from(769px) {
+			flex: 1 1 calc((100% / 3) - 50rem);
+		}
+
+		&-icon {
+			max-width: 60rem;
+			max-height: 60rem;
+
+			@include to(980px) {
+				max-width: 45rem;
+				max-height: 45rem;
+			}
+
+			@include to(580px) {
+				max-width: 30rem;
+				max-height: 30rem;
+			}
+		}
+
+		&-caption {
+			margin-top: 16rem;
+
+			@include to(580px) {
+				margin-top: 10rem;
+			}
+		}
+
+		&-text {
+			margin-top: 20rem;
+			font-size: 16rem;
+			line-height: 1.2;
+			letter-spacing: -0.02em;
+
+			@include to(580px) {
+				margin-top: 10rem;
+				font-size: 12rem;
+			}
+		}
+	}
+
+	&__progress {
+		margin-top: 120rem;
+
+		@include to(980px) {
+			margin-top: 90rem;
+		}
+
+		@include to(768px) {
+			flex-direction: row;
+		}
+
+		@include to(580px) {
+			margin-top: 60rem;
+		}
+
+		&-item {
+			@include from(769px) {
+				flex-basis: 325rem;
+				flex-shrink: 1;
+				line-height: 1.1;
+
+				&_big {
+					flex-basis: 575rem;
+				}
+			}
+
+			@include to(768px) {
+				width: 100%;
+				line-height: 1;
+			}
+		}
+
+		&-content {
+			@include to(768px) {
+				flex-direction: column;
+				margin-left: auto;
+
+				> *:not(:last-child) {
+					margin-bottom: 60rem;
+				}
+			}
+		}
+
+		&-header {
+			font-size: 150rem;
+			letter-spacing: -0.05em;
+
+			@include to(980px) {
+				font-size: 125rem;
+			}
+
+			@include to(580px) {
+				font-size: 100rem;
+			}
+
+			span {
+				display: inline-block;
+				padding-top: 0.2em;
+				font-size: 100rem;
+
+				@include to(980px) {
+					font-size: 70rem;
+				}
+
+				@include to(580px) {
+					font-size: 40rem;
+				}
+			}
+
+			.work__progress-item_big & {
+				font-size: 280rem;
+				letter-spacing: -0.065em;
+
+				@include to(980px) {
+					font-size: 180rem;
+				}
+
+				@include to(580px) {
+					font-size: 100rem;
+				}
+
+				span {
+					font-size: 130rem;
+
+					@include to(980px) {
+						font-size: 95rem;
+					}
+
+					@include to(580px) {
+						font-size: 40rem;
+					}
+				}
+			}
+		}
+
+		&-subheader {
+			@include to(768px) {
+				br {
+					display: none;
+				}
+			}
+
+			.work__progress-item_big & {
+				font-size: 50rem;
+				line-height: 1.1;
+
+				@include to(980px) {
+					font-size: 34rem;
+				}
+
+				@include to(580px) {
+					font-size: 22rem;
+				}
+			}
+		}
+	}
+
+	&__progressbar {
+		flex: 0 0 auto;
+		width: 100%;
+		height: 8px;
+		background-color: #fff;
+		border-radius: 100rem;
+
+		@include to(768px) {
+			flex-direction: column;
+			width: 8px;
+			height: auto;
+			margin-right: 20rem;
+		}
+
+		span {
+			height: 100%;
+			border-radius: 100rem;
+			transition: transform $default-transition-duration $default-transition-function;
+			transform: scale(0, 1);
+			transform-origin: center left;
+			will-change: transform;
+
+			@include to(768px) {
+				transform: scale(1, 0);
+			}
+
+			&:nth-child(1) {
+				width: 70%;
+				background: linear-gradient(270deg, #c64328 0%, #d9b886 100%);
+				box-shadow: 0 0 15px #ce7752;
+
+				@include to(768px) {
+					width: 8px;
+					height: 60%;
+				}
+			}
+
+			&:nth-child(2) {
+				width: calc(30% + 20rem);
+				margin-left: -20rem;
+				background: linear-gradient(270deg, #86d7d9 0%, #619eff 100%);
+				box-shadow: 0 0 15px #7bc5e5;
+
+				@include to(768px) {
+					width: 8px;
+					height: calc(40% + 20rem);
+					margin-top: -20rem;
+					margin-left: 0;
+				}
+			}
+		}
+	}
+
+	&__background {
+		img {
+			z-index: -1;
+		}
+	}
+}

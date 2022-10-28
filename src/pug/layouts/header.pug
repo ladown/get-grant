@@ -1,1 +1,80 @@
-+b.HEADER.header
+-
+	const headerData = {
+		logo: {
+			name: 'logo',
+			viewBox: '0 0 137 22',
+		},
+
+		nav: [
+			{
+				url: '#',
+				text: 'Конкурсы',
+			},
+			{
+				url: '#',
+				text: 'Отчетность',
+			},
+			{
+				url: '#',
+				text: 'Кейсы',
+			},
+			{
+				url: '#',
+				text: 'Вебинар',
+			},
+			{
+				url: '#',
+				text: 'О компании',
+			},
+			{
+				url: '#',
+				text: 'Контакты',
+			},
+		],
+
+		socials: [
+			{
+				url: '#',
+				icon: {
+					name: 'telegram',
+					viewBox: '0 0 20 17',
+				},
+			},
+			{
+				url: '#',
+				icon: {
+					name: 'whatsapp',
+					viewBox: '0 0 15 15',
+				},
+			},
+			{
+				url: '#',
+				icon: {
+					name: 'phone',
+					viewBox: '0 0 15 15',
+				},
+			},
+		],
+
+		button: {
+			modes: ['small', 'light'],
+			text: 'Обратный звонок',
+		},
+	};
+
+
++b.HEADER.header.js-header
+	- const { logo, nav, socials, button } = headerData;
+	+e.wrap.wrap.flex._nowrap._vertical
+		+e.A.logo.flex(href='/')
+			+icon(logo)
+		+e.menu.flex._nowrap._vertical.js-header-menu
+			+e.NAV.nav.flex._nowrap._vertical
+				each link in nav
+					+e.A.link(href=link.url) #{ link.text }
+			+socials(socials)
+			+button(button)
+				| #{ button.text }
+		+socials(socials)
+		+e.BUTTON.menu-button.js-header-button
+			span

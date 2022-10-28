@@ -1,0 +1,37 @@
+-
+	const heroFirstButton = {
+		modes: ['gradient', 'font-halvar', 'big'],
+	};
+	const heroSecondButton = {
+		modes: ['gradient', 'font-halvar', 'no-radius'],
+		icon: {
+			name: 'play',
+			viewBox: '0 0 20 20',
+		},
+	};
+
+mixin hero(props = {})
+	+b.SECTION.hero
+		+e.wrap.wrap.flex._nowrap._start._justify
+			+e.cell._left
+				+e.H1.title.h1.font-halvar !{ props.title }
+				+e.subtitle !{ props.subtitle }
+				+button(heroFirstButton).js-popup-callback(class=props.button.classes)
+					| #{ props.button.text }
+				+e.text.h6 !{ props.text }
+			+e.cell._right
+				+e.box
+					+e.photo
+						img(
+							src=require('Images/hero.jpg')
+							alt='hero-photo')
+					+e.box-footer
+						+button(heroSecondButton)
+							| Посмотрите презентацию<br/>о компании GetGrant
+		+e.PICTURE.background.no-pe
+			source(
+				srcset=require('Images/backgrounds/hero-bg-mobile.png')
+				media='(max-width: 580px)')
+			img.object-fit(
+				src=require('Images/backgrounds/hero-bg.png')
+				alt='hero-background')
