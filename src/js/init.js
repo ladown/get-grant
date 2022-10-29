@@ -7,6 +7,7 @@ import Tabs from './classes/tabs';
 import Popup from './classes/popup';
 import RequirementsCards from './modules/requirements';
 import Defaults from './classes/defaults';
+import More from './classes/more';
 
 class AppClass {
 	constructor() {}
@@ -38,6 +39,14 @@ class AppClass {
 		if (popups.length) {
 			popups.forEach((popup) => {
 				new Popup(popup, '.js-popup-callback').init();
+			});
+		}
+
+		const moreItems = document.querySelectorAll('.js-more');
+
+		if (moreItems.length) {
+			moreItems.forEach((item) => {
+				new More(item).init();
 			});
 		}
 

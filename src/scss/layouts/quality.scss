@@ -1,0 +1,43 @@
+.quality {
+	padding-top: var(--section-offset-bottom);
+
+	&__text {
+		margin-top: 60rem;
+
+		@include to(980px) {
+			margin-top: 40rem;
+		}
+
+		@include to(580px) {
+			margin-top: 20rem;
+		}
+	}
+
+	&__items {
+		gap: 60rem;
+		margin-top: 60rem;
+
+		@include to(980px) {
+			gap: 38rem;
+			margin-top: 40rem;
+		}
+
+		@include to(580px) {
+			gap: 16rem;
+			margin-top: 20rem;
+		}
+	}
+
+	&__item {
+		flex: 0 1 240rem;
+		max-width: 100%;
+
+		@include to(580px) {
+			flex-basis: 160rem;
+		}
+
+		@include to(375px) {
+			flex-basis: 136rem;
+		}
+	}
+}

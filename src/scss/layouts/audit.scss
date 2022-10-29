@@ -1,0 +1,97 @@
+.audit {
+	padding-bottom: var(--section-offset-bottom);
+
+	&__box {
+		background: linear-gradient(184.58deg, #3173db 10.64%, rgb(49 115 219 / 0%) 134.88%);
+		border-radius: 10rem;
+	}
+
+	&__cell {
+		&_left {
+			padding: 60rem;
+
+			@include from(769px) {
+				flex: 0 1 55%;
+			}
+
+			@include from(980px) {
+				flex-basis: 610rem;
+			}
+
+			@include to(980px) {
+				padding: 40rem;
+			}
+
+			@include to(580px) {
+				padding: 20rem 20rem 40rem;
+			}
+		}
+
+		&_right {
+			flex: 1;
+
+			@include to(768px) {
+				display: none;
+			}
+		}
+	}
+
+	&__subtitle {
+		margin-top: 24rem;
+
+		@include to(580px) {
+			margin-top: 20rem;
+		}
+	}
+
+	&__text {
+		margin-top: 20rem;
+
+		@include to(580px) {
+			margin-top: 10rem;
+			font-size: 12rem;
+		}
+	}
+
+	&__sum {
+		margin-top: 56rem;
+
+		@include to(980px) {
+			margin-top: 38rem;
+		}
+
+		@include to(580px) {
+			margin-top: 24rem;
+			font-size: 20rem;
+		}
+	}
+
+	&__button {
+		width: 100%;
+		max-width: 250rem;
+		margin-top: 36rem;
+
+		@include to(580px) {
+			margin-top: 20rem;
+		}
+
+		&.button {
+			padding: 17rem;
+
+			@include to(580px) {
+				padding: 13rem;
+			}
+		}
+	}
+
+	&__photo {
+		position: relative;
+		width: 100%;
+		height: 100%;
+		border-radius: 10rem;
+
+		img {
+			border-radius: inherit;
+		}
+	}
+}

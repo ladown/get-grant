@@ -35,8 +35,10 @@ const FaqSlider = {
 					const progressbars = swiper.el.querySelectorAll('.js-progress-faq');
 					const activeSlideProgressbar = Array.from(progressbars).filter((el) => {
 						const slide = el.closest('.swiper-slide');
-						if (slide.getAttribute('data-swiper-slide-index') === swiper.realIndex.toString()) {
-							return el;
+						if (slide === swiper.slides[swiper.activeIndex]) {
+							if (slide.getAttribute('data-swiper-slide-index') === swiper.realIndex.toString()) {
+								return el;
+							}
 						}
 					});
 					gsap.killTweensOf(progressbars, 'scaleX');

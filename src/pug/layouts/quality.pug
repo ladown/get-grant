@@ -1,0 +1,23 @@
+-
+	const qualityData = {
+		title: 'Качество сдачи отчетности - это важно!',
+		text: 'Получив грантовую поддержку и отчитавшись за нее без задержек, - каждый проект увеличивает шансы на дальнейшую грантовую поддержку и возможность получения мер грантовой поддержки от других институтов развития. Данный процесс реализуется за счет внедрения бесшовной интеграции институтов развития в РФ.',
+		items: [
+			require('Images/minpromtorg-logo.jpg'),
+			require('Images/rfrit-logo.jpg'),
+			require('Images/fsi-logo.jpg'),
+			require('Images/sk-logo.jpg'),
+		],
+	};
+
++b.SECTION.quality
+	- const { title, text, items } = qualityData;
+	+e.wrap.wrap
+		+e.H2.title.h2.font-halvar #{ title }
+		+e.text.h4 #{ text }
+		+e.items.flex._center
+			each item in items
+				+e.item
+					img(
+						src=item
+						alt=`${item.slice(-4)}`)

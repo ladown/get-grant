@@ -33,7 +33,7 @@
 			}
 		}
 
-		&.is-active {
+		&:hover {
 			border-color: $color-blue;
 		}
 
@@ -55,7 +55,7 @@
 				order: 1;
 			}
 
-			.is-active & {
+			.directions__item:hover & {
 				color: #fff;
 			}
 		}
@@ -90,7 +90,7 @@
 				font-size: 12rem;
 			}
 
-			.is-active & {
+			.directions__item:hover & {
 				color: #fff;
 			}
 		}
@@ -123,8 +123,8 @@
 				stroke: rgba($color-green, 0.6);
 			}
 
-			.is-active &,
-			.directions__item:nth-child(3).is-active & {
+			.directions__item:hover &,
+			.directions__item:nth-child(3):hover & {
 				stroke: $color-blue;
 			}
 		}

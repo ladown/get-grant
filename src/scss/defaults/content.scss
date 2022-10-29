@@ -6,7 +6,7 @@
 		padding-left: 20rem;
 
 		&:not(:last-child) {
-			margin-bottom: 10rem;
+			margin-bottom: 12rem;
 		}
 
 		&::before {
@@ -31,7 +31,7 @@
 		padding-left: 20rem;
 
 		&:not(:last-child) {
-			margin-bottom: 10rem;
+			margin-bottom: 12rem;
 		}
 
 		&::before {
@@ -43,6 +43,39 @@
 			color: inherit;
 			content: counter(order-list) '.';
 			counter-increment: order-list;
+		}
+	}
+}
+
+.arrow-list {
+	list-style-type: none;
+
+	&__item {
+		position: relative;
+		padding-left: 30rem;
+
+		@include to(580px) {
+			padding-left: 20rem;
+		}
+
+		&:not(:last-child) {
+			margin-bottom: 12rem;
+		}
+
+		&::before {
+			position: absolute;
+			top: 0.15em;
+			left: 0;
+			width: 16rem;
+			height: 16rem;
+			content: '';
+			background: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 8H15M15 8L8 1M15 8L8 15' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A")
+				center center / cover no-repeat;
+
+			@include to(580px) {
+				width: 10rem;
+				height: 10rem;
+			}
 		}
 	}
 }

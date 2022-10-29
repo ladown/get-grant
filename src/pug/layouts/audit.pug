@@ -1,0 +1,29 @@
+-
+	const auditData = {
+		title: 'Аудит',
+		subtitle: 'Если вы сдаете отчетность самостоятельно, то можете воспользоваться нашей услугой - Аудит.',
+		text: 'Мы оценим, насколько точно вы расходуете средства гранта, а также изучим материалы для научно-технического отчета и дадим соответствующие рекомендации.',
+		sum: 'Стоимость: 20000₽',
+		button: {
+			modes: ['transparent'],
+			text: 'Заказать аудит',
+		},
+		photo: require('Images/audit.jpg'),
+	};
+
++b.SECTION.audit
+	- const { title, subtitle, text, sum, button, photo } = auditData;
+	+e.wrap.wrap
+		+e.box.flex._nowrap
+			+e.cell._left
+				+e.H2.title.h2.font-halvar #{ title }
+				+e.subtitle.h5.medium-weight #{ subtitle }
+				+e.text.h6 #{ text }
+				+e.sum.medium-weight.h4.font-halvar #{ sum }
+				+button(button)
+					| #{ button.text }
+			+e.cell._right
+				+e.photo
+					img.object-fit(
+						src=photo
+						alt='audit photo')
