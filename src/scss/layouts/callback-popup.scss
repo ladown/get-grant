@@ -18,9 +18,11 @@
 		width: 100%;
 		max-width: 550rem;
 		height: 100%;
+		max-height: 100%;
 		padding: 100rem 60rem;
 		margin-left: auto;
 		background-color: #fff;
+		opacity: 0;
 		transform: translateX(100%);
 
 		@include to(980px) {

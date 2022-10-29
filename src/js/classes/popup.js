@@ -4,12 +4,18 @@ import scrollLock from 'scroll-lock';
 import { gsap } from 'gsap';
 
 class Popup {
-	constructor(popupElement, triggerSelector) {
+	constructor(popupElement, triggerSelector, isPopupByTime) {
 		this.popup = popupElement;
 		this.popupWrap = this.popup.querySelector('.js-popup-wrap');
 		this.triggers = document.querySelectorAll(triggerSelector);
-		this.inputs = this.popup.querySelectorAll('input');
+		this.isPopupByTime = isPopupByTime;
+		this.wrapAnimatingPropery = this.popup.getAttribute('data-popup-wrap-propery')
+			? this.popup.getAttribute('data-popup-wrap-propery') ||
+			  this.popup.removeAttribute('data-popup-wrap-propery')
+			: 'translateY';
 		this.isOpened = false;
+		this.timeout = null;
+		this.delay = 15000;
 	}
 
 	openPopup() {
@@ -23,7 +29,8 @@ class Popup {
 			onStart: () => {
 				gsap.to(this.popupWrap, {
 					delay: 0.1,
-					translateX: 0,
+					opacity: 1,
+					[this.wrapAnimatingPropery]: 0,
 					duration: 0.3,
 					ease: 'linear',
 				});
@@ -31,6 +38,10 @@ class Popup {
 		});
 
 		this.isOpened = !this.isOpened;
+
+		if (this.isPopupByTime) {
+			clearTimeout(this.timeout);
+		}
 	}
 
 	closePopup() {
@@ -38,8 +49,9 @@ class Popup {
 
 		gsap.to(this.popupWrap, {
 			delay: 0.1,
-			translateX: '100%',
+			[this.wrapAnimatingPropery]: '100%',
 			duration: 0.3,
+			opacity: 0,
 			ease: 'linear',
 			onStart: () => {
 				gsap.to(this.popup, {
@@ -54,20 +66,30 @@ class Popup {
 		this.isOpened = !this.isOpened;
 	}
 
-	setListenerForOpening() {
-		this.triggers.forEach((button) => {
-			button.addEventListener('click', (event) => {
-				if (event.target.tagName.toLowerCase() === 'a') {
-					event.preventDefault();
-				}
+	setDelayedOpening() {
+		if (this.isPopupByTime) {
+			this.timeout = setTimeout(() => {
+				this.openPopup();
+			}, this.delay);
+		}
+	}
 
-				if (this.isOpened) {
-					this.closePopup();
-				} else {
-					this.openPopup();
-				}
+	setListenerForOpening() {
+		if (this.triggers.length) {
+			this.triggers.forEach((button) => {
+				button.addEventListener('click', (event) => {
+					if (event.target.tagName.toLowerCase() === 'a') {
+						event.preventDefault();
+					}
+
+					if (this.isOpened) {
+						this.closePopup();
+					} else {
+						this.openPopup();
+					}
+				});
 			});
-		});
+		}
 	}
 
 	setListenerForClosing() {
@@ -87,6 +109,7 @@ class Popup {
 	init() {
 		this.setListenerForOpening();
 		this.setListenerForClosing();
+		this.setDelayedOpening();
 	}
 }
 

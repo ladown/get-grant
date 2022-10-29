@@ -1,0 +1,291 @@
+.article {
+	position: relative;
+	z-index: 1;
+	padding-top: 220rem;
+	overflow: hidden;
+
+	@include to(980px) {
+		padding-top: 130rem;
+	}
+
+	@include to(580px) {
+		padding-top: 90rem;
+	}
+
+	&__wrap {
+		display: grid;
+		grid-template-columns: 1fr 840rem;
+		gap: 60rem;
+
+		@include to(980px) {
+			grid-template-columns: 1fr 800rem;
+			gap: 40rem;
+		}
+
+		@include to(768px) {
+			grid-template-columns: 1fr;
+		}
+
+		@include to(580px) {
+			gap: 20rem;
+		}
+	}
+
+	&__title {
+		@include from(769px) {
+			grid-column: 2 / 3;
+		}
+	}
+
+	&__button-back {
+		@include from(769px) {
+			grid-row: 2 / 3;
+			grid-column: 1 / 2;
+		}
+	}
+
+	&__content {
+		@include from(769px) {
+			grid-column: 2 / 3;
+		}
+
+		> * {
+			margin: 24rem 0;
+
+			@include to(580px) {
+				margin: 12rem 0;
+			}
+
+			&:first-child {
+				margin-top: 0;
+			}
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+	}
+
+	&__photo {
+		margin: 32rem 0;
+		overflow: hidden;
+
+		@include to(580px) {
+			margin: 16rem 0;
+		}
+
+		&_radius {
+			border-radius: 10rem;
+		}
+
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+	}
+
+	&__list {
+		margin: 32rem 0;
+
+		@include to(580px) {
+			margin: 16rem 0;
+		}
+	}
+
+	&__box {
+		margin: 40rem 0;
+
+		@include to(580px) {
+			margin: 20rem 0;
+		}
+
+		&-item {
+			position: relative;
+			z-index: 1;
+			padding: 40rem;
+			background-color: #223147;
+			border-radius: 10rem;
+
+			@include from(769px) {
+				border-radius: 10rem 0 0 10rem;
+
+				&::before {
+					position: absolute;
+					inset: 0 0 0 0;
+					z-index: -1;
+					width: 100vw;
+					content: '';
+					background-color: #223147;
+					border-radius: inherit;
+				}
+			}
+
+			@include to(980px) {
+				padding: 30rem;
+			}
+
+			@include to(580px) {
+				padding: 20rem;
+			}
+
+			&:not(:last-child) {
+				margin-bottom: 20rem;
+
+				@include to(580px) {
+					margin-bottom: 10rem;
+				}
+			}
+
+			&_blue {
+				background-color: #3173db;
+
+				@include from(769px) {
+					&::before {
+						background-color: #3173db;
+					}
+				}
+			}
+
+			&_marine {
+				background-color: $color-marine;
+
+				@include from(769px) {
+					&::before {
+						background-color: $color-marine;
+					}
+				}
+			}
+		}
+
+		&-text {
+			margin-bottom: 24rem;
+
+			@include to(580px) {
+				margin-bottom: 12rem;
+			}
+		}
+
+		&-row {
+			@include to(580px) {
+				flex-direction: column;
+			}
+		}
+
+		&-aside {
+			@include from(581px) {
+				flex: 0 0 200rem;
+				margin-right: 24rem;
+			}
+		}
+
+		&-content {
+			@include from(581px) {
+				flex: 1;
+			}
+
+			@include to(580px) {
+				margin-top: 12rem;
+			}
+		}
+
+		&-caption {
+			margin-bottom: 24rem;
+
+			@include to(580px) {
+				margin-bottom: 12rem;
+			}
+		}
+
+		.list {
+			&__item {
+				&:not(:last-child) {
+					margin-bottom: 24rem;
+
+					@include to(580px) {
+						margin-bottom: 12rem;
+					}
+				}
+			}
+		}
+	}
+
+	&__columns {
+		gap: 32rem;
+		margin: 24rem 0 48rem;
+
+		@include to(980px) {
+			margin-bottom: 36rem;
+		}
+
+		@include to(580px) {
+			gap: 16rem;
+			margin: 12rem 0 24rem;
+		}
+
+		&-cell {
+			flex: 1 1 calc(50% - 20rem);
+
+			@include to(580px) {
+				flex-basis: 100%;
+			}
+		}
+
+		&-list {
+			margin-top: 16rem;
+
+			@include to(580px) {
+				margin-top: 12rem;
+			}
+		}
+	}
+
+	&__rows {
+		margin: 24rem 0 32rem;
+
+		@include to(580px) {
+			margin: 12rem 0 16rem;
+		}
+
+		&-item {
+			&:not(:last-child) {
+				margin-bottom: 24rem;
+
+				@include to(580px) {
+					margin-bottom: 12rem;
+				}
+			}
+
+			@include to(580px) {
+				flex-direction: column;
+			}
+		}
+
+		&-caption {
+			@include from(581px) {
+				flex: 1;
+				margin-right: 16rem;
+			}
+		}
+
+		&-text {
+			@include from(581px) {
+				flex: 0 1 75%;
+			}
+
+			@include from(981px) {
+				flex-basis: 640rem;
+			}
+
+			@include to(580px) {
+				margin-top: 12rem;
+			}
+		}
+	}
+
+	&__background {
+		img {
+			z-index: -1;
+		}
+	}
+}

@@ -30,7 +30,7 @@
 		policy: 'Нажимая на кнопку, вы даете <a href="#" class="text-underline">согласие на обработку персональных данных</a> и соглашаетесь с <a href="#" class="text-underline">политикой конфиденциальности</a>.',
 	};
 
-+b.SECTION.callback-popup.js-popup
++b.SECTION.callback-popup.js-popup(data-popup-wrap-propery='translateX')
 	- const { title, fields, button, policy } = callbackPopupData;
 	+e.overlay.js-popup-close
 	+e.wrap.js-popup-wrap.overflow-y

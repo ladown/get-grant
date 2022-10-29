@@ -1,12 +1,16 @@
 .callback {
 	padding: var(--section-offset-top) 0 var(--section-offset-bottom);
 
+	&_light {
+		background-color: #fff;
+	}
+
 	&__box {
 		position: relative;
 		z-index: 1;
 		padding: 80rem;
 		overflow: hidden;
-		background: rgb(88 151 251 / 10%);
+		background-color: rgb(88 151 251 / 10%);
 		border-radius: 10px;
 		backdrop-filter: blur(40rem);
 
@@ -20,6 +24,10 @@
 
 		@include to(580px) {
 			padding: 30rem;
+		}
+
+		.callback_light & {
+			background-color: rgb(88 151 251 / 80%);
 		}
 	}
 
@@ -90,6 +98,14 @@
 				padding: 12rem;
 			}
 		}
+
+		.callback_light &.button {
+			&:hover {
+				background-color: transparent;
+				border-color: #fff;
+				opacity: 0.7;
+			}
+		}
 	}
 
 	&__policy {
@@ -112,10 +128,20 @@
 		}
 
 		a {
-			transition: color $default-transition-duration $default-transition-function;
+			transition: color $default-transition-duration $default-transition-function,
+				opacity $default-transition-duration $default-transition-function;
 
 			&:hover {
 				color: $color-blue;
+			}
+		}
+
+		.callback_light & {
+			a {
+				&:hover {
+					color: #fff;
+					opacity: 0.7;
+				}
 			}
 		}
 	}

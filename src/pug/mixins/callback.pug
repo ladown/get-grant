@@ -1,5 +1,5 @@
 mixin callback(props = {})
-	+b.SECTION.callback(class=`${props.modes ? `${props.modes.join(' _')}` : ''}`)
+	+b.SECTION.callback(class=`${props.modes ? `_${props.modes.join(' _')}` : ''}`)
 		+e.wrap.wrap
 			+e.box.flex._nowrap._start._justify
 				+e.cell._left
@@ -18,9 +18,14 @@ mixin callback(props = {})
 								| #{ props.button.text }
 							+e.policy !{ props.policy }
 				+e.PICTURE.background.no-pe
-					source(
-						srcset=require('Images/backgrounds/callback-bg-mobile.png')
-						media='(max-width: 580px)')
-					img.object-fit(
-						src=require('Images/backgrounds/callback-bg.png')
-						alt='callback-background')
+					if props.modes && props.modes.includes('light')
+						img.object-fit(
+							src=require('Images/backgrounds/callback-bg_light.png')
+							alt='callback-background')
+					else
+						source(
+							srcset=require('Images/backgrounds/callback-bg-mobile.png')
+							media='(max-width: 580px)')
+						img.object-fit(
+							src=require('Images/backgrounds/callback-bg.png')
+							alt='callback-background')

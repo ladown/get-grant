@@ -41,5 +41,18 @@
 				color: rgba(#878888, 0.7);
 			}
 		}
+
+		.field_blue & {
+			color: #5897fb;
+			border-color: rgba(#5897fb, 0.5);
+
+			&:focus {
+				border-color: #5897fb;
+			}
+
+			&::placeholder {
+				color: rgba(#5897fb, 0.5);
+			}
+		}
 	}
 }

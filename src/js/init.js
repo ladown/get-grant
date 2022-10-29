@@ -50,6 +50,12 @@ class AppClass {
 			});
 		}
 
+		const articlePopup = document.querySelector('.js-popup-by-time');
+
+		if (articlePopup) {
+			new Popup(articlePopup, false, true).init();
+		}
+
 		console.log('App has been initialized');
 	}
 }

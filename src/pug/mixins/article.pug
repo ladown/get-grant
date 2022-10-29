@@ -1,0 +1,54 @@
+mixin article(props = {})
+	+b.ARTICLE.article(class=`${props.mainMode ? `_${props.mainMode}` : ''}`)
+		- const { title, content, background } = props;
+		+e.wrap.wrap
+			+button-back
+			+e.H1.title.h1.font-halvar #{ title }
+			+e.content
+				each item in content
+					- const { content, contentClass, photo, list, boxContent, columnsContent, rowsContent } = item;
+					if content
+						+e.text(class=contentClass) #{ content }
+					if photo
+						+e.photo(class=`${photo.isBorderRadius ? '_radius' : ''}`)
+							img(
+								src=photo.src
+								alt='methodology-article photo')
+					if list
+						+e.UL.list(class=`${list.contentType === 'arrow' ? 'arrow-list__' : ''} ${list.contentClass}`)
+							each listItem in list.content
+								+e.LI.item #{ listItem }
+					if boxContent
+						+e.box
+							each box in boxContent
+								- const { text, aside, list, mode } = box;
+								+e.box-item(class=`${mode ? `_${mode}` : ''}`)
+									if text
+										+e.box-text(class=text.contentClass) #{ text.content }
+									+e.box-row.flex._nowrap._start
+										+e.box-aside(class=aside.contentClass) #{ aside.content }
+										+e.box-content
+											+e.box-caption(class=list.caption.contentClass) #{ list.caption.content }
+											+e.UL.list.list__(class=list.contentClass)
+												each listItem in list.content
+													+e.LI.item #{ listItem }
+					if columnsContent
+						+e.columns.flex._start
+							each cell in columnsContent
+								- const { caption, list } = cell;
+								+e.columns-cell
+									+e.columns-caption(class=caption.contentClass) #{ caption.content }
+									+e.UL.columns-list.list__(class=list.contentClass)
+										each listItem in list.content
+											+e.LI.item #{ listItem }
+					if rowsContent
+						+e.rows
+							each row in rowsContent
+								+e.rows-item.flex._nowrap._start
+									- const { caption, text } = row;
+										+e.rows-caption(class=caption.contentClass) #{ caption.content }
+										+e.rows-text(class=text.contentClass) #{ text.content }
+		+e.background.no-pe
+			img.object-fit(
+				src=background
+				alt='article-background')
