@@ -1,0 +1,80 @@
+-
+	const aboutData = {
+		title: 'О вебинаре',
+		items: [
+			{
+				caption: 'О чем',
+				content: [
+					{
+						text: 'Фонд содействия инновациям',
+					},
+					{
+						text: 'Основные программы и конкурсы',
+					},
+					{
+						text: 'Как происходит подача заявки',
+					},
+					{
+						text: 'Как выглядит процесс получения гранта',
+					},
+					{
+						text: 'Отчетность по гранту',
+					},
+				],
+			},
+			{
+				caption: 'Кому',
+				content: [
+					{
+						text: 'В зависимости от программы грантополучателем может стать физическое или юридическое лицо.',
+					},
+					{
+						text: 'Для юр.лиц важные условия:',
+					},
+					{
+						list: [
+							'Статус малого или микропредприятия в реестре МСП',
+							'Размер выручки за прошлый год не менее 15 000 000 руб',
+							'Возможность предоставить со-финансирование проекта',
+						],
+					},
+				],
+			},
+			{
+				caption: 'Зачем',
+				content: [
+					{
+						text: 'Накопленная в этой сфере экспертность позволяет нам:',
+					},
+					{
+						list: [
+							'просто и доступно рассказать о Фонде и грантовых программах',
+							'',
+							'предоставить консультацию по большинству интересующих вас вопросов.',
+						],
+					},
+				],
+			},
+		],
+	};
+
++b.SECTION.about
+	- const { title, items } = aboutData;
+	+e.wrap.wrap
+		+e.H2.title.h2.font-halvar #{ title }
+		+e.items
+			each item in items
+				+e.item.flex._nowrap._start
+					+e.item-caption.h3.font-halvar #{ item.caption }
+					+e.item-content.h6
+						each content in item.content
+							if content.text
+								+e.P.item-text #{ content.text }
+							else
+								+e.UL.item-list.list__
+									each listItem in content.list
+										+e.LI.item #{ listItem }
+		+e.background.no-pe
+			img.object-fit(
+				src=require('Images/backgrounds/about-bg-mobile.png')
+				alt='about background')

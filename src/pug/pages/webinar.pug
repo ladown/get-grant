@@ -4,3 +4,27 @@ block append vars
 	- title = 'Онлайн вебинар';
 
 block content
+	-
+		const featuresData = {
+			items: [
+				{
+					preview: require('Images/feature-item-10.svg'),
+					caption: 'успешных кейсов привлечения грантов',
+				},
+				{
+					preview: require('Images/feature-item-11.svg'),
+					caption: 'работаем в сфере GR',
+				},
+				{
+					preview: require('Images/feature-item-8.svg'),
+					caption: 'от всего объема работ выполняем мы',
+				},
+			],
+		};
+
+
+	include ../layouts/webinar-hero
+	+features(featuresData)
+	include ../layouts/belief
+	include ../layouts/about
+	include ../layouts/team

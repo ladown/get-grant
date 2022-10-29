@@ -2,21 +2,21 @@
 
 import Swiper, { Navigation } from 'swiper';
 
-const ProgrammsSlider = {
+const TeamSlider = {
 	instance: null,
 	nodes: {
-		slider: document.querySelector('.js-slider-programms'),
+		slider: document.querySelector('.js-slider-team'),
 		buttons: {
-			prev: document.querySelector('.js-slider-programms-prev'),
-			next: document.querySelector('.js-slider-programms-next'),
+			prev: document.querySelector('.js-slider-team-prev'),
+			next: document.querySelector('.js-slider-team-next'),
 		},
 	},
 
 	setInstance() {
 		this.instance = new Swiper(this.nodes.slider, {
-			slidesPerView: 'auto',
-			slidesPerGroup: 1,
-			spaceBetween: 0,
+			slidesPerView: 2,
+			slidesPerGroup: 2,
+			spaceBetween: 60,
 			grabCursor: true,
 			modules: [Navigation],
 			navigation: {
@@ -25,19 +25,29 @@ const ProgrammsSlider = {
 			},
 			breakpoints: {
 				0: {
+					slidesPerView: 1,
+					slidesPerGroup: 1,
 					spaceBetween: 10,
 				},
 				581: {
 					spaceBetween: 15,
+					slidesPerView: 2,
+					slidesPerGroup: 2,
 				},
 				769: {
 					spaceBetween: 30,
+					slidesPerView: 2,
+					slidesPerGroup: 2,
 				},
 				981: {
 					spaceBetween: 45,
+					slidesPerView: 2,
+					slidesPerGroup: 2,
 				},
 				1200: {
 					spaceBetween: 60,
+					slidesPerView: 2,
+					slidesPerGroup: 2,
 				},
 			},
 		});
@@ -50,4 +60,4 @@ const ProgrammsSlider = {
 	},
 };
 
-export default ProgrammsSlider;
+export default TeamSlider;

@@ -1,0 +1,38 @@
+-
+	const webinarHeroData = {
+		title: 'Онлайн вебинар',
+		text: [
+			'Специалисты компании Get-Grant.ru расскажут об основных нюансах участия в грантовых программах от Фонда содействия инновациям.',
+			'А также о возможностях получить до 30 000 000 руб в виде грантов для отечественных, технологичных и инновационных компаний.',
+			'В процессе вы сможете задать все интересующие вас вопросы.',
+		],
+		button: {
+			modes: ['gradient', 'font-halvar', 'big'],
+			text: 'Регистрация',
+		},
+		photo: require('Images/webinar-hero.jpg')
+	};
+
++b.SECTION.webinar-hero
+	- const { title, text, button, photo } = webinarHeroData;
+	+e.wrap.wrap
+		+e.box.flex._nowrap
+			+e.cell._left
+				+e.H1.title.h1.font-halvar #{ title }
+				+e.text.h5
+					each textItem in text
+						p #{ textItem }
+				+button(button)
+					| #{ button.text }
+			+e.cell._right
+				+e.photo
+					img.object-fit(
+						src=photo
+						alt='webinar hero')
+	+e.PICTURE.background.no-pe
+		source(
+			srcset=require('Images/backgrounds/webinar-bg-mobile.png')
+			media='(max-width: 580px)')
+		img.object-fit(
+			src=require('Images/backgrounds/webinar-bg.png')
+			alt='webinar-background')

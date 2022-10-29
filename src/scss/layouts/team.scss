@@ -1,0 +1,109 @@
+.team {
+	padding: var(--section-offset-bottom) 0 var(--section-offset-top);
+
+	&__wrap {
+		display: grid;
+		grid-template-columns: 1fr auto;
+		gap: 60rem;
+
+		@include to(980px) {
+			gap: 45rem;
+		}
+
+		@include to(580px) {
+			grid-template-columns: 1fr;
+			gap: 30rem;
+		}
+	}
+
+	&__slider-nav {
+		@include from(581px) {
+			align-self: center;
+		}
+
+		@include to(580px) {
+			grid-row: 3 / 4;
+			margin: 0 auto;
+		}
+	}
+
+	&__slider {
+		max-width: 100%;
+
+		@include from(581px) {
+			grid-column: span 2;
+		}
+	}
+
+	&__slide {
+		&-photo {
+			position: relative;
+
+			&::before {
+				display: block;
+				padding-top: calc(div(482, 540) * 100%);
+				content: '';
+
+				@include to(580px) {
+					padding-top: 100%;
+				}
+			}
+
+			img {
+				border-radius: 10rem;
+			}
+		}
+
+		&-name {
+			margin-top: 30rem;
+
+			@include to(580px) {
+				margin-top: 24rem;
+			}
+		}
+
+		&-post {
+			position: relative;
+			padding-top: 20rem;
+			margin-top: 20rem;
+
+			@include to(580px) {
+				padding-top: 10rem;
+				margin-top: 10rem;
+				font-size: 12rem;
+			}
+
+			&::before {
+				position: absolute;
+				inset: 0 0 auto 0;
+				max-width: 255rem;
+				height: 1px;
+				content: '';
+				background-color: #fff;
+
+				@include to(580px) {
+					max-width: 100%;
+				}
+			}
+		}
+
+		&-text {
+			margin-top: 20rem;
+
+			@include to(580px) {
+				margin-top: 10rem;
+				font-size: 12rem;
+			}
+
+			p {
+				&:not(:last-child) {
+					margin-bottom: 16rem;
+
+					@include to(580px) {
+						margin-bottom: 8rem;
+					}
+				}
+			}
+		}
+	}
+}

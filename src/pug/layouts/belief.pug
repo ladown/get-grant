@@ -1,0 +1,50 @@
+-
+	const beliefData = {
+		title: 'Нам доверяют',
+		text: 'За эти годы наши эксперты накопили ценный опыт и хотели бы им поделиться.',
+		features: [
+			{
+				icon: require('Images/icon-2.svg'),
+				caption: 'Входим в группу компаний DV-Consulting',
+				text: 'Более 5 лет занимаемся сопровождением бизнеса в вопросах взаимодействия с институтами развития.',
+			},
+			{
+				icon: require('Images/icon-3.svg'),
+				caption: 'Наша цель',
+				text: 'Найти, раскрыть и реализовать потенциал предпринимателей для привлечения мер государственной поддержки.',
+			},
+		],
+		slides: [
+			require('Images/cerft-1.jpg'),
+			require('Images/cerft-2.jpg'),
+			require('Images/cerft-3.jpg'),
+		],
+	};
+
++b.SECTION.belief
+	- const { title, text, features, slides } = beliefData;
+	+e.wrap.wrap
+		+e.content
+			+e.H2.title.h2.font-halvar #{ title }
+			+e.text.font-halvar.h5 #{ text }
+			+e.features
+				each feature in features
+					+e.feature
+						+e.feature-icon
+							img(
+								src=feature.icon
+								alt='feature icon')
+						+e.feature-caption.font-halvar.h4 #{ feature.caption }
+						+e.feature-text.h6 #{ feature.text }
+		+slider-nav({id: 'belief'})
+		+e.slider.swiper.js-slider-belief
+			.swiper-wrapper
+				each item in slides
+					+e.slide.swiper-slide
+						img(
+							src=item
+							alt='certificate')
+		+e.background.no-pe
+			img.object-fit(
+				src=require('Images/backgrounds/belief-bg.png')
+				alt='belief background')

@@ -1,0 +1,81 @@
+.webinar-hero {
+	position: relative;
+	z-index: 1;
+	padding: 140rem 0 60rem;
+	overflow: hidden;
+
+	@include to(980px) {
+		padding: 120rem 0 45rem;
+	}
+
+	@include to(580px) {
+		padding: 100rem 0 30rem;
+	}
+
+	&__box {
+		@include from(769px) {
+			background: rgb(255 255 255 / 10%);
+			backdrop-filter: blur(43px);
+		}
+	}
+
+	&__cell {
+		&_left {
+			@include from(769px) {
+				flex: 0 1 55%;
+				padding: 30rem 30rem 45rem;
+			}
+
+			@include from(981px) {
+				flex-basis: 610rem;
+				padding: 40rem 40rem 60rem;
+			}
+		}
+
+		&_right {
+			@include from(769px) {
+				flex: 1;
+			}
+		}
+	}
+
+	&__text {
+		margin-top: 20rem;
+
+		@include to(580px) {
+			margin-top: 16rem;
+		}
+
+		p {
+			&:not(:last-child) {
+				margin-bottom: 10rem;
+			}
+		}
+	}
+
+	&__button {
+		width: 100%;
+		max-width: 350rem;
+		margin-top: 60rem;
+
+		@include to(980px) {
+			margin-top: 38rem;
+		}
+
+		@include to(580px) {
+			margin-top: 24rem;
+		}
+	}
+
+	&__photo {
+		position: relative;
+		width: 100%;
+		height: 100%;
+	}
+
+	&__background {
+		img {
+			z-index: -1;
+		}
+	}
+}

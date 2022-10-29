@@ -3,7 +3,6 @@
 	z-index: 1;
 	padding: 180rem 0 80rem;
 	overflow: hidden;
-	background-color: $color;
 
 	@include to(980px) {
 		padding: 130rem 0 60rem;
