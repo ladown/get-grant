@@ -2,6 +2,23 @@
 	padding: var(--section-offset-top) 0 var(--section-offset-bottom);
 	overflow: hidden;
 
+	&_with-line {
+		@include from(981px) {
+			position: relative;
+			z-index: 1;
+			margin-top: var(--section-offset-bottom);
+			overflow: hidden;
+
+			&::before {
+				position: absolute;
+				inset: 0 0 auto 0;
+				height: 132rem;
+				content: '';
+				background: url('Images/faq-line.svg') top left / contain no-repeat;
+			}
+		}
+	}
+
 	&__link {
 		flex: 0 1 150rem;
 		font-size: 12px;
@@ -117,6 +134,10 @@
 			.swiper-slide-active & {
 				opacity: 1;
 			}
+		}
+
+		&-list {
+			margin: 10rem 0;
 		}
 	}
 }

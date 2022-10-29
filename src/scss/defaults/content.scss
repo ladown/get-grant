@@ -1,5 +1,50 @@
 .list {
 	list-style-type: none;
+
+	&__item {
+		position: relative;
+		padding-left: 20rem;
+
+		&:not(:last-child) {
+			margin-bottom: 10rem;
+		}
+
+		&::before {
+			position: absolute;
+			top: 0.35em;
+			left: 0;
+			width: 8rem;
+			height: 8rem;
+			content: '';
+			background-color: #fff;
+			border-radius: 50%;
+		}
+	}
+}
+
+.order-list {
+	list-style-type: none;
+	counter-reset: order-list;
+
+	&__item {
+		position: relative;
+		padding-left: 20rem;
+
+		&:not(:last-child) {
+			margin-bottom: 10rem;
+		}
+
+		&::before {
+			position: absolute;
+			top: 0;
+			left: 0;
+			min-width: 15rem;
+			font: inherit;
+			color: inherit;
+			content: counter(order-list) '.';
+			counter-increment: order-list;
+		}
+	}
 }
 
 .medium-weight {

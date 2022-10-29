@@ -1,0 +1,9 @@
+mixin results(props = {})
+	+b.SECTION.results
+		+e.wrap.wrap
+			+e.H2.title.h2.font-halvar #{ props.title }
+			+e.items.flex._start._center
+				each item in props.items
+					+e.item
+						+e.item-header.font-halvar #{ item.header }
+						+e.item-subheader #{ item.subheader }

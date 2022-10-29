@@ -1,0 +1,66 @@
+-
+	const requirementsData = {
+		title: 'Подходит ли Ваш проект для участия в конкурсе',
+
+		items: [
+			{
+				caption: 'В чем заключается поддержка',
+				isPlainText: true,
+				content: [
+					'Фонд выдеяет грант (безвозмездные средства) на реализацию научно-технического проекта. Грант выделяется на разработку, поэтому большая часть гранта идет на оплату зарплат сотрудников (сотрудники должны иметь техническое образование и быть связаны с реализацией проекта, за исключением бухгалтера и руководителя предприятия).',
+				],
+			},
+			{
+				modes: ['blue'],
+				caption: 'Кто может участвовать',
+				isList: true,
+				content: [
+					'Юридические лица, зарегистрированные в РФ.',
+					'Относящиеся к категории микро или малого предприятия в Реестре МСП (малого и среднего предпринимательства).',
+					'Выручка компании за последний отчетный период должна быть не ниже суммы запрашиваемого гранта >15 млн.',
+				],
+			},
+			{
+				modes: ['marine'],
+				caption: 'Какие условия участия',
+				isOrderedList: true,
+				content: [
+					'Грант выделяется на конкурсной основе.',
+					'Софинансирование не менее 20-30% (в зависимости от тематического конкурса).',
+					'Для увеличения шансов на получение гранта проект должен обладать научно-техническим потенциалом и перспективами коммерциализации.',
+				],
+			},
+		],
+	};
+
+
++b.SECTION.requirements
+	- const { title, items } = requirementsData;
+	+e.wrap.wrap
+		+e.H2.title.h2.font-halvar #{ title }
+		+e.items.flex._nowrap.js-requirements-cards-wrap
+			each item, index in items
+				+e.item(
+					class=`${item.modes ? `_${item.modes.join(' _')}` : ''} flex _nowrap js-requirements-card ${index === 0 ? 'is-active' : ''}`)
+					+e.item-cell._left.flex._column._nowrap._justify
+						+e.item-caption.h4.font-halvar.medium-weight #{ item.caption }
+						+e.item-arrow
+							+icon({name: 'arrowToTop', viewBox: '0 0 32 32'})
+					+e.item-cell._right.js-requirements-card-content
+						+e.item-content.h6
+							if item.isPlainText
+								each contentItem in item.content
+									if item.isPlainText
+										+e.item-text #{ contentItem }
+							else if item.isList
+								+e.UL.list.list__
+									each contentItem in item.content
+										+e.LI.item #{ contentItem }
+							else if item.isOrderedList
+								+e.OL.order-list.order-list__
+									each contentItem in item.content
+										+e.LI.item #{ contentItem }
+	+e.background.no-pe
+		img.object-fit(
+			src=require('Images/backgrounds/requirements-bg.png')
+			alt='requirements-background')

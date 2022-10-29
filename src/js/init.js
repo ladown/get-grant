@@ -5,6 +5,8 @@ import Sliders from './sliders/sliders';
 import PhoneMask from './classes/phoneMask';
 import Tabs from './classes/tabs';
 import Popup from './classes/popup';
+import RequirementsCards from './modules/requirements';
+import Defaults from './classes/defaults';
 
 class AppClass {
 	constructor() {}
@@ -12,6 +14,8 @@ class AppClass {
 	init() {
 		Header.init();
 		Sliders();
+		RequirementsCards.init();
+		Defaults.init();
 
 		const phoneInputs = document.querySelectorAll('input[type="tel"]');
 

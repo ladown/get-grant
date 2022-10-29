@@ -1,0 +1,28 @@
+mixin expenses(props = {})
+	+b.SECTION.expenses(class=`${props.modes ? `_${props.modes.join(' _')}` : ''}`)
+		+e.wrap.wrap
+			+e.H2.title.h2.font-halvar #{ props.title }
+		+e.content
+			+e.wrap._content.wrap.flex._column._nowrap._justify
+				+e.items.flex._center
+					each item in props.items
+						+e.item.flex._column._nowrap._vertical.text-center
+							+e.item-header.h4.font-halvar #{ item.header }
+							+e.item-subheader #{ item.subheader }
+				+e.link
+					+e.link-icon
+						+icon({name: 'document', viewBox: '0 0 18 22'})
+					+e.link-text Детализация расходов в зависимости от тематических направлений
+					+e.A.link-item.text-underline(href='#') Скачать документ
+				+e.PICTURE.photo
+					source(
+						srcset=props.photo.mobile
+						media='(max-width: 580px)')
+					img.object-fit(
+						src=props.photo.default
+						alt='expense photo')
+
+		+e.background.no-pe
+			img.object-fit(
+				src=props.background
+				alt='expense background')

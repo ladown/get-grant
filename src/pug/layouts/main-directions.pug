@@ -1,5 +1,5 @@
 -
-	const directionsData = {
+	const mainDirectionsData = {
 		title: 'Приоритетные направления поддержки',
 		tabs: [
 			'Сквозные цифровые технологии',
@@ -13,7 +13,7 @@
 				},
 				{
 					photo: require('Images/direction-item-2.jpg'),
-					caption: 'Нейротехнологии и искусственный интеллект',
+					caption: 'Нейротехнологии и искусственный интеллект',
 				},
 				{
 					photo: require('Images/direction-item-3.jpg'),
@@ -77,8 +77,8 @@
 		],
 	};
 
-+b.SECTION.directions.js-tabs
-	- const { title, tabs, content } = directionsData;
++b.SECTION.main-directions.js-tabs
+	- const { title, tabs, content } = mainDirectionsData;
 	+e.wrap.wrap
 		+e.H2.title.h2.font-halvar.color-blue #{ title }
 		+e.tabs.flex._vertical.js-tabs-parent

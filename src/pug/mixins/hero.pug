@@ -15,10 +15,14 @@ mixin hero(props = {})
 		+e.wrap.wrap.flex._nowrap._start._justify
 			+e.cell._left
 				+e.H1.title.h1.font-halvar !{ props.title }
-				+e.subtitle !{ props.subtitle }
+				if props.subtitle
+					+e.subtitle !{ props.subtitle }
+				if props.info
+					+e.info.h4 !{ props.info }
 				+button(heroFirstButton).js-popup-callback(class=props.button.classes)
 					| #{ props.button.text }
-				+e.text.h6 !{ props.text }
+				if props.text
+					+e.text.h6 !{ props.text }
 			+e.cell._right
 				+e.box
 					+e.photo

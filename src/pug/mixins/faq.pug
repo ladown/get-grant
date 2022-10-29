@@ -1,5 +1,5 @@
 mixin faq(props = {})
-	+b.SECTION.faq
+	+b.SECTION.faq(class=`${props.modes ? `_${props.modes.join(' _')}` : ''}`)
 		+e.wrap.wrap
 			+e.header.flex._nowrap._vertical
 				+e.H2.title.h2.font-halvar FAQ

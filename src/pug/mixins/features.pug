@@ -1,0 +1,10 @@
+mixin features(props = {})
+	+b.SECTION.features(class=`${props.modes ? `_${props.modes.join(' _')}` : ''}`)
+		+e.wrap.wrap.flex._start._center
+			each item in props.items
+				+e.item.flex._vertical._column._nowrap.text-center
+					+e.item-preview
+						img(
+							src=item.preview
+							alt=item.caption)
+					+e.H4.item-caption.h4 #{ item.caption }

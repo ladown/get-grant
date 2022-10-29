@@ -1,0 +1,20 @@
+mixin directions(props = {})
+	+b.SECTION.directions
+		+e.wrap.wrap
+			+e.H2.title.h2.font-halvar Направления поддержки
+			+e.items
+				each item, index in props.items
+					+e.A.item.flex._nowrap._start.js-direction(href=item.href class=index === 0 && 'is-active')
+						+e.item-caption.h4.font-halvar !{ item.caption }
+						+e.item-tags.flex
+							each tag in item.tags
+								+e.item-tag #{ tag }
+						+e.item-arrow
+							+icon({name: 'arrowToTop', viewBox: '0 0 72 72'})
+		+e.PICTURE.background.no-pe
+			source(
+				srcset=require('Images/direction-background-mobile.jpg')
+				media='(max-width: 580px)')
+			img.object-fit(
+				src=require('Images/direction-background.jpg')
+				alt='directions-background')

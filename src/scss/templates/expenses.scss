@@ -1,0 +1,173 @@
+.expenses {
+	position: relative;
+	z-index: 1;
+	padding-top: var(--section-offset-top);
+	overflow: hidden;
+
+	&__title {
+		width: 100%;
+		max-width: 900rem;
+
+		@include to(980px) {
+			max-width: 750rem;
+		}
+	}
+
+	&__wrap {
+		&_content {
+			@include from(581px) {
+				min-height: 500rem;
+			}
+		}
+	}
+
+	&__content {
+		position: relative;
+		z-index: 1;
+		margin-top: 60rem;
+		overflow: hidden;
+
+		@include to(580px) {
+			margin-top: 40rem;
+		}
+	}
+
+	&__item {
+		flex: 0 1 25%;
+		min-height: 150rem;
+		padding: 30rem;
+		border: 1px solid #fff;
+		backdrop-filter: blur(66.5px);
+
+		@include to(768px) {
+			flex-basis: 33%;
+		}
+
+		@include to(580px) {
+			flex-basis: 50%;
+			min-height: 100rem;
+			padding: 20rem 10rem;
+		}
+
+		.expenses_green & {
+			&:first-child {
+				background: linear-gradient(270deg, #c64328 0%, #d9b886 100%);
+			}
+
+			&:not(:first-child) {
+				background: rgb(255 255 255 / 15%);
+			}
+		}
+
+		.expenses_blue & {
+			&:first-child {
+				background: linear-gradient(301.68deg, #c64328 -29.03%, #d9b886 100%);
+			}
+
+			&:not(:first-child) {
+				background: rgb(88 151 251 / 15%);
+			}
+		}
+
+		&-header {
+			@include to(580px) {
+				font-size: 24rem;
+			}
+		}
+
+		&-subheader {
+			margin-top: 20rem;
+			font-size: 16rem;
+			line-height: 1.1;
+			color: #fff;
+			letter-spacing: -0.02em;
+
+			@include to(580px) {
+				margin-top: 10rem;
+				font-size: 12rem;
+			}
+		}
+	}
+
+	&__link {
+		display: grid;
+		grid-template-columns: 18rem 1fr;
+		gap: 20rem;
+		width: 100%;
+		max-width: 400rem;
+		padding: 20rem 30rem;
+		margin: 60rem auto 0;
+		border: 1px solid #fff;
+		border-bottom: none;
+		border-radius: 10px 10px 0 0;
+		backdrop-filter: blur(18px);
+
+		@include to(580px) {
+			grid-template-columns: 14rem 1fr;
+			gap: 16rem;
+			padding: 20rem 15rem 30rem;
+			margin-top: 40rem;
+		}
+
+		.expenses_green & {
+			background: rgb(134 215 217 / 50%);
+		}
+
+		.expenses_blue & {
+			background: rgb(88 151 251 / 50%);
+		}
+
+		&-icon {
+			width: 18rem;
+			height: 22rem;
+			fill: transparent;
+			stroke: #fff;
+			stroke-linecap: round;
+			stroke-linejoin: round;
+			stroke-width: 2;
+
+			@include to(580px) {
+				width: 14rem;
+				height: 17rem;
+			}
+		}
+
+		&-text {
+			font-size: 16rem;
+			line-height: 1.1;
+			letter-spacing: -0.02em;
+
+			@include to(580px) {
+				font-size: 12rem;
+			}
+		}
+
+		&-item {
+			grid-column: 2 / 3;
+			font-size: 12rem;
+			line-height: 1.1;
+			letter-spacing: -0.02em;
+			transition: opacity $default-transition-duration $default-transition-function;
+
+			&:hover {
+				opacity: 0.8;
+			}
+		}
+	}
+
+	&__photo {
+		position: absolute;
+		inset: 0;
+		z-index: -1;
+
+		img {
+			z-index: -1;
+		}
+	}
+
+	&__background {
+		img {
+			z-index: -1;
+		}
+	}
+}

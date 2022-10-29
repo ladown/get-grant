@@ -1,0 +1,193 @@
+.requirements {
+	position: relative;
+	padding: var(--section-offset-top) 0 var(--section-offset-bottom);
+
+	&::before {
+		position: absolute;
+		inset: 0 20rem auto 20rem;
+		max-width: 1300rem;
+		height: 1px;
+		margin: 0 auto;
+		content: '';
+		background: linear-gradient(270deg, rgb(134 215 217 / 0%) 16.88%, #86d7d9 52.3%, rgb(134 215 217 / 0%) 90.5%);
+	}
+
+	&__title {
+		width: 100%;
+		max-width: 800rem;
+
+		@include to(980px) {
+			max-width: 600rem;
+		}
+	}
+
+	&__items {
+		margin-top: 60rem;
+		overflow: hidden;
+
+		@include to(980px) {
+			margin-top: 40rem;
+		}
+
+		@include to(768px) {
+			flex-direction: column;
+		}
+
+		@include to(580px) {
+			margin-top: 20rem;
+		}
+	}
+
+	&__item {
+		padding: 30rem 40rem 30rem 30rem;
+		cursor: pointer;
+		background-color: #223147;
+		border-radius: 10rem;
+
+		@include from(769px) {
+			flex: 2 1 0;
+			min-height: 300rem;
+
+			&:first-child {
+				flex: 6;
+			}
+
+			@for $i from 2 through 3 {
+				&:nth-child(#{$i}) {
+					margin-left: -20rem;
+				}
+			}
+		}
+
+		@include from(981px) {
+			min-height: 350rem;
+		}
+
+		@include to(980px) {
+			padding: 20rem 30rem 20rem 20rem;
+		}
+
+		@include to(768px) {
+			flex-direction: column;
+			width: 100%;
+
+			&:not(:last-child) {
+				padding-bottom: 40rem;
+			}
+
+			@for $i from 2 through 3 {
+				&:nth-child(#{$i}) {
+					margin-top: -20rem;
+				}
+			}
+		}
+
+		&_blue {
+			background-color: #3173db;
+		}
+
+		&_marine {
+			background-color: $color-marine;
+		}
+
+		&-cell {
+			@include to(768px) {
+				width: 100%;
+			}
+
+			&_left {
+				@include from(981px) {
+					flex-basis: 220rem;
+				}
+
+				@include from(769px) {
+					flex: 0 0 170rem;
+					margin-right: 20rem;
+					transition: margin $default-transition-duration $default-transition-function;
+
+					.requirements__item:not(.is-active) & {
+						margin-right: 0;
+					}
+				}
+
+				@include to(768px) {
+					flex-direction: row;
+				}
+			}
+
+			&_right {
+				@include from(769px) {
+					flex: 1;
+
+					.requirements__item:not(:first-child) & {
+						display: none;
+						opacity: 0;
+					}
+				}
+
+				@include to(768px) {
+					overflow: hidden;
+					transition: margin $default-transition-duration $default-transition-function;
+
+					.is-active & {
+						margin-top: 20rem;
+					}
+				}
+			}
+		}
+
+		&-caption {
+			@include to(768px) {
+				flex: 1;
+			}
+
+			@include to(580px) {
+				font-size: 20rem;
+			}
+		}
+
+		&-arrow {
+			width: 32rem;
+			height: 32rem;
+			fill: transparent;
+			stroke: #3173db;
+			stroke-width: 2;
+			will-change: transform;
+			transition: transform $default-transition-duration $default-transition-function,
+				opacity $default-transition-duration $default-transition-function;
+
+			@include from(769px) {
+				margin-top: 16rem;
+			}
+
+			@include to(768px) {
+				flex: 0 0 auto;
+				margin-left: 16rem;
+			}
+
+			.requirements__item_blue & {
+				stroke: #fff;
+			}
+
+			.requirements__item_marine & {
+				stroke: #ccc;
+			}
+
+			.is-active & {
+				@include from(769px) {
+					transform: rotate(45deg);
+				}
+
+				@include to(768px) {
+					opacity: 0;
+				}
+			}
+		}
+	}
+
+	&__background {
+		img {
+			z-index: -1;
+		}
+	}
+}

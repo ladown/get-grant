@@ -93,7 +93,7 @@ module.exports = {
 				include: /fonts/,
 				type: 'asset/resource',
 				generator: {
-					filename: 'fonts/[name][ext]',
+					filename: 'fonts/[name][ext][query]',
 				},
 			},
 
@@ -103,7 +103,7 @@ module.exports = {
 				exclude: [/sprite/, /icons/],
 				type: 'asset/resource',
 				generator: {
-					filename: 'img/[name][ext]',
+					filename: 'img/[name].[hash:8][ext]',
 				},
 			},
 		],

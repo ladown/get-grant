@@ -73,7 +73,7 @@
 				each link in nav
 					+e.A.link(href=link.url) #{ link.text }
 			+socials(socials)
-			+button(button)
+			+button(button).js-popup-callback
 				| #{ button.text }
 		+socials(socials)
 		+e.BUTTON.menu-button.js-header-button

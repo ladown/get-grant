@@ -1,0 +1,12 @@
+mixin calendar-plan(props = {})
+	+b.SECTION.calendar-plan
+		+e.wrap.wrap
+			+e.H2.title.h2.font-halvar Календарный план
+		+e.photo
+			img(
+				src=props.photo
+				alt='Календарный план')
+		+e.background.no-pe
+			img.object-fit(
+				src=props.background
+				alt='calendar plan background')

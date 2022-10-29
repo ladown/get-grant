@@ -62,3 +62,25 @@ export const guidGenerator = () => {
 	};
 	return S4() + S4() + '-' + S4() + '-' + S4() + '-' + S4() + '-' + S4() + S4() + S4();
 };
+
+export const getCoords = (element) => {
+	let box = element.getBoundingClientRect();
+
+	return {
+		top: box.top + window.pageYOffset,
+		right: box.right + window.pageXOffset,
+		bottom: box.bottom + window.pageYOffset,
+		left: box.left + window.pageXOffset,
+	};
+};
+
+export const isInViewport = (element) => {
+	var distance = element.getBoundingClientRect();
+
+	return (
+		distance.top >= 0 &&
+		distance.left >= 0 &&
+		distance.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+		distance.right <= (window.innerWidth || document.documentElement.clientWidth)
+	);
+};
