@@ -6,7 +6,7 @@ mixin article(props = {})
 			+e.H1.title.h1.font-halvar #{ title }
 			+e.content
 				each item in content
-					- const { content, contentClass, photo, list, boxContent, columnsContent, rowsContent } = item;
+					- const { content, contentClass, photo, list, boxContent, columnsContent, rowsContent, threeColumns } = item;
 					if content
 						+e.text(class=contentClass) #{ content }
 					if photo
@@ -15,23 +15,48 @@ mixin article(props = {})
 								src=photo.src
 								alt='methodology-article photo')
 					if list
-						+e.UL.list(class=`${list.contentType === 'arrow' ? 'arrow-list__' : ''} ${list.contentClass}`)
+						+e.UL.list(
+							class=`${list.contentType === 'arrow'
+								? 'arrow-list__'
+								: list.contentType === 'bullet'
+								? 'list__'
+								: list.contentType === 'order'
+								? 'order-list__' : ''} ${list.contentClass}`)
 							each listItem in list.content
 								+e.LI.item #{ listItem }
 					if boxContent
 						+e.box
 							each box in boxContent
-								- const { text, aside, list, mode } = box;
-								+e.box-item(class=`${mode ? `_${mode}` : ''}`)
+								- const { text, aside, list, mode, rows } = box;
+								+e.box-item(class=`${mode ? `_${mode.join(' _')}` : ''}`)
 									if text
 										+e.box-text(class=text.contentClass) #{ text.content }
-									+e.box-row.flex._nowrap._start
-										+e.box-aside(class=aside.contentClass) #{ aside.content }
-										+e.box-content
-											+e.box-caption(class=list.caption.contentClass) #{ list.caption.content }
-											+e.UL.list.list__(class=list.contentClass)
-												each listItem in list.content
-													+e.LI.item #{ listItem }
+									if rows
+										+e.box-rows
+											each row in rows
+												+e.box-row.flex._nowrap._start
+													+e.box-aside(class=row.aside.contentClass) #{ row.aside.content }
+													+e.box-content
+														if row.list
+															+e.box-caption(class=row.list.caption.contentClass) #{ row.list.caption.content }
+															+e.UL.list.list__(class=row.list.contentClass)
+																each listItem in row.list.content
+																	+e.LI.item #{ listItem }
+														else
+															p(class=row.text.contentClass) #{ row.text.content }
+									else
+										+e.box-row.flex._nowrap._start
+											+e.box-aside(class=aside.contentClass) #{ aside.content }
+											+e.box-content
+												+e.box-caption(class=list.caption.contentClass) #{ list.caption.content }
+												+e.UL.list.list__(class=list.contentClass)
+													each listItem in list.content
+														+e.LI.item #{ listItem }
+									if mode && mode.includes('dark')
+										+e.box-background
+											img.object-fit(
+												src=require('Images/backgrounds/article-box_dark-bg.png')
+												alt='article-box_dark-bg')
 					if columnsContent
 						+e.columns.flex._start
 							each cell in columnsContent
@@ -48,6 +73,12 @@ mixin article(props = {})
 									- const { caption, text } = row;
 										+e.rows-caption(class=caption.contentClass) #{ caption.content }
 										+e.rows-text(class=text.contentClass) #{ text.content }
+					if threeColumns
+						+e.three-columns.flex._start
+							each cell in threeColumns
+								+e.three-columns-item
+									each content in cell
+										+e.three-columns-text(class=content.contentClass) #{ content.content }
 		+e.background.no-pe
 			img.object-fit(
 				src=background

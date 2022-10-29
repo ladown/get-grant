@@ -107,17 +107,23 @@
 			background-color: #223147;
 			border-radius: 10rem;
 
-			@include from(769px) {
-				border-radius: 10rem 0 0 10rem;
+			&_not-full {
+				overflow: hidden;
+			}
 
-				&::before {
-					position: absolute;
-					inset: 0 0 0 0;
-					z-index: -1;
-					width: 100vw;
-					content: '';
-					background-color: #223147;
-					border-radius: inherit;
+			@include from(769px) {
+				.article__box-item:not(.article__box-item_not-full) & {
+					border-radius: 10rem 0 0 10rem;
+
+					&::before {
+						position: absolute;
+						inset: 0 0 0 0;
+						z-index: -1;
+						width: 100vw;
+						content: '';
+						background-color: #223147;
+						border-radius: inherit;
+					}
 				}
 			}
 
@@ -169,6 +175,10 @@
 		&-row {
 			@include to(580px) {
 				flex-direction: column;
+			}
+
+			&:not(:last-child) {
+				margin-bottom: 12rem;
 			}
 		}
 
@@ -279,6 +289,38 @@
 
 			@include to(580px) {
 				margin-top: 12rem;
+			}
+		}
+	}
+
+	&__three-columns {
+		gap: 20rem;
+		margin: 24rem 0 40rem;
+
+		@include to(980px) {
+			margin-bottom: 30rem;
+		}
+
+		@include to(580px) {
+			gap: 10rem;
+			margin: 12rem 0 20rem;
+		}
+
+		&-item {
+			@include from(769px) {
+				flex: 1 1 calc(#{div(100, 3)}% - 20rem);
+			}
+
+			@include to(768px) {
+				flex: 0 0 100%;
+			}
+
+			> *:not(:last-child) {
+				margin-bottom: 12rem;
+
+				@include to(580px) {
+					margin-bottom: 8rem;
+				}
 			}
 		}
 	}
