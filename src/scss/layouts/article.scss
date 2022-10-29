@@ -325,6 +325,39 @@
 		}
 	}
 
+	&__contents {
+		&-list {
+			margin-top: 24rem;
+
+			@include to(580px) {
+				margin-top: 12rem;
+			}
+		}
+
+		&-button {
+			color: #fff;
+			transition: color $default-transition-duration $default-transition-function;
+
+			.order-list__item &:hover {
+				color: $color-blue;
+			}
+		}
+
+		.order-list__item {
+			width: fit-content;
+			padding-left: 36rem;
+			transition: color $default-transition-duration $default-transition-function;
+
+			@include to(580px) {
+				padding-left: 24rem;
+			}
+
+			&:hover {
+				color: $color-blue;
+			}
+		}
+	}
+
 	&__background {
 		img {
 			z-index: -1;

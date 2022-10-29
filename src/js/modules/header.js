@@ -61,10 +61,7 @@ const Header = {
 				scrollLock.enablePageScroll();
 
 				this.nodes.block.classList.remove(this.mods.opened);
-				this.nodes.menu.style.cssText = `
-					display: '';
-					opacity: '';
-				`;
+				this.nodes.menu.removeAttribute('style');
 			}
 		});
 	},

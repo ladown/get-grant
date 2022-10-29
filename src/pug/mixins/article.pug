@@ -6,9 +6,9 @@ mixin article(props = {})
 			+e.H1.title.h1.font-halvar #{ title }
 			+e.content
 				each item in content
-					- const { content, contentClass, photo, list, boxContent, columnsContent, rowsContent, threeColumns } = item;
+					- const { content, contentClass, contentHref, photo, list, boxContent, columnsContent, rowsContent, threeColumns, contents } = item;
 					if content
-						+e.text(class=contentClass) #{ content }
+						+e.text(class=contentClass id=contentHref) #{ content }
 					if photo
 						+e.photo(class=`${photo.isBorderRadius ? '_radius' : ''}`)
 							img(
@@ -79,6 +79,15 @@ mixin article(props = {})
 								+e.three-columns-item
 									each content in cell
 										+e.three-columns-text(class=content.contentClass) #{ content.content }
+					if contents
+						- const { caption, list } = contents;
+						+e.contents
+							+e.contents-caption(class=caption.contentClass) #{ caption.content }
+							+e.UL.contents-list.order-list__(class=list.contentClass)
+								each item in list.content
+									+e.LI.item.text-underline
+										button.article__contents-button.js-article-contents(data-href=item.href) #{ item.text }
+
 		+e.background.no-pe
 			img.object-fit(
 				src=background
