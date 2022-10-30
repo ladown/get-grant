@@ -146,6 +146,12 @@
 			}
 		}
 
+		&-content {
+			@include to(580px) {
+				font-size: 12rem;
+			}
+		}
+
 		&-arrow {
 			width: 32rem;
 			height: 32rem;

@@ -15,7 +15,7 @@
 	&__box {
 		@include from(769px) {
 			background: rgb(255 255 255 / 10%);
-			backdrop-filter: blur(43px);
+			backdrop-filter: blur(43rem);
 		}
 	}
 

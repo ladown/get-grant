@@ -82,3 +82,14 @@ block content
 	include ../layouts/appeal
 	include ../layouts/quality
 	+faq(faqData)
+
+block styles
+	link(
+		href=require('Styles/pages/reporting-support.scss')
+		rel='stylesheet')
+	link(
+		href=require('Styles/layouts/callback.scss')
+		rel='stylesheet')
+	link(
+		href=require('Styles/layouts/callback-popup.scss')
+		rel='stylesheet')

@@ -78,13 +78,14 @@ html(class=html.classList)&attributes(html.attrs)
 					type='image/svg+xml'
 					sizes='any')
 
+		link(
+			href=require('Styles/vendors.scss')
+			rel='stylesheet')
+		link(
+			href=require('Styles/app.scss')
+			rel='stylesheet')
+
 		block styles
-			link(
-				href=require('Styles/vendors.scss')
-				rel='stylesheet')
-			link(
-				href=require('Styles/app.scss')
-				rel='stylesheet')
 
 		block head-end
 

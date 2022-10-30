@@ -71,6 +71,8 @@ export const getCoords = (element) => {
 		right: box.right + window.pageXOffset,
 		bottom: box.bottom + window.pageYOffset,
 		left: box.left + window.pageXOffset,
+		height: element.offsetHeight,
+		width: element.offsetWidth,
 	};
 };
 

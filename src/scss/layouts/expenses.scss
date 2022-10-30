@@ -37,7 +37,7 @@
 		min-height: 150rem;
 		padding: 30rem;
 		border: 1px solid #fff;
-		backdrop-filter: blur(66.5px);
+		backdrop-filter: blur(66rem);
 
 		@include to(768px) {
 			flex-basis: 33%;
@@ -99,8 +99,8 @@
 		margin: 60rem auto 0;
 		border: 1px solid #fff;
 		border-bottom: none;
-		border-radius: 10px 10px 0 0;
-		backdrop-filter: blur(18px);
+		border-radius: 10rem 10rem 0 0;
+		backdrop-filter: blur(18rem);
 
 		@include to(580px) {
 			grid-template-columns: 14rem 1fr;

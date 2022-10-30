@@ -5,6 +5,10 @@
 		position: relative;
 		padding-left: 20rem;
 
+		@include to(580px) {
+			padding-left: 15rem;
+		}
+
 		&:not(:last-child) {
 			margin-bottom: 12rem;
 		}
@@ -18,6 +22,12 @@
 			content: '';
 			background-color: #fff;
 			border-radius: 50%;
+
+			@include to(580px) {
+				top: 0.35em;
+				width: 5rem;
+				height: 5rem;
+			}
 		}
 	}
 }

@@ -8,6 +8,8 @@ import Popup from './classes/popup';
 import RequirementsCards from './modules/requirements';
 import Defaults from './classes/defaults';
 import More from './classes/more';
+import Work from './classes/work';
+import Steps from './classes/steps';
 
 class AppClass {
 	constructor() {}
@@ -17,6 +19,8 @@ class AppClass {
 		Sliders();
 		RequirementsCards.init();
 		Defaults.init();
+		Work.init();
+		Steps.init();
 
 		const phoneInputs = document.querySelectorAll('input[type="tel"]');
 

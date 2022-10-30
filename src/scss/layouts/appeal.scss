@@ -64,15 +64,5 @@
 				font-size: 12rem;
 			}
 		}
-
-		&-list {
-			.list__item {
-				@include to(580px) {
-					&::before {
-						top: 0.15em;
-					}
-				}
-			}
-		}
 	}
 }

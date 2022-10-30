@@ -5,5 +5,4 @@
 @use 'sass:map';
 @import './library-mixins/**/*';
 @import './defaults/index';
-@import './templates/**/*';
-@import './layouts/**/*';
+@import 'templates/index';

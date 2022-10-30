@@ -28,3 +28,14 @@ block content
 	include ../layouts/belief
 	include ../layouts/about
 	include ../layouts/team
+
+block styles
+	link(
+		href=require('Styles/pages/webinar.scss')
+		rel='stylesheet')
+	link(
+		href=require('Styles/layouts/callback.scss')
+		rel='stylesheet')
+	link(
+		href=require('Styles/layouts/callback-popup.scss')
+		rel='stylesheet')

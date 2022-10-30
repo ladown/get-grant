@@ -331,5 +331,19 @@ block content
 	+callback(callbackMainData)
 	include ../layouts/article-more
 
-//- block popups
-//- 	include ../layouts/article-popup
+block popups
+	include ../layouts/article-popup
+
+block styles
+	link(
+		href=require('Styles/pages/ai.scss')
+		rel='stylesheet')
+	link(
+		href=require('Styles/layouts/callback.scss')
+		rel='stylesheet')
+	link(
+		href=require('Styles/layouts/callback-popup.scss')
+		rel='stylesheet')
+	link(
+		href=require('Styles/layouts/article-popup.scss')
+		rel='stylesheet')

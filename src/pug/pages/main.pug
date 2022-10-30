@@ -109,3 +109,14 @@ block content
 	+faq(faqData)
 	include ../layouts/main-directions
 	include ../layouts/main-callback
+
+block styles
+	link(
+		href=require('Styles/pages/main.scss')
+		rel='stylesheet')
+	link(
+		href=require('Styles/layouts/callback.scss')
+		rel='stylesheet')
+	link(
+		href=require('Styles/layouts/callback-popup.scss')
+		rel='stylesheet')

@@ -6,6 +6,8 @@ const PugPlugin = require('pug-plugin');
 const paths = require('./paths');
 const { generateWebpackEntries, generateTemplaet } = require('./utils');
 
+const isBuild = process.argv.includes('build');
+
 fs.writeFileSync(`${paths.src.pugPages}/index.pug`, generateTemplaet(), { encoding: 'utf8' });
 
 module.exports = {
@@ -16,7 +18,7 @@ module.exports = {
 	output: {
 		path: paths.build.default,
 		publicPath: 'auto',
-		filename: 'js/[name].[contenthash:8].js',
+		filename: 'js/[name].js',
 		chunkFilename: 'js/[name].[id].js',
 		clean: true,
 	},
@@ -54,16 +56,18 @@ module.exports = {
 		}),
 
 		new PugPlugin({
+			pretty: isBuild,
 			extractCss: {
-				filename: 'css/[name].[contenthash:8].css',
+				filename: 'css/[name].css',
 			},
 			postprocess(content) {
-				return content.replaceAll(
+				const newContent = content.replaceAll(
 					/(?:^|[^а-яёА-ЯЁ0-9_])(в|без|а|до|из|к|я|на|по|о|от|перед|при|через|с|у|за|над|об|под|про|для|и|или|со)(?:^|[^а-яёА-ЯЁ0-9_])/g,
 					(match) => {
 						return match.slice(-1) === ' ' ? `${match.substr(0, match.length - 1)}&nbsp;` : match;
 					},
 				);
+				return newContent;
 			},
 		}),
 	],
@@ -103,7 +107,7 @@ module.exports = {
 				exclude: [/sprite/, /icons/],
 				type: 'asset/resource',
 				generator: {
-					filename: 'img/[name].[hash:8][ext]',
+					filename: 'img/[name].[ext]',
 				},
 			},
 		],

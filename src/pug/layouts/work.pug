@@ -20,7 +20,7 @@
 		],
 	};
 
-+b.SECTION.work
++b.SECTION.work.js-work
 	- const { title, features } = workData;
 	+e.wrap.wrap
 		+e.H2.title.h2.font-halvar #{ title }
@@ -33,16 +33,16 @@
 							alt='feature icon')
 					+e.feature-caption.h4.font-halvar #{ feature.caption }
 					+e.feature-text #{ feature.text }
-		+e.progress.flex._column._nowrap
+		+e.progress.flex._column._nowrap.js-work-content
 			+e.progressbar.flex._nowrap
-				span.progressbar-line
-				span.progressbar-line
+				span.progressbar-line.js-work-progress
+				span.progressbar-line.js-work-progress
 			+e.progress-content.flex._nowrap._start._justify.font-halvar
-				+e.progress-item._big
+				+e.progress-item._big.js-work-item
 					+e.progress-header.flex._nowrap
 						| 80 <span>%</span>
 					+e.progress-subheader Это работа <span class="color-blue">наших сотрудников</span>
-				+e.progress-item
+				+e.progress-item.js-work-item
 					+e.progress-header.flex._nowrap
 						| 20 <span>%</span>
 					+e.progress-subheader.h6 Это документы<br/> и информация,<br/> которые <span class="color-blue">необходимо предоставить клиенту</span>

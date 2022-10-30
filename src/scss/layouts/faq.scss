@@ -21,7 +21,7 @@
 
 	&__link {
 		flex: 0 1 150rem;
-		font-size: 12px;
+		font-size: 12rem;
 		line-height: 110%;
 		text-align: right;
 		transition: color $default-transition-duration $default-transition-function;
@@ -91,7 +91,7 @@
 				height: 100%;
 				background: linear-gradient(270deg, #86d7d9 0%, #619eff 100%);
 				border-radius: 100rem;
-				box-shadow: 0 0 15px #7bc5e5;
+				box-shadow: 0 0 15rem #7bc5e5;
 				transform: scale(0, 1);
 				transform-origin: center left;
 				will-change: transform;

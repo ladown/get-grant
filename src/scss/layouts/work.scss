@@ -80,6 +80,8 @@
 		}
 
 		&-item {
+			opacity: 0;
+
 			@include from(769px) {
 				flex-basis: 325rem;
 				flex-shrink: 1;
@@ -198,19 +200,18 @@
 		span {
 			height: 100%;
 			border-radius: 100rem;
-			transition: transform $default-transition-duration $default-transition-function;
 			transform: scale(0, 1);
 			transform-origin: center left;
-			will-change: transform;
 
 			@include to(768px) {
 				transform: scale(1, 0);
+				transform-origin: top center;
 			}
 
 			&:nth-child(1) {
 				width: 70%;
 				background: linear-gradient(270deg, #c64328 0%, #d9b886 100%);
-				box-shadow: 0 0 15px #ce7752;
+				box-shadow: 0 0 15rem #ce7752;
 
 				@include to(768px) {
 					width: 8px;
@@ -222,7 +223,7 @@
 				width: calc(30% + 20rem);
 				margin-left: -20rem;
 				background: linear-gradient(270deg, #86d7d9 0%, #619eff 100%);
-				box-shadow: 0 0 15px #7bc5e5;
+				box-shadow: 0 0 15rem #7bc5e5;
 
 				@include to(768px) {
 					width: 8px;

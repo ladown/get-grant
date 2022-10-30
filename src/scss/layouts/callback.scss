@@ -1,3 +1,12 @@
+@use 'sass:math';
+@use 'sass:meta';
+@use 'sass:string';
+@use 'sass:list';
+@use 'sass:map';
+@import '../library-mixins/breakpoints-mixin';
+@import '../defaults/data';
+@import '../defaults/variables';
+
 .callback {
 	padding: var(--section-offset-top) 0 var(--section-offset-bottom);
 
@@ -11,7 +20,7 @@
 		padding: 80rem;
 		overflow: hidden;
 		background-color: rgb(88 151 251 / 10%);
-		border-radius: 10px;
+		border-radius: 10rem;
 		backdrop-filter: blur(40rem);
 
 		@include to(980px) {

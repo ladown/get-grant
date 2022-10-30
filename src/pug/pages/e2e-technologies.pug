@@ -384,3 +384,17 @@ block content
 
 block popups
 	include ../layouts/article-popup
+
+block styles
+	link(
+		href=require('Styles/pages/e2e-technologies.scss')
+		rel='stylesheet')
+	link(
+		href=require('Styles/layouts/callback.scss')
+		rel='stylesheet')
+	link(
+		href=require('Styles/layouts/callback-popup.scss')
+		rel='stylesheet')
+	link(
+		href=require('Styles/layouts/article-popup.scss')
+		rel='stylesheet')

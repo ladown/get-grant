@@ -336,6 +336,7 @@
 
 		&-button {
 			color: #fff;
+			text-align: left;
 			transition: color $default-transition-duration $default-transition-function;
 
 			.order-list__item &:hover {

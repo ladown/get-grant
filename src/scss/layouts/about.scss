@@ -1,7 +1,7 @@
 .about {
 	position: relative;
 	z-index: 1;
-	padding-top: var(--section-offset-top);
+	padding: var(--section-offset-top) 0 var(--section-offset-bottom);
 	overflow: hidden;
 
 	&__items {
@@ -45,6 +45,7 @@
 			@include to(580px) {
 				flex-basis: 60%;
 				flex-grow: 1;
+				font-size: 12rem;
 			}
 
 			> *:not(:last-child) {

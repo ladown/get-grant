@@ -1,3 +1,13 @@
+@use 'sass:math';
+@use 'sass:meta';
+@use 'sass:string';
+@use 'sass:list';
+@use 'sass:map';
+@import '../library-mixins/breakpoints-mixin';
+@import '../defaults/functions';
+@import '../defaults/data';
+@import '../defaults/variables';
+
 .article-popup {
 	position: fixed;
 	inset: 0;
@@ -150,7 +160,7 @@
 		padding: 14rem;
 		margin-top: 30rem;
 		background: linear-gradient(269.47deg, #4980d2 -2.09%, #72bac3 99.74%);
-		box-shadow: 0 4px 30px rgb(0 0 0 / 7%);
+		box-shadow: 0 4rem 30rem rgb(0 0 0 / 7%);
 
 		@include to(980px) {
 			margin-top: 23rem;
@@ -186,7 +196,7 @@
 
 	&__policy {
 		margin-top: 10rem;
-		font-size: 12px;
+		font-size: 12rem;
 		line-height: 140%;
 		color: rgb(88 151 251 / 50%);
 
