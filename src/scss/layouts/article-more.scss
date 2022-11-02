@@ -1,13 +1,13 @@
 .article-more {
-	padding: 60rem 0 90rem;
+	padding-top: 60rem;
 	background-color: #fff;
 
 	@include to(980px) {
-		padding: 45rem 0 60rem;
+		padding-top: 45rem;
 	}
 
 	@include to(580px) {
-		padding: 30rem 0 45rem;
+		padding-top: 30rem;
 	}
 
 	&__title {
@@ -60,17 +60,10 @@
 			position: relative;
 			overflow: hidden;
 
-			&::before {
-				display: block;
-				padding-top: calc(div(280, 340) * 100%);
-				content: '';
-
-				@include from-to(581px, 768px) {
-					padding-top: 50%;
-				}
-			}
-
 			img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
 				will-change: transform;
 				transition: transform $default-transition-duration $default-transition-function;
 			}
@@ -117,6 +110,8 @@
 
 		&-text {
 			margin-top: 24rem;
+			font-size: 16rem;
+			line-height: 1.2;
 			color: rgb(13 33 44 / 50%);
 
 			@include to(580px) {

@@ -92,6 +92,7 @@
 		svg {
 			width: 28rem;
 			height: 28rem;
+			pointer-events: none;
 
 			@include to(580px) {
 				width: 20rem;

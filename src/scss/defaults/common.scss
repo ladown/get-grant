@@ -187,3 +187,9 @@ svg {
 .color-blue {
 	color: $color-blue;
 }
+
+.main-content {
+	&_white {
+		background-color: #fff;
+	}
+}

@@ -12,6 +12,7 @@ class StepsClass {
 		this.isMobile = false;
 		this.timelines = [];
 		this.lines = [];
+		this.gutter = null;
 	}
 
 	getCoords(item, index) {
@@ -32,7 +33,7 @@ class StepsClass {
 		block.classList.add('steps__line', 'js-steps-line');
 		block.style.cssText = `
 			top: ${coords.y1}rem;
-			${index % 2 === 0 ? `left: ${coords.x1}rem;` : `right: ${coords.x2}rem;`}
+			${index % 2 === 0 ? `left: ${coords.x1}rem;` : `right: ${coords.x2}rem;`};
 		`;
 
 		this.lines.push(block);
@@ -59,7 +60,10 @@ class StepsClass {
 					},
 				});
 
-				timeline.to(line, { width: '100%', ease: 'cubic-bezier(0.645, 0.045, 0.355, 1)', duration: 0.05 });
+				timeline.to(line, {
+					width: '100%',
+					ease: 'none',
+				});
 
 				this.timelines.push(timeline);
 			}
@@ -95,7 +99,7 @@ class StepsClass {
 	}
 
 	handleResize(event) {
-		if (event.target.innerWidth >= 769 && !this.isDesktop) {
+		if (event.target.innerWidth >= 981 && !this.isDesktop) {
 			this.timelines.forEach((item) => {
 				item.kill();
 			});
@@ -113,7 +117,7 @@ class StepsClass {
 			this.isMobile = false;
 		}
 
-		if (event.target.innerWidth <= 768 && !this.isMobile) {
+		if (event.target.innerWidth <= 980 && !this.isMobile) {
 			this.timelines.forEach((item) => {
 				item.kill();
 			});
@@ -137,12 +141,14 @@ class StepsClass {
 
 	init() {
 		if (this.wrap) {
-			if (window.innerWidth >= 769) {
+			this.gutter = Number(getComputedStyle(this.content).gap.replace('px', ''));
+
+			if (window.innerWidth >= 981) {
 				this.isDesktop = true;
 				this.setAnimation();
 			}
 
-			if (window.innerWidth <= 768) {
+			if (window.innerWidth <= 980) {
 				this.isMobile = true;
 				this.setMobileAnimation();
 			}

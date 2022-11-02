@@ -1,0 +1,97 @@
+@use 'sass:math';
+@use 'sass:meta';
+@use 'sass:string';
+@use 'sass:list';
+@use 'sass:map';
+@import '../library-mixins/breakpoints-mixin';
+@import '../defaults/data';
+@import '../defaults/variables';
+
+.success-popup {
+	position: fixed;
+	inset: 0;
+	z-index: 100;
+	display: none;
+	padding: 20px;
+	opacity: 0;
+
+	&__overlay {
+		position: absolute;
+		inset: 0;
+		z-index: 1;
+		background: rgb(0 0 0 / 30%);
+	}
+
+	&__wrap {
+		position: relative;
+		z-index: 2;
+		flex-flow: column nowrap;
+		width: 100%;
+		max-width: 800rem;
+		height: auto;
+		min-height: 400rem;
+		max-height: 100%;
+		padding: 50rem;
+		margin: auto;
+		color: $color;
+		background-color: #fff;
+		transform: translateY(-100%);
+
+		@extend %flex-center;
+
+		@include to(980px) {
+			max-width: 600rem;
+			min-height: 300rem;
+			padding: 35rem;
+		}
+
+		@include to(580px) {
+			min-height: 200rem;
+			padding: 20rem;
+		}
+	}
+
+	&__close {
+		position: absolute;
+		top: 32rem;
+		right: 32rem;
+		width: 48rem;
+		height: 48rem;
+		fill: transparent;
+		stroke: #000;
+		stroke-width: 1.5;
+		transition: stroke $default-transition-duration $default-transition-function;
+
+		@include to(980px) {
+			top: 16rem;
+			right: 16rem;
+			width: 40rem;
+			height: 40rem;
+		}
+
+		@include to(580px) {
+			top: 6rem;
+			right: 6rem;
+			width: 32rem;
+			height: 32rem;
+		}
+
+		&:hover {
+			stroke: $color-blue;
+		}
+
+		svg {
+			width: 28rem;
+			height: 28rem;
+
+			@include to(580px) {
+				width: 20rem;
+				height: 20rem;
+			}
+		}
+	}
+
+	&__subheader {
+		margin-top: 16rem;
+	}
+}

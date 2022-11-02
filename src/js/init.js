@@ -60,6 +60,12 @@ class AppClass {
 			new Popup(articlePopup, false, true).init();
 		}
 
+		const letterPopup = document.querySelector('.js-popup-letter');
+
+		if (letterPopup) {
+			new Popup(letterPopup, '.js-popup-letter-trigger', false, true).init();
+		}
+
 		console.log('App has been initialized');
 	}
 }

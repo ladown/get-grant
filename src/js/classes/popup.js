@@ -4,11 +4,13 @@ import scrollLock from 'scroll-lock';
 import { gsap } from 'gsap';
 
 class Popup {
-	constructor(popupElement, triggerSelector, isPopupByTime) {
+	constructor(popupElement, triggerSelector, isPopupByTime = false, isLetterPopup = false) {
 		this.popup = popupElement;
 		this.popupWrap = this.popup.querySelector('.js-popup-wrap');
 		this.triggers = document.querySelectorAll(triggerSelector);
 		this.isPopupByTime = isPopupByTime;
+		this.isLetterPopup = isLetterPopup;
+		this.popupPhoto = this.popup.querySelector('.js-popup-photo');
 		this.wrapAnimatingPropery = this.popup.getAttribute('data-popup-wrap-propery')
 			? this.popup.getAttribute('data-popup-wrap-propery') ||
 			  this.popup.removeAttribute('data-popup-wrap-propery')
@@ -16,6 +18,9 @@ class Popup {
 		this.isOpened = false;
 		this.timeout = null;
 		this.delay = 15000;
+		this.modes = {
+			open: 'is-opened',
+		};
 	}
 
 	openPopup() {
@@ -37,7 +42,7 @@ class Popup {
 			},
 		});
 
-		this.isOpened = !this.isOpened;
+		this.popup.classList.add(this.modes.open);
 
 		if (this.isPopupByTime) {
 			clearTimeout(this.timeout);
@@ -63,7 +68,7 @@ class Popup {
 			},
 		});
 
-		this.isOpened = !this.isOpened;
+		this.popup.classList.remove(this.modes.open);
 	}
 
 	setDelayedOpening() {
@@ -78,11 +83,16 @@ class Popup {
 		if (this.triggers.length) {
 			this.triggers.forEach((button) => {
 				button.addEventListener('click', (event) => {
+					if (this.isLetterPopup) {
+						const triggerImgSrc = event.currentTarget.getAttribute('data-popup-letter-src');
+						this.popupPhoto.setAttribute('src', triggerImgSrc);
+					}
+
 					if (event.target.tagName.toLowerCase() === 'a') {
 						event.preventDefault();
 					}
 
-					if (this.isOpened) {
+					if (this.popup.classList.contains(this.modes.open)) {
 						this.closePopup();
 					} else {
 						this.openPopup();

@@ -4,14 +4,23 @@
 	&__item {
 		stroke-linecap: round;
 		stroke-linejoin: round;
+		transition: opacity $default-transition-duration $default-transition-function;
 
-		&:hover {
-			.icon:not(.icon-whatsapp) {
-				stroke: $color-blue;
+		.header:not(.header_blue) & {
+			&:hover {
+				.icon:not(.icon-whatsapp) {
+					stroke: $color-blue;
+				}
+
+				.icon-whatsapp {
+					fill: $color-blue;
+				}
 			}
+		}
 
-			.icon-whatsapp {
-				fill: $color-blue;
+		.header_blue & {
+			&:hover {
+				opacity: 0.7;
 			}
 		}
 

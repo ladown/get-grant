@@ -36,10 +36,10 @@
 			each item in items
 				+e.item
 					+e.A.item-photo.flex(href=item.href)
-						img.object-fit(
+						img(
 							src=item.photo
 							alt='article-more photo')
 					+e.item-content.medium-weight
 						+e.item-date #{ item.date }
-						+e.A.item-caption.h4(href=item.href) #{ item.caption }
-						+e.item-text.h6 #{ item.text }
+						+e.A.item-caption.h6(href=item.href) #{ item.caption }
+						+e.item-text #{ item.text }

@@ -3,6 +3,7 @@
 		title: 'Кейсы',
 		items: [
 			{
+				letterSrc: require('Images/cerft-1.jpg'),
 				logo: 'Images/proaction-logo.png',
 				photo: 'Images/case-item-1.jpg',
 				features: [
@@ -12,6 +13,7 @@
 				text: 'Разработка модулей платформы «Proaction» с использованием нейросетей для тестирования и оценки кандидатов на трудоустройство и принятия управленческих решений.'
 			},
 			{
+				letterSrc: require('Images/cerft-2.jpg'),
 				logo: 'Images/expasoft-logo.svg',
 				photo: 'Images/case-item-2.jpg',
 				features: [
@@ -21,6 +23,7 @@
 				text: 'Разработка no-code интеллектуальной системы контроля нарушений заданных сценариев производственных бизнес-процессов с применением видео аналитики и ML алгоритмов.'
 			},
 			{
+				letterSrc: require('Images/cerft-3.jpg'),
 				logo: 'Images/forpeople-logo.svg',
 				photo: 'Images/case-item-3.jpg',
 				features: [
@@ -30,6 +33,7 @@
 				text: 'Доработка системы HR-аналитики и рекомендательного сервиса с элементами искусственного интеллекта по управлению и повышению эффективности источников подбора Channel AI.'
 			},
 			{
+				letterSrc: require('Images/cerft-1.jpg'),
 				logo: 'Images/acsma-logo.svg',
 				photo: 'Images/case-item-4.jpg',
 				features: [
@@ -39,6 +43,7 @@
 				text: 'Разработка устройства измерения концентрации глюкозы в крови (КГК) пациента с удаленным мониторингом (функцией передачи данных на смартфон или в медицинскую информационную систему).'
 			},
 			{
+				letterSrc: require('Images/cerft-2.jpg'),
 				logo: 'Images/basis-logo.png',
 				photo: 'Images/case-item-5.jpg',
 				features: [
@@ -48,6 +53,7 @@
 				text: 'Разработка средств комплексной автоматизации и управления данными сбытовых сетей автодилеров и вендоров с использованием средств интеллектуального управления процессами с применением алгоритмов анализа и обработки данных на основе байесовских сетей.'
 			},
 			{
+				letterSrc: require('Images/cerft-3.jpg'),
 				logo: 'Images/poliinform-logo.png',
 				photo: 'Images/case-item-6.jpg',
 				features: [
@@ -57,6 +63,7 @@
 				text: 'Разработка и тестирование программно-измерительного комплекса CMD-04F с применением БПЛА в качестве носителя для автономной бесконтактной магнитометрической диагностики металлических трубопроводов и резервуаров'
 			},
 			{
+				letterSrc: require('Images/cerft-1.jpg'),
 				logo: 'Images/konnekt-logo.png',
 				photo: 'Images/case-item-6.jpg',
 				features: [
@@ -92,7 +99,7 @@
 						+e.slide-cell._content.flex._column._nowrap
 							+e.slide-text.font-halvar #{ slide.text }
 							+e.slide-footer.flex._nowrap._justify
-								+e.A.slide-rec.flex._vertical(href='#')
+								+e.BUTTON.slide-rec.flex._vertical.js-popup-letter-trigger(data-popup-letter-src=slide.letterSrc)
 									+e.slide-rec-icon
 										+icon({ name: 'document', viewBox: '0 0 18 22', })
 									+e.slide-rec-text.text-underline Рекомендательное письмо
