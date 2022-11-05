@@ -26,8 +26,9 @@ module.exports = merge(commonOptions, {
 		minimizer: [
 			'...',
 			new ImageMinimizerPlugin({
-				test: /.(jpe?g|png|gif|svg)$/i,
-				exclude: /(sprite\.svg|favicons)/,
+				test: /\.(png|svg|jpe?g|webp|gif|icon)$/i,
+				include: /[\\/]img/,
+				exclude: [/[\\/]icons/, /(sprite\.svg)/],
 				minimizer: {
 					implementation: ImageMinimizerPlugin.imageminMinify,
 					options: {

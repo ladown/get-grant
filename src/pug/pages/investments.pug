@@ -1,0 +1,41 @@
+extends ../layouts/default.pug
+
+block append vars
+	- title = 'Инвесторам';
+
+block content
+	-
+		const heroData = {
+			title: 'Подберем стартап для инвестиций под ваши запросы',
+			subtitle: 'Сопроводим сделку и вернем до 50% от суммы вложений через программу возврата частных инвестиций от Фонда Сколково',
+			button: {
+				classes: '',
+				text: 'Получить консультацию'
+			},
+		};
+
+	+hero(heroData, false)
+	include ../layouts/investments-features
+	include ../layouts/investments-content
+	include ../layouts/investments-services
+	include ../layouts/investments-price
+
+block styles
+	link(
+		href=require('Styles/pages/investments.scss')
+		rel='stylesheet')
+	link(
+		href=require('Styles/layouts/letter-popup.scss')
+		rel='stylesheet')
+	link(
+		href=require('Styles/layouts/callback.scss')
+		rel='stylesheet')
+	link(
+		href=require('Styles/layouts/callback-popup.scss')
+		rel='stylesheet')
+	link(
+		href=require('Styles/layouts/success-popup.scss')
+		rel='stylesheet')
+	link(
+		href=require('Styles/layouts/video-popup.scss')
+		rel='stylesheet')

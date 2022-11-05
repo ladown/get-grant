@@ -1,0 +1,27 @@
+-
+	const investmentsPriceData = {
+		title: 'Стоимость наших услуг',
+		items: [
+			{
+				icon: require('Images/icon-4.svg'),
+				text: '<strong class="color-blue">Если вы и стартап попадаете под условия программы возврата 50% инвестиций,</strong> то стоимость наших услуг составит 20% от вернувшихся инвестиций.',
+			},
+			{
+				icon: require('Images/icon-5.svg'),
+				text: '<strong class="color-blue">Если нет,</strong> то стоимость наших услуг составит от 3 до 7% от суммы инвестиций.',
+			},
+		],
+	};
+
++b.SECTION.investments-price
+	- const { title, items } = investmentsPriceData;
+	+e.wrap.wrap
+		+e.H2.title.h2.font-halvar.strong #{ title }
+		+e.items.flex
+			each item in items
+				+e.item
+					+e.item-icon
+						img(
+							src=item.icon
+							alt='icon')
+					+e.item-text.font-halvar.h3 !{ item.text }

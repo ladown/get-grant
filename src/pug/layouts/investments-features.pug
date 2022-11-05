@@ -1,0 +1,36 @@
+-
+	const investmentsFeaturesData = {
+		items: [
+			{
+				subtitle: '13 инвестиций на сумму',
+				caption: '>100 млн ₽',
+				text: 'собрали в 2021 году',
+			},
+			{
+				caption: '32%',
+				text: 'среднегодовой рост оценки стартапов',
+			},
+			{
+				caption: '>300 млн',
+				text: 'привлекли в виде грантов портфельным компаниям',
+			},
+			{
+				caption: '6/13',
+				text: 'проектов инвестировали собственные средства',
+			},
+		],
+	};
+
++b.SECTION.investments-features
+	- const { items } = investmentsFeaturesData;
+	+e.line
+		img.object-fit(
+			src=require('Images/investments-line.svg')
+			alt='investments-features line')
+	+e.wrap.wrap.flex
+		each item in items
+			+e.item.text-center
+				if item.subtitle
+					+e.item-subtitle #{ item.subtitle }
+				+e.item-caption.font-halvar.color-blue #{ item.caption }
+				+e.item-text #{ item.text }

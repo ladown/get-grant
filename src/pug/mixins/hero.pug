@@ -10,7 +10,7 @@
 		},
 	};
 
-mixin hero(props = {})
+mixin hero(props = {}, isRightCell = true)
 	+b.SECTION.hero
 		+e.wrap.wrap.flex._nowrap._start._justify
 			+e.cell._left
@@ -23,15 +23,16 @@ mixin hero(props = {})
 					| #{ props.button.text }
 				if props.text
 					+e.text.h6 !{ props.text }
-			+e.cell._right
-				+e.box
-					+e.photo
-						img(
-							src=require('Images/hero.jpg')
-							alt='hero-photo')
-					+e.box-footer
-						+button(heroSecondButton)
-							| Посмотрите презентацию<br/>о компании GetGrant
+			if isRightCell
+				+e.cell._right
+					+e.box
+						+e.photo
+							img(
+								src=require('Images/hero.jpg')
+								alt='hero-photo')
+						+e.box-footer
+							+button(heroSecondButton).js-video-popup-trigger(data-video-src=props.videoSrc)
+								| Посмотрите презентацию<br/>о компании GetGrant
 		+e.PICTURE.background.no-pe
 			source(
 				srcset=require('Images/backgrounds/hero-bg-mobile.png')

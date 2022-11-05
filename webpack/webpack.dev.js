@@ -10,8 +10,8 @@ module.exports = merge(common, {
 	devtool: 'eval-cheap-source-map',
 
 	devServer: {
-		compress: true,
 		open: true,
+		compress: true,
 		historyApiFallback: true,
 		static: {
 			directory: paths.build.default,

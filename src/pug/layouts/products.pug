@@ -1,0 +1,165 @@
+-
+	const productsData = {
+		title: 'Наши продукты',
+		content: [
+			[
+				{
+					counter: {
+						caption: 'Венчурные инвестиции в стартапы',
+						text: 'Прямое вхождение в капитал/конвертируемые займы',
+					},
+				},
+				{
+					text: {
+						content: 'Подберем объект для инвестиций под Ваш запрос&nbsp;<br/>или предложим один из проектов из нашего пайплайна.',
+						contentClass: 'font-halvar h4',
+					},
+				},
+				{
+					table: {
+						caption: 'Наша воронка стартапов',
+						items: [
+							{
+								caption: 'Резиденты Сколково',
+								text: [
+									'<strong>>300</strong> компаний-резидентов Сколково являются нашими постоянными клиентами.',
+									'<strong>>30%</strong> из них привлекают частное финансирование.',
+								],
+							},
+							{
+								caption: 'Стартапы из акселератора и воронки клуба бизнес-ангелов dv-group.vc',
+								text: [
+									'<strong>>Skolkovo Resident</strong> является частью группы компаний <a href="#" class="text-underline">dv-group.vc</a>, которая оказывает различные консалтинговые услуги стартапам и технологичным компаниям из РФ,  а также делает акселераторы.',
+									'Ежемесячно за нашими услугами обращаются около 300 стартапов, проходят акселерацию 20+ стартапов. Лучшие из них попадают в наш пайплайн.',
+								],
+							},
+						],
+					},
+				},
+				{
+					link: {
+						text: 'Посмотреть список проектов для инвестиций',
+						icon: {
+							name: 'arrowToTop',
+							viewBox: '0 0 17 17',
+						},
+					},
+				},
+				{
+					box: {
+						caption: 'Портрет стартапа и инвестиционные стадии',
+						items: [
+							[
+								{
+									caption: 'Seed – стадия',
+								},
+								{
+									arrowList: [
+										'Выручка от 5 до 50 млн',
+										'Уникальный продукт/технология',
+									],
+								},
+								{
+									bulletList: [
+										'Деньги привлекаются для доработки продукта/маркетинга',
+										'Чеки от 1 млн рублей',
+									],
+								},
+							],
+							[
+								{
+									caption: 'Round A',
+								},
+								{
+									arrowList: [
+										'Выручка от 50 до 500 млн',
+										'Уникальный продукт/технология',
+										'Продукт компании занимает значительную долю Российского рынка',
+									],
+								},
+								{
+									bulletList: [
+										'Деньги привлекаются для масштабирования/выхода на новые рынки',
+										'Чеки от 5 млн рублей',
+									],
+								},
+							],
+						],
+					},
+				},
+			],
+			[
+				{
+					counter: {
+						caption: 'Софинансирование грантов',
+						text: 'Займы от 20% годовых/конвертируемые займы/покупка доли в стартапе',
+					},
+				},
+				{
+					row: [
+						'В 2021 году наша команда привлекла <strong class="color-blue">свыше 800 млн</strong> грантового финансирования от ФСИ, РФРИТ, Фонда Сколково для своих клиентов.',
+						'Как правило, для привлечения грантового финансирования, компании должны показать софинансирование <strong class="color-blue">от 20 до 50% от суммы гранта.</strong>',
+						'<strong class="color-white">Не все наши клиенты</strong> обладают достаточным объемам собственных средств для софинансирования грантов.',
+						'<strong class="color-blue">В связи с этим</strong> некоторые из них готовы привлекать финансирование от частных лиц в виде займа/продажи части доли в компании.',
+					],
+				},
+			],
+		],
+	};
+
++b.SECTION.products
+	- const { title, content } = productsData;
+	+e.wrap.wrap
+		+e.H2.title.h2.font-halvar #{ title }
+		+e.content
+			each contentItem, index in content
+				+e.content-item
+					each content in contentItem
+						- const { counter, text, table, link, box, row } = content;
+						if counter
+							+e.counter.flex._nowrap
+								+e.counter-num.font-halvar.color-blue.strong 0#{ index + 1 }
+								+e.counter-content
+									+e.counter-caption.font-halvar.medium-weight #{ counter.caption }
+									+e.counter-text.h6 #{ counter.text }
+						if text
+							+e.text(class=text.contentClass) !{ text.content }
+						if table
+							+e.table
+								+e.table-caption.font-halvar.color-blue.medium-weight.h3 #{ table.caption }
+								+e.table-items
+									each tableItem in table.items
+										+e.table-item.flex._nowrap._start._justify
+											+e.table-caption.font-halvar.medium-weight.h4 #{ tableItem.caption }
+											+e.table-text.h5
+												each tableText in tableItem.text
+													p !{ tableText }
+						if link
+							+e.A.link.h5.text-underline(href='#')
+								| #{ link.text }
+								+icon(link.icon)
+						if box
+							+e.box
+								+e.box-caption.font-halvar.color-blue.medium-weight.h3 #{ box.caption }
+								+e.box-items.flex
+									each boxItem in box.items
+										+e.box-item.flex._column._nowrap
+											each boxContent in boxItem
+												- const { caption, arrowList, bulletList } = boxContent;
+												if caption
+													+e.box-caption.font-halvar.medium-weight.h3 #{ caption }
+												if arrowList
+													+e.UL.box-list._arrow.arrow-list__._blue.h5
+														each listItem in arrowList
+															+e.LI.item !{ listItem }
+												if bulletList
+													+e.UL.box-list.list__.h5
+														each listItem in bulletList
+															+e.LI.item !{ listItem }
+								+e.A.link._box.h5.text-underline(href='#')
+									| Узнать подробнее
+									+icon({ name: 'arrowToTop', viewBox: '0 0 17 17', })
+						if row
+							+e.rows
+								each rowItem in row
+									+e.row.font-halvar.h4 !{ rowItem }

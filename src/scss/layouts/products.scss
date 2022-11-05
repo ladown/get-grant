@@ -1,0 +1,293 @@
+.products {
+	position: relative;
+	padding-top: var(--section-offset-top);
+
+	&::before {
+		position: absolute;
+		inset: 0 30rem auto 30rem;
+		max-width: 1300rem;
+		height: 1px;
+		margin: 0 auto;
+		content: '';
+		background: linear-gradient(270deg, rgb(134 215 217 / 0%) 16.88%, #86d7d9 52.3%, rgb(134 215 217 / 0%) 90.5%);
+	}
+
+	&__content {
+		margin-top: 80rem;
+
+		@include to(980px) {
+			margin-top: 65rem;
+		}
+
+		@include to(580px) {
+			margin-top: 40rem;
+		}
+
+		&-item {
+			&:not(:last-child) {
+				padding-bottom: var(--section-offset-top);
+			}
+
+			> *:not(:last-child) {
+				margin-bottom: 60rem;
+
+				@include to(980px) {
+					margin-bottom: 40rem;
+				}
+
+				@include to(580px) {
+					margin-bottom: 20rem;
+				}
+			}
+		}
+	}
+
+	&__counter {
+		&-num {
+			flex: 0 0 auto;
+			margin-right: 30rem;
+			font-size: 80rem;
+			line-height: 1;
+
+			@include to(980px) {
+				font-size: 55rem;
+			}
+
+			@include to(580px) {
+				margin-right: 10rem;
+				font-size: 30rem;
+			}
+		}
+
+		&-content {
+			flex: 1;
+		}
+
+		&-caption {
+			font-size: 36rem;
+			line-height: 1.1;
+
+			@include to(980px) {
+				font-size: 28rem;
+			}
+
+			@include to(580px) {
+				font-size: 18rem;
+			}
+		}
+
+		&-text {
+			margin-top: 10rem;
+			font-weight: 300;
+		}
+	}
+
+	&__text {
+		@include to(980px) {
+			br {
+				display: none;
+			}
+		}
+	}
+
+	&__table {
+		&-items {
+			margin-top: 32rem;
+
+			@include to(580px) {
+				margin-top: 20rem;
+			}
+		}
+
+		&-item {
+			padding: 20rem 0;
+			border-bottom: 1px solid #5897fb;
+
+			@include to(580px) {
+				flex-wrap: wrap;
+				padding: 10rem 0;
+			}
+
+			&:first-child {
+				border-top: 1px solid #5897fb;
+			}
+		}
+
+		&-caption {
+			flex: 0 0 460rem;
+
+			@include to(980px) {
+				flex-basis: 400rem;
+			}
+
+			@include to(768px) {
+				flex-basis: 30%;
+			}
+
+			@include to(580px) {
+				flex-basis: 100%;
+			}
+		}
+
+		&-text {
+			flex: 0 1 560rem;
+			margin-left: 40rem;
+			line-height: 1.3;
+
+			@include to(980px) {
+				flex-basis: 55%;
+			}
+
+			@include to(580px) {
+				flex-basis: 100%;
+				margin: 12rem 0 0;
+			}
+
+			p {
+				&:not(:last-child) {
+					margin-bottom: 16rem;
+
+					@include to(580px) {
+						margin-bottom: 12rem;
+					}
+				}
+			}
+
+			a {
+				transition: color $default-transition-duration $default-transition-function;
+
+				&:hover {
+					color: $color-blue;
+				}
+			}
+		}
+	}
+
+	&__link {
+		display: block;
+		width: fit-content;
+		line-height: 1.4;
+		color: #fff;
+		stroke: #fff;
+		stroke-width: 4;
+		transition: color $default-transition-duration $default-transition-function,
+			stroke $default-transition-duration $default-transition-function;
+
+		&:hover {
+			color: $color-blue;
+			stroke: $color-blue;
+		}
+
+		&_box {
+			margin-top: 50rem;
+
+			@include to(980px) {
+				margin-top: 35rem;
+			}
+
+			@include to(580px) {
+				margin-top: 20rem;
+			}
+		}
+
+		svg {
+			display: inline-block;
+			width: 17rem;
+			height: 17rem;
+			margin-left: 20rem;
+			line-height: 1;
+			vertical-align: middle;
+
+			@include to(580px) {
+				width: 14rem;
+				height: 14rem;
+				margin-left: 10rem;
+			}
+		}
+	}
+
+	&__box {
+		&-items {
+			gap: 60rem;
+			margin-top: 50rem;
+
+			@include to(980px) {
+				gap: 30rem;
+				margin-top: 35rem;
+			}
+
+			@include to(580px) {
+				gap: 10rem;
+				margin-top: 20rem;
+			}
+		}
+
+		&-item {
+			flex: 1 1 calc(50% - 60rem);
+			padding: 30rem;
+			background: #223147;
+			border-radius: 10rem;
+
+			@include to(980px) {
+				padding: 25rem;
+			}
+
+			@include to(768px) {
+				flex-basis: 100%;
+			}
+
+			@include to(580px) {
+				padding: 20rem;
+			}
+		}
+
+		&-list {
+			padding-top: 32rem;
+			margin-top: auto;
+
+			@include to(980px) {
+				padding-top: 22rem;
+			}
+
+			@include to(580px) {
+				padding-top: 16rem;
+			}
+
+			&_arrow {
+				margin-top: 0;
+			}
+
+			li {
+				&:not(:last-child) {
+					margin-bottom: 16rem;
+
+					@include to(580px) {
+						margin-bottom: 10rem;
+					}
+				}
+			}
+		}
+	}
+
+	&__row {
+		padding: 30rem;
+
+		@include from(981px) {
+			border: 1px solid transparent;
+			transition: border $default-transition-duration $default-transition-function;
+
+			&:hover {
+				border-color: #3173db;
+			}
+		}
+
+		@include to(980px) {
+			border: 1px solid #3173db;
+		}
+
+		@include to(580px) {
+			padding: 20rem;
+			font-size: 18rem;
+		}
+	}
+}

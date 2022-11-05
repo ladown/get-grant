@@ -1,0 +1,56 @@
+-
+	const investmentsServices = {
+		title: 'Что входит в состав наших&nbsp;<br/>услуг и сколько они стоят?',
+		items: [
+			{
+				caption: 'Подбор стартапа',
+				list: [
+					'Предложим один из стартапов нашего пайплайна или подберем под запрос.',
+					'Организуем питч-сессию со всеми понравившимися проектами.',
+				],
+			},
+			{
+				caption: 'Due diligence',
+				list: [
+					'Проведем полный технический и юридический дьюдил стартапа.',
+					'Предоставим полную аналитику по рынку/продукту/конкурентам.',
+				],
+			},
+			{
+				caption: 'Полное сопровождение сделки',
+				text: 'Поможем договориться об условиях и окажем полное юридическое сопровождение (подготовка корпоративного и инвестиционного договора, реализация механики конвертируемого займа/прямого входа в капитал и пр.)',
+			},
+			{
+				caption: 'Вернем 50% инвестиций через субсидии частным инвесторам от Фонда Сколково',
+				text: 'Если у стартапа с выручка меньше 200 млн и Вы за последние 3 года заплатили налогов больше, чем 50% от инвестиций, то вернем эти деньги.',
+			},
+		],
+		background: {
+			default: require('Images/backgrounds/investments-services-bg.png'),
+			mobile: require('Images/backgrounds/investments-services-bg-mobile.png'),
+		}
+	};
+
++b.SECTION.investments-services
+	- const { title, items, background } = investmentsServices;
+	+e.wrap.wrap
+		+e.H2.title.h2.font-halvar !{ title }
+		+e.items.flex
+			each item, index in items
+				+e.item
+					+e.item-caption.font-halvar.h4
+						span.color-blue #{ index + 1 }/&nbsp;
+						| #{ item.caption }
+					if item.list
+						+e.UL.item-list.list__.h6
+							each listItem in item.list
+								+e.LI.item #{ listItem }
+					if item.text
+						+e.item-text.h6 #{ item.text }
+	+e.PICTURE.background
+		source(
+			srcset=background.mobile
+			media='(max-width: 580px)')
+		img.object-fit(
+			src=background.default
+			alt='investments-services background')

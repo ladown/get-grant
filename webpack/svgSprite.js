@@ -12,9 +12,7 @@ const config = {
 	shape: {
 		id: {
 			generator: function (name, file) {
-				var fileName = file.basename.slice(0, -4);
-				console.log('processed svg icon', fileName);
-				return fileName;
+				return file.basename.slice(0, -4);
 			},
 		},
 	},

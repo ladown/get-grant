@@ -1,0 +1,10 @@
+section.investments-content
+	include products
+	include portrait
+	picture.investments-content__background
+		source(
+			srcset=require('Images/backgrounds/investments-content-bg-mob.png')
+			media='(max-width: 580px)')
+		img.object-fit(
+			src=require('Images/backgrounds/investments-content-bg.png')
+			alt='investments-content-background')

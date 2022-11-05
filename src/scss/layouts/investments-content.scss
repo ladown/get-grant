@@ -1,0 +1,11 @@
+.investments-content {
+	position: relative;
+	z-index: 1;
+	overflow: hidden;
+
+	&__background {
+		img {
+			z-index: -1;
+		}
+	}
+}

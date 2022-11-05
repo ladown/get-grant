@@ -1,14 +1,9 @@
-const fs = require('fs');
 const path = require('path');
 const CopyPlugin = require('copy-webpack-plugin');
 const PugPlugin = require('pug-plugin');
 
 const paths = require('./paths');
-const { generateWebpackEntries, generateTemplaet } = require('./utils');
-
-const isBuild = process.argv.includes('build');
-
-fs.writeFileSync(`${paths.src.pugPages}/index.pug`, generateTemplaet(), { encoding: 'utf8' });
+const { generateWebpackEntries, setPageList } = require('./utils');
 
 module.exports = {
 	target: 'web',
@@ -18,7 +13,7 @@ module.exports = {
 	output: {
 		path: paths.build.default,
 		publicPath: 'auto',
-		filename: 'js/[name].js',
+		filename: 'js/[name].[contenthash:8].js',
 		chunkFilename: 'js/[name].[id].js',
 		clean: true,
 	},
@@ -47,27 +42,27 @@ module.exports = {
 					to: paths.build.static,
 					noErrorOnMissing: true,
 				},
-				{
-					from: paths.src.favicon,
-					to: paths.build.favicon,
-					noErrorOnMissing: true,
-				},
 			],
 		}),
 
 		new PugPlugin({
-			pretty: isBuild,
 			extractCss: {
-				filename: 'css/[name].css',
+				filename: 'css/[name].[contenthash:8].css',
 			},
-			postprocess(content) {
-				const newContent = content.replaceAll(
-					/(?:^|[^а-яёА-ЯЁ0-9_])(в|без|а|до|из|к|я|на|по|о|от|перед|при|через|с|у|за|над|об|под|про|для|и|или|со)(?:^|[^а-яёА-ЯЁ0-9_])/g,
-					(match) => {
-						return match.slice(-1) === ' ' ? `${match.substr(0, match.length - 1)}&nbsp;` : match;
-					},
-				);
-				return newContent;
+			postprocess(content, { assetFile }) {
+				if (assetFile.includes('index')) {
+					const newContent = setPageList(content);
+
+					return newContent;
+				} else {
+					const newContent = content.replaceAll(
+						/(?:^|[^а-яёА-ЯЁ0-9_])(в|без|а|до|из|к|я|на|по|о|от|перед|при|через|с|у|за|над|об|под|про|для|и|или|со|около|между)(?:^|[^а-яёА-ЯЁ0-9_])/g,
+						(match) => {
+							return match.slice(-1) === ' ' ? `${match.substr(0, match.length - 1)}&nbsp;` : match;
+						},
+					);
+					return newContent;
+				}
 			},
 		}),
 	],
@@ -81,7 +76,7 @@ module.exports = {
 
 			{
 				test: /\.m?js$/,
-				exclude: /(node_modules|bower_components)/,
+				exclude: [/node_modules/, /bower_components/],
 				use: {
 					loader: 'babel-loader',
 				},
@@ -94,7 +89,7 @@ module.exports = {
 
 			{
 				test: /\.(woff2?|ttf|otf|eot|svg)$/,
-				include: /fonts/,
+				include: /[\\/]fonts/,
 				type: 'asset/resource',
 				generator: {
 					filename: 'fonts/[name][ext][query]',
@@ -102,12 +97,12 @@ module.exports = {
 			},
 
 			{
-				test: /\.(jpe?g|png|gif|svg|webp)$/i,
-				include: /img/,
-				exclude: [/sprite/, /icons/],
+				test: /\.(png|svg|jpe?g|webp|gif|icon)$/i,
+				exclude: [/[\\/]icons/, /(sprite\.svg)/],
+				include: /[\\/]img/,
 				type: 'asset/resource',
 				generator: {
-					filename: 'img/[name].[ext]',
+					filename: 'img/[name].[hash:8][ext]',
 				},
 			},
 		],

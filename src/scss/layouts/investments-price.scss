@@ -1,0 +1,63 @@
+.investments-price {
+	padding-top: var(--section-offset-top);
+
+	&__items {
+		gap: 32rem;
+		margin-top: 50rem;
+
+		@include to(980px) {
+			gap: 26rem;
+			margin-top: 40rem;
+		}
+
+		@include to(580px) {
+			gap: 20rem;
+			margin-top: 30rem;
+		}
+	}
+
+	&__item {
+		flex: 1 1 calc(50% - 32rem);
+
+		@include to(768px) {
+			flex-basis: 100%;
+		}
+
+		&-icon {
+			max-width: 60rem;
+
+			@include to(980px) {
+				max-width: 45rem;
+			}
+
+			@include to(580px) {
+				max-height: 30rem;
+			}
+
+			img {
+				max-height: 60rem;
+
+				@include to(980px) {
+					max-height: 45rem;
+				}
+
+				@include to(580px) {
+					max-height: 30rem;
+				}
+			}
+		}
+
+		&-text {
+			margin-top: 30rem;
+
+			@include to(980px) {
+				margin-top: 20rem;
+			}
+
+			@include to(580px) {
+				margin-top: 10rem;
+				font-size: 18px;
+			}
+		}
+	}
+}

@@ -10,6 +10,7 @@ import Defaults from './classes/defaults';
 import More from './classes/more';
 import Work from './classes/work';
 import Steps from './classes/steps';
+import VideoPopup from './classes/videoPopup';
 
 class AppClass {
 	constructor() {}
@@ -64,6 +65,12 @@ class AppClass {
 
 		if (letterPopup) {
 			new Popup(letterPopup, '.js-popup-letter-trigger', false, true).init();
+		}
+
+		const videoPopups = document.querySelector('.js-video-popup');
+
+		if (videoPopups) {
+			new VideoPopup().init();
 		}
 
 		console.log('App has been initialized');
