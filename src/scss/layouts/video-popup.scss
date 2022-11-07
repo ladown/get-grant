@@ -26,28 +26,26 @@
 		position: relative;
 		z-index: 2;
 		width: 100%;
-		max-width: 1280rem;
+		max-width: 1000rem;
 		height: auto;
 		max-height: 100%;
-		padding: 100rem 60rem;
+		padding: 30rem 60rem 60rem;
 		margin: auto;
 		background-color: #fff;
+		border-radius: 16rem;
 		opacity: 0;
 		transform: translateY(100%);
 
 		@include to(980px) {
-			padding: 70rem 40rem;
+			padding: 20rem 40rem 40rem;
 		}
 
 		@include to(580px) {
-			padding: 40rem 20rem;
+			padding: 10rem 20rem 20rem;
 		}
 	}
 
 	&__close {
-		position: absolute;
-		top: 32rem;
-		right: 32rem;
 		width: 48rem;
 		height: 48rem;
 		fill: transparent;
@@ -56,15 +54,11 @@
 		transition: stroke $default-transition-duration $default-transition-function;
 
 		@include to(980px) {
-			top: 16rem;
-			right: 16rem;
 			width: 40rem;
 			height: 40rem;
 		}
 
 		@include to(580px) {
-			top: 6rem;
-			right: 6rem;
 			width: 32rem;
 			height: 32rem;
 		}
@@ -74,8 +68,8 @@
 		}
 
 		svg {
-			width: 28rem;
-			height: 28rem;
+			width: 36rem;
+			height: 36rem;
 
 			@include to(580px) {
 				width: 20rem;
@@ -86,6 +80,16 @@
 
 	&__video {
 		position: relative;
+		width: 100%;
+		margin-top: 30rem;
+
+		@include to(980px) {
+			margin-top: 20rem;
+		}
+
+		@include to(580px) {
+			margin-top: 10rem;
+		}
 
 		&::before {
 			display: block;
@@ -98,6 +102,7 @@
 			inset: 0;
 			border: none;
 			object-fit: cover;
+			border-radius: 10rem;
 		}
 	}
 }

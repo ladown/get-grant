@@ -83,6 +83,7 @@ block content
 	include ../layouts/appeal
 	include ../layouts/quality
 	+faq(faqData)
+	include ../layouts/callback-new-popup
 
 block styles
 	link(
@@ -93,4 +94,7 @@ block styles
 		rel='stylesheet')
 	link(
 		href=require('Styles/layouts/callback-popup.scss')
+		rel='stylesheet')
+	link(
+		href=require('Styles/layouts/callback-new-popup.scss')
 		rel='stylesheet')

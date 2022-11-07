@@ -23,7 +23,7 @@
 
 +b.SECTION.investments-features
 	- const { items } = investmentsFeaturesData;
-	+e.line
+	+e.line.no-pe
 		img.object-fit(
 			src=require('Images/investments-line.svg')
 			alt='investments-features line')
@@ -32,5 +32,5 @@
 			+e.item.text-center
 				if item.subtitle
 					+e.item-subtitle #{ item.subtitle }
-				+e.item-caption.font-halvar.color-blue #{ item.caption }
+				+e.item-caption.font-halvar.color-blue.strong #{ item.caption }
 				+e.item-text #{ item.text }

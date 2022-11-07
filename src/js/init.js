@@ -73,6 +73,11 @@ class AppClass {
 			new VideoPopup().init();
 		}
 
+		const callbackNew = document.querySelector('.js-callback-new-popup');
+		if (callbackNew) {
+			new Popup(callbackNew, '.js-callback-new-popup-trigger').init();
+		}
+
 		console.log('App has been initialized');
 	}
 }

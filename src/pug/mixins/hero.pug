@@ -11,7 +11,7 @@
 	};
 
 mixin hero(props = {}, isRightCell = true)
-	+b.SECTION.hero
+	+b.SECTION.hero(class=`${props.modes ? `_${props.modes.join(' _')}` : ''}`)
 		+e.wrap.wrap.flex._nowrap._start._justify
 			+e.cell._left
 				+e.H1.title.h1.font-halvar !{ props.title }

@@ -1,6 +1,10 @@
 .portrait {
 	padding: var(--section-offset-top) 0 var(--section-offset-bottom);
 
+	&__title {
+		font-weight: 400;
+	}
+
 	&__items {
 		margin-top: 50rem;
 

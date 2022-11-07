@@ -1,0 +1,42 @@
+-
+	const callbackPopupNew = {
+		title: '<span class="h4">Нет времени читать?</span><br/><span class="h5">Получите быструю консультацию от наших специалистов</span>',
+		fields: [
+			{
+				modes: ['blue'],
+				type: 'text',
+				name: 'name',
+				placeholder: 'Ваше имя',
+			},
+			{
+				modes: ['blue'],
+				type: 'tel',
+				inputmode: 'tel',
+				name: 'phone',
+				placeholder: '+7 (___) ___-__-__',
+			},
+		],
+		button: {
+			modes: ['gradient'],
+			text: 'Заказать звонок',
+		},
+		policy: 'Нажимая на кнопку, вы даете <a href="#" class="text-underline">согласие на обработку персональных данных</a> и соглашаетесь с <a href="#" class="text-underline">политикой конфиденциальности</a>.',
+	};
+
++b.SECTION.callback-new-popup.js-callback-new-popup
+	- const { title, fields, button, policy } = callbackPopupNew;
+	+e.overlay.js-popup-close
+	+e.wrap.flex._start._nowrap.overflow-y.js-popup-wrap
+		+e.BUTTON.close.js-popup-close
+			+icon({name: 'close', viewBox: '0 0 24 24'})
+		+e.cell._left
+			+e.H1.title.strong.font-halvar !{ title }
+		+e.cell._right
+			+e.FORM.form(action='#')
+				+e.fields
+					each field in fields
+						+field(field)
+				+e.form-footer
+					+button(button)
+						| #{ button.text }
+					+e.policy !{ policy }

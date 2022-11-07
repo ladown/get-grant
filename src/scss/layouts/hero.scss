@@ -51,6 +51,22 @@
 		}
 	}
 
+	&__title {
+		.hero_investments & {
+			font-size: 52rem;
+			font-weight: 500;
+			line-height: 1.2;
+
+			@include to(980px) {
+				font-size: 36rem;
+			}
+
+			@include to(580px) {
+				font-size: 22rem;
+			}
+		}
+	}
+
 	&__subtitle {
 		margin-top: 12rem;
 		font-size: 36rem;
@@ -62,6 +78,20 @@
 
 		@include to(580px) {
 			font-size: 16rem;
+		}
+
+		.hero_investments & {
+			font-size: 28rem;
+			font-weight: 300;
+			line-height: 1.3;
+
+			@include to(980px) {
+				font-size: 22rem;
+			}
+
+			@include to(580px) {
+				font-size: 16rem;
+			}
 		}
 	}
 
