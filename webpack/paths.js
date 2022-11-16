@@ -6,7 +6,7 @@ module.exports = {
 		scripts: path.posix.resolve(__dirname, '../src/js/'),
 		styles: path.posix.resolve(__dirname, '../src/scss/'),
 		sprite: path.posix.resolve(__dirname, '../src/icons/sprite.svg'),
-		pugPages: path.posix.resolve(__dirname, '../src/pug/pages'),
+		pugPages: path.posix.resolve(__dirname, '../src/pug/pages/'),
 		fonts: path.posix.resolve(__dirname, '../src/fonts/'),
 		icons: path.posix.resolve(__dirname, '../src/icons/'),
 		imgs: path.posix.resolve(__dirname, '../src/img/'),

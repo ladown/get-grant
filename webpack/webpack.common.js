@@ -50,7 +50,7 @@ module.exports = {
 				filename: 'css/[name].[contenthash:8].css',
 			},
 			postprocess(content, { assetFile }) {
-				if (assetFile.includes('index')) {
+				if (assetFile.includes('page-list')) {
 					const newContent = setPageList(content);
 
 					return newContent;

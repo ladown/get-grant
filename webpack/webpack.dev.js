@@ -10,7 +10,9 @@ module.exports = merge(common, {
 	devtool: 'eval-cheap-source-map',
 
 	devServer: {
-		open: true,
+		open: '/page-list.html',
+		hot: true,
+		liveReload: true,
 		compress: true,
 		historyApiFallback: true,
 		static: {
