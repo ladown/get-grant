@@ -11,17 +11,22 @@ import More from './classes/more';
 import Work from './classes/work';
 import Steps from './classes/steps';
 import VideoPopup from './classes/videoPopup';
+import Reveal from './modules/reveal';
+import Tooltip from './classes/tooltip';
+import Accordion from './classes/accordion';
 
 class AppClass {
 	constructor() {}
 
 	init() {
 		Header.init();
-		Sliders();
 		RequirementsCards.init();
 		Defaults.init();
 		Work.init();
 		Steps.init();
+
+		Sliders();
+		Reveal();
 
 		const phoneInputs = document.querySelectorAll('input[type="tel"]');
 
@@ -76,6 +81,22 @@ class AppClass {
 		const callbackNew = document.querySelector('.js-callback-new-popup');
 		if (callbackNew) {
 			new Popup(callbackNew, '.js-callback-new-popup-trigger').init();
+		}
+
+		const tooltips = document.querySelectorAll('.js-tooltip');
+
+		if (tooltips.length) {
+			tooltips.forEach((el) => {
+				new Tooltip(el).init();
+			});
+		}
+
+		const accordions = document.querySelectorAll('.js-accordion-wrap');
+
+		if (accordions.length) {
+			accordions.forEach((el) => {
+				new Accordion(el).init();
+			});
 		}
 
 		console.log('App has been initialized');

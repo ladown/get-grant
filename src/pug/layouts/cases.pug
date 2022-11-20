@@ -78,9 +78,9 @@
 +b.SECTION.cases
 	- const { title, items } = casesData;
 	+e.wrap.wrap
-		+e.H2.title.h2 #{ title }
-		+slider-nav({id: 'cases'})
-		+e.slider.swiper.js-slider-cases
+		+e.H2.title.h2.js-reveal-slideRight #{ title }
+		+slider-nav({id: 'cases'}).js-reveal-slideLeft
+		+e.slider.swiper.js-slider-cases.js-reveal-slideUp
 			.swiper-wrapper
 				each slide in items
 					+e.slide.swiper-slide.flex._row._nowrap
@@ -105,4 +105,4 @@
 									+e.slide-rec-text.text-underline Рекомендательное письмо
 								+e.A.slide-link(href='#')
 									+icon({ name: 'arrowToTop', viewBox: '0 0 40 40', })
-		+e.A.more.text-underline.h5.font-halvar(href='#') смотреть все
+		+e.A.more.text-underline.h5.font-halvar.js-reveal-slideUp(href='#') смотреть все

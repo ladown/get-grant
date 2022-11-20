@@ -48,6 +48,10 @@ body {
 	@include to(580px) {
 		font-size: 14rem;
 	}
+
+	&.body_light {
+		background-color: #fff;
+	}
 }
 
 img,
@@ -192,4 +196,27 @@ svg {
 	&_white {
 		background-color: #fff;
 	}
+}
+
+.js-tabs-content {
+	&:not(.is-active) {
+		display: none !important;
+	}
+}
+
+[data-tippy-root] {
+	z-index: 5000;
+}
+
+[data-tippy-root] .tippy-box {
+	font-size: initial;
+	line-height: initial;
+	color: inherit;
+	white-space: initial;
+	background: transparent;
+	border-radius: 0;
+}
+
+[data-tippy-root] .tippy-content {
+	padding: 0;
 }

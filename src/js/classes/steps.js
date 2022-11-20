@@ -8,6 +8,7 @@ class StepsClass {
 		this.items = document.querySelectorAll('.js-steps-item');
 		this.linesContent = document.querySelector('.js-steps-lines');
 		this.content = document.querySelector('.js-steps-content');
+		this.headerHeight = document.querySelector('.js-header').offsetHeight;
 		this.isDesktop = false;
 		this.isMobile = false;
 		this.timelines = [];
@@ -51,8 +52,8 @@ class StepsClass {
 				const timeline = gsap.timeline({
 					scrollTrigger: {
 						trigger: item,
-						start: 'center center',
-						end: 'bottom center-=100',
+						start: `bottom bottom-=${this.headerHeight * 2}`,
+						end: 'top center-=100',
 						scrub: true,
 						markers: false,
 						pinSpacing: false,

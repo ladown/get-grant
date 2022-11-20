@@ -49,10 +49,11 @@
 +b.SECTION.reasons
 	- const { title, items } = reasonsData;
 	+e.wrap.wrap
-		+e.H2.title.h2.color-blue.font-halvar #{ title }
+		+e.H2.title.h2.color-blue.font-halvar.js-reveal-slideRight #{ title }
 		+e.items.flex
 			each item in items
-				+e.item(class=`${item.modes ? `_${item.modes.join(' _')}` : ''} flex _nowrap _column _right _start`)
+				+e.item(
+					class=`${item.modes ? `_${item.modes.join(' _')}` : ''} flex _nowrap _column _right _start js-reveal-slideUp js-reveal-interval`)
 					if item.caption
 						+e.item-caption.strong.h2.font-halvar #{ item.caption }
 					if item.text

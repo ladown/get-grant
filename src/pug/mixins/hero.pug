@@ -13,7 +13,7 @@
 mixin hero(props = {}, isRightCell = true)
 	+b.SECTION.hero(class=`${props.modes ? `_${props.modes.join(' _')}` : ''}`)
 		+e.wrap.wrap.flex._nowrap._start._justify
-			+e.cell._left
+			+e.cell._left.js-reveal-slideRight
 				+e.H1.title.h1.font-halvar !{ props.title }
 				if props.subtitle
 					+e.subtitle !{ props.subtitle }
@@ -24,7 +24,7 @@ mixin hero(props = {}, isRightCell = true)
 				if props.text
 					+e.text.h6 !{ props.text }
 			if isRightCell
-				+e.cell._right
+				+e.cell._right.js-reveal-slideLeft
 					+e.box
 						+e.photo
 							img(

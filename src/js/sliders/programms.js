@@ -18,6 +18,7 @@ const ProgrammsSlider = {
 			slidesPerGroup: 1,
 			spaceBetween: 0,
 			grabCursor: true,
+			slideToClickedSlide: true,
 			modules: [Navigation],
 			navigation: {
 				nextEl: this.nodes.buttons.next,

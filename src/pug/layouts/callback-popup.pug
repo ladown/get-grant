@@ -37,7 +37,9 @@
 		+e.BUTTON.close.js-popup-close
 			+icon({name: 'close', viewBox: '0 0 28 28'}).no-pe
 		+e.H2.title.font-halvar.h4 !{ title }
-		+e.FORM.form(action='#')
+		+e.FORM.form(
+			action='#'
+			autocomplete='off')
 			+e.fields
 				each field in fields
 					+field(field)

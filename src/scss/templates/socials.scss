@@ -2,9 +2,16 @@
 	gap: 10rem;
 
 	&__item {
+		max-width: 20rem;
+		max-height: 20rem;
 		stroke-linecap: round;
 		stroke-linejoin: round;
 		transition: opacity $default-transition-duration $default-transition-function;
+
+		@include to(580px) {
+			max-width: 15rem;
+			max-height: 15rem;
+		}
 
 		.header:not(.header_blue) & {
 			&:hover {
@@ -25,21 +32,19 @@
 		}
 
 		.icon {
-			width: 20rem;
-			height: 20rem;
+			max-height: 100%;
 			transition-timing-function: $default-transition-function;
 			transition-duration: $default-transition-duration;
 			transition-property: stroke, fill;
-
-			@include to(580px) {
-				width: 15rem;
-				height: 15rem;
-			}
 
 			&:not(.icon-whatsapp) {
 				fill: transparent;
 				stroke: #fff;
 				stroke-width: 1;
+
+				.header_transparent & {
+					stroke: $color;
+				}
 			}
 
 			&-telegram {
@@ -49,6 +54,10 @@
 
 			&-whatsapp {
 				fill: #fff;
+
+				.header_transparent & {
+					fill: $color;
+				}
 			}
 		}
 	}

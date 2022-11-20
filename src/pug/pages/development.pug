@@ -16,19 +16,31 @@ block content
 		const featuresData = {
 			items: [
 				{
-					preview: require('Images/feature-item-1.svg'),
+					icon: {
+						name: '4',
+						viewBox: '0 0 54 47',
+					},
 					caption: 'конкурса в программе',
 				},
 				{
-					preview: require('Images/feature-item-2.svg'),
+					icon: {
+						name: '100%',
+						viewBox: '0 0 206 46',
+					},
 					caption: 'можно потратить на ФОТ',
 				},
 				{
-					preview: require('Images/feature-item-3.svg'),
+					icon: {
+						name: '12-24',
+						viewBox: '0 0 285 51',
+					},
 					caption: 'срок реализации проекта',
 				},
 				{
-					preview: require('Images/feature-item-4.svg'),
+					icon: {
+						name: '20-30%',
+						viewBox: '0 0 274 40',
+					},
 					caption: 'софинансирование',
 				},
 			],
@@ -189,14 +201,3 @@ block content
 	+calendar-plan(calendarPlanData)
 	+results(resultsData)
 	+faq(faqData)
-
-block styles
-	link(
-		href=require('Styles/pages/development.scss')
-		rel='stylesheet')
-	link(
-		href=require('Styles/layouts/callback.scss')
-		rel='stylesheet')
-	link(
-		href=require('Styles/layouts/callback-popup.scss')
-		rel='stylesheet')

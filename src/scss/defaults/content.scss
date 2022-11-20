@@ -9,6 +9,18 @@
 			padding-left: 15rem;
 		}
 
+		.list_dash & {
+			padding-left: 40rem;
+
+			@include to(980px) {
+				padding-left: 33rem;
+			}
+
+			@include to(580px) {
+				padding-left: 25rem;
+			}
+		}
+
 		&:not(:last-child) {
 			margin-bottom: 12rem;
 		}
@@ -31,6 +43,31 @@
 
 			.list_dark & {
 				background-color: #223147;
+			}
+
+			.list_blue & {
+				background-color: $color-blue;
+			}
+
+			.list_dash & {
+				inset: 0 auto auto 0;
+				width: auto;
+				height: auto;
+				margin-right: 15rem;
+				font: inherit;
+				font-weight: 700;
+				color: $color;
+				content: '—';
+				background: transparent;
+				border-radius: 0;
+
+				@include to(980px) {
+					margin-right: 10rem;
+				}
+
+				@include to(580px) {
+					margin-right: 5rem;
+				}
 			}
 		}
 	}

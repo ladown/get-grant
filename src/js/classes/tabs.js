@@ -1,7 +1,5 @@
 'use strict';
 
-import { gsap } from 'gsap';
-
 class Tabs {
 	constructor(wrapperElement) {
 		this.tabs = wrapperElement.querySelectorAll('.js-tabs-button');
@@ -15,29 +13,16 @@ class Tabs {
 		this.activeTab = 0;
 	}
 
-	toggleVisibility(index = 0) {
+	hideTabs() {
 		this.tabsParent.classList.add(this.mods.locked);
 		this.tabs[this.activeTab].classList.remove(this.mods.active);
-		gsap.to(this.tabsContent[this.activeTab], {
-			display: 'none',
-			opacity: 0,
-			duration: 0.3,
-			ease: 'linear',
+		this.tabsContent[this.activeTab].classList.remove(this.mods.active);
+	}
 
-			onStart: () => {
-				this.tabsContent[index].classList.add(this.mods.active);
-				setTimeout(() => {
-					gsap.to(this.tabsContent[index], {
-						display: 'grid',
-						opacity: 1,
-						duration: 0.3,
-						ease: 'linear',
-					});
-					this.tabs[index].classList.add(this.mods.active);
-					this.tabsParent.classList.remove(this.mods.locked);
-				}, 250);
-			},
-		});
+	showTabs(index = 0) {
+		this.tabsContent[index].classList.add(this.mods.active);
+		this.tabs[index].classList.add(this.mods.active);
+		this.tabsParent.classList.remove(this.mods.locked);
 
 		this.activeTab = index;
 	}
@@ -47,7 +32,8 @@ class Tabs {
 			if (event.target && event.target.classList.contains('js-tabs-button')) {
 				this.tabs.forEach((tab, index) => {
 					if (event.target === tab && index !== this.activeTab) {
-						this.toggleVisibility(index);
+						this.hideTabs();
+						this.showTabs(index);
 					}
 				});
 			}

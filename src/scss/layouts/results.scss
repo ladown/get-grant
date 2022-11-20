@@ -1,5 +1,10 @@
 .results {
-	padding-top: var(--section-offset-top);
+	padding: var(--section-offset-top) 0 var(--section-offset-bottom);
+	background-color: #fff;
+
+	&__title {
+		color: #0d212c;
+	}
 
 	&__items {
 		gap: 50rem;
@@ -30,7 +35,7 @@
 		&-header {
 			font-size: 56rem;
 			line-height: 1.1;
-			color: #86d7d9;
+			color: #3173db;
 			letter-spacing: -0.05em;
 
 			@include to(980px) {
@@ -47,7 +52,7 @@
 			font-size: 26rem;
 			font-weight: 300;
 			line-height: 1.1;
-			color: #fff;
+			color: #0d212c;
 
 			@include to(980px) {
 				margin-top: 21rem;

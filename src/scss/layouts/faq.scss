@@ -6,12 +6,12 @@
 		@include from(981px) {
 			position: relative;
 			z-index: 1;
-			margin-top: var(--section-offset-bottom);
+			padding-top: calc(var(--section-offset-top) + var(--section-offset-bottom));
 			overflow: hidden;
 
 			&::before {
 				position: absolute;
-				inset: 0 0 auto 0;
+				inset: -1px 0 auto 0;
 				height: 132rem;
 				content: '';
 				background: url('Images/faq-line.svg') top left / contain no-repeat;
@@ -87,14 +87,12 @@
 
 			span {
 				display: block;
-				width: 100%;
+				width: 0;
 				height: 100%;
 				background: linear-gradient(270deg, #86d7d9 0%, #619eff 100%);
 				border-radius: 100rem;
 				box-shadow: 0 0 15rem #7bc5e5;
-				transform: scale(0, 1);
-				transform-origin: center left;
-				will-change: transform;
+				will-change: width;
 			}
 		}
 

@@ -9,6 +9,16 @@
 			{
 				url: '#',
 				text: 'Конкурсы',
+				subblock: [
+					{
+						url: '#',
+						text: 'Развитие',
+					},
+					{
+						url: '#',
+						text: 'Коммерциализация',
+					},
+				],
 			},
 			{
 				url: '#',
@@ -63,15 +73,30 @@
 	};
 
 
-+b.HEADER.header.js-header
++b.HEADER.header(class=`${headerModes.length ? `_${headerModes.join(' _')}` : ''} js-header`)
 	- const { logo, nav, socials, button } = headerData;
 	+e.wrap.wrap.flex._nowrap._vertical
 		+e.A.logo.flex(href='/')
 			+icon(logo)
 		+e.menu.flex._nowrap._vertical.js-header-menu
-			+e.NAV.nav.flex._nowrap._vertical
+			+e.NAV.nav.flex._nowrap._vertical.js-accordion-wrap(data-responsive='980')
 				each link in nav
-					+e.A.link(href=link.url) #{ link.text }
+					+e.nav-item(class=link.subblock && 'js-tooltip-wrap js-accordion')
+						+e.A.link.flex._nowrap._vertical(
+							href=link.url
+							class=link.subblock && 'js-tooltip js-accordion-trigger'
+							data-responsive=link.subblock && '980'
+							data-tooltip-trigger=link.subblock && 'mouseenter click'
+							data-tooltip-placement=link.subblock && 'bottom-start')
+							+e.SPAN.link-text #{ link.text }
+							if link.subblock
+								+e.SPAN.link-arrow
+									+icon({name: 'arrowDown', viewBox: '0 0 12 7'})
+						if link.subblock
+							+e.nav-subblock.js-tooltip-content.js-accordion-content
+								+e.nav-inner.flex._nowrap._column
+									each sublink in link.subblock
+										+e.A.link-subblock(href=sublink.url) #{ sublink.text }
 			+socials(socials)
 			+button(button).js-popup-callback
 				| #{ button.text }

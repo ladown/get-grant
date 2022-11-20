@@ -1,13 +1,13 @@
 .button-back {
 	width: 70rem;
 	height: 40rem;
-	background-color: $color;
-	border: 1px solid #5897fb;
+	background-color: #fff;
+	border: 1px solid #0d212c;
 	border-radius: 5rem;
-	fill: #5897fb;
+	fill: #0d212c;
 	transition-timing-function: $default-transition-function;
 	transition-duration: $default-transition-duration;
-	transition-property: background-color, border;
+	transition-property: background-color, fill, border;
 
 	@extend %flex-center;
 
@@ -22,8 +22,9 @@
 	}
 
 	&:hover {
-		background-color: #fff;
-		border-color: #fff;
+		background-color: $color-blue;
+		border-color: $color-blue;
+		fill: #fff;
 	}
 
 	svg {

@@ -13,14 +13,18 @@ class WorkClass {
 		this.content = document.querySelector('.js-work-content');
 		this.timeline = null;
 		this.headerHeight = document.querySelector('.js-header').offsetHeight;
-		this.progressProperty = window.innerWidth >= 769 ? 'scaleX' : 'scaleY';
+		this.progressProperty = window.innerWidth >= 769 ? 'width' : 'height';
 		this.step = 0;
 	}
 
 	setStepedAnimation() {
+		const keyValue = getComputedStyle(this.progress[this.step])[
+			`max${this.capitalizeFirstLetter(this.progressProperty)}`
+		];
+
 		this.timeline.to(this.progress[this.step], {
-			[this.progressProperty]: 1,
-			duration: 1,
+			[this.progressProperty]: keyValue,
+			duration: 1.5,
 			delay: 0,
 			ease: 'cubic-bezier(0.645, 0.045, 0.355, 1)',
 			onStart: () => {
@@ -44,7 +48,7 @@ class WorkClass {
 		this.timeline = gsap.timeline({
 			scrollTrigger: {
 				trigger: this.content,
-				start: `top center-=${this.headerHeight}`,
+				start: `top bottom-=${this.headerHeight * 2}`,
 				end: 'bottom bottom',
 				markers: false,
 				pinSpacing: false,
@@ -53,6 +57,10 @@ class WorkClass {
 		});
 
 		this.setStepedAnimation();
+	}
+
+	capitalizeFirstLetter(string) {
+		return `${string[0].toUpperCase()}${string.slice(1)}`;
 	}
 
 	init() {

@@ -15,15 +15,24 @@ block content
 		const featuresData = {
 			items: [
 				{
-					preview: require('Images/feature-item-7.svg'),
+					icon: {
+						name: '95%',
+						viewBox: '0 0 167 48',
+					},
 					caption: 'отчетов сданы вовремя',
 				},
 				{
-					preview: require('Images/feature-item-8.svg'),
+					icon: {
+						name: '80%',
+						viewBox: '0 0 172 48',
+					},
 					caption: 'отчетов приняты без замечаний',
 				},
 				{
-					preview: require('Images/feature-item-9.svg'),
+					icon: {
+						name: '50+',
+						viewBox: '0 0 152 48',
+					},
 					caption: 'закрытых договоров',
 				},
 			],
@@ -84,17 +93,3 @@ block content
 	include ../layouts/quality
 	+faq(faqData)
 	include ../layouts/callback-new-popup
-
-block styles
-	link(
-		href=require('Styles/pages/reporting-support.scss')
-		rel='stylesheet')
-	link(
-		href=require('Styles/layouts/callback.scss')
-		rel='stylesheet')
-	link(
-		href=require('Styles/layouts/callback-popup.scss')
-		rel='stylesheet')
-	link(
-		href=require('Styles/layouts/callback-new-popup.scss')
-		rel='stylesheet')

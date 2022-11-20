@@ -4,7 +4,5 @@ mixin features(props = {})
 			each item in props.items
 				+e.item.flex._vertical._column._nowrap.text-center
 					+e.item-preview
-						img(
-							src=item.preview
-							alt=item.caption)
+						+icon(item.icon)
 					+e.H4.item-caption.h4 #{ item.caption }

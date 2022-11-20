@@ -1,6 +1,7 @@
 .programms {
 	padding: var(--section-offset-top) 0 var(--section-offset-bottom);
 	overflow: hidden;
+	background-color: #fff;
 
 	&__wrap {
 		display: grid;
@@ -13,6 +14,10 @@
 		@include to(580px) {
 			grid-template-columns: 100%;
 		}
+	}
+
+	&__title {
+		color: #24a2c8;
 	}
 
 	&__slider-nav {
@@ -49,10 +54,12 @@
 
 	&__slide {
 		padding: 60rem;
-		background-color: #223147;
+		background-color: #24a2c8;
 		border-radius: 10rem;
 		opacity: 0.2;
-		transition: opacity $default-transition-duration $default-transition-function;
+		transition: opacity $default-transition-duration $default-transition-function,
+			transform 0.4s cubic-bezier(0, 0, 0.4, 1);
+		will-change: transform, opacity;
 
 		@include to(980px) {
 			padding: 40rem;
@@ -61,6 +68,10 @@
 		@include to(580px) {
 			flex-direction: column;
 			padding: 20rem;
+		}
+
+		&:hover {
+			transform: scale3d(1.03, 1.03, 1.03);
 		}
 
 		&.swiper-slide {
@@ -119,7 +130,7 @@
 		}
 
 		&-label {
-			color: $color-marine;
+			color: #86d7d9;
 
 			@include to(580px) {
 				font-size: 12rem;

@@ -80,13 +80,13 @@
 +b.SECTION.main-directions.js-tabs
 	- const { title, tabs, content } = mainDirectionsData;
 	+e.wrap.wrap
-		+e.H2.title.h2.font-halvar.color-blue #{ title }
-		+e.tabs.flex._vertical.js-tabs-parent
+		+e.H2.title.h2.font-halvar.color-blue.js-reveal-slideRight #{ title }
+		+e.tabs.flex._vertical.js-tabs-parent.js-reveal-slideRight
 			each item, index in tabs
 				+e.BUTTON.tab.js-tabs-button(class=index === 0 && 'is-active') #{ item }
-		+e.content
+		+e.content.js-reveal-slideUp
 			each itemContent, index in content
-				+e.tab-content.js-tabs-content
+				+e.tab-content.js-tabs-content(class=index === 0 && 'is-active')
 					each item in itemContent
 						+e.item
 							+e.item-inner

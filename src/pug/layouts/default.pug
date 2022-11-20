@@ -22,6 +22,8 @@ block vars
 			classList: [],
 		};
 
+		let headerModes = [];
+
 doctype html
 html(class=html.classList)&attributes(html.attrs)
 	head
@@ -46,6 +48,8 @@ html(class=html.classList)&attributes(html.attrs)
 			type='image/svg+xml'
 			sizes='any')
 
+		block pre-styles
+
 		link(
 			href=require('Styles/vendors.scss')
 			rel='stylesheet')
@@ -53,11 +57,7 @@ html(class=html.classList)&attributes(html.attrs)
 			href=require('Styles/app.scss')
 			rel='stylesheet')
 
-		block styles
-
-		block head-end
-
-		block styles
+		block post-style
 
 		block head-end
 
@@ -74,6 +74,8 @@ html(class=html.classList)&attributes(html.attrs)
 			include footer
 
 		include popups
+
+		include tooltips
 
 		block pre-scripts
 

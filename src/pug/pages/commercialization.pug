@@ -16,15 +16,24 @@ block content
 		const featuresData = {
 			items: [
 				{
-					preview: require('Images/feature-item-1.svg'),
+					icon: {
+						name: '4',
+						viewBox: '0 0 54 47',
+					},
 					caption: 'конкурса в программе',
 				},
 				{
-					preview: require('Images/feature-item-5.svg'),
+					icon: {
+						name: '50-100%',
+						viewBox: '0 0 359 48',
+					},
 					caption: 'софинансирование',
 				},
 				{
-					preview: require('Images/feature-item-6.svg'),
+					icon: {
+						name: '12month',
+						viewBox: '0 0 252 48',
+					},
 					caption: 'срок реализации проекта',
 				},
 			],
@@ -194,14 +203,3 @@ block content
 	+calendar-plan(calendarPlanData)
 	+results(resultsData)
 	+faq(faqData)
-
-block styles
-	link(
-		href=require('Styles/pages/commercialization.scss')
-		rel='stylesheet')
-	link(
-		href=require('Styles/layouts/callback.scss')
-		rel='stylesheet')
-	link(
-		href=require('Styles/layouts/callback-popup.scss')
-		rel='stylesheet')

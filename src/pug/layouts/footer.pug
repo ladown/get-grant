@@ -161,7 +161,9 @@
 									+icon(item.icon)
 								+e({tag: !item.href ? 'address' : 'a'}).contacts-link.flex(href=item.href)
 									| #{ item.text }
-				+e.FORM.form.flex._vertical(action='#')
+				+e.FORM.form.flex._vertical(
+					action='#'
+					autocomplete='off')
 					+e.form-title.font-halvar.h6 #{ form.title }
 					+field(form.field)
 					+button(form.button)

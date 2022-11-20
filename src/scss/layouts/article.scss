@@ -1,32 +1,31 @@
 .article {
 	position: relative;
 	z-index: 1;
-	padding-top: 220rem;
+	padding-top: 200rem;
 	overflow: hidden;
 
 	@include to(980px) {
-		padding-top: 130rem;
+		padding-top: 150rem;
 	}
 
 	@include to(580px) {
-		padding-top: 90rem;
+		padding-top: 100rem;
 	}
 
 	&__wrap {
 		display: grid;
-		grid-template-columns: 1fr 840rem;
-		gap: 60rem;
+		grid-template-columns: 70rem 950rem;
+		gap: 50rem 20rem;
+		align-items: center;
+		color: $color;
 
 		@include to(980px) {
-			grid-template-columns: 1fr 800rem;
-			gap: 40rem;
+			grid-template-columns: 55rem 1fr;
+			gap: 35rem 20rem;
 		}
 
 		@include to(768px) {
 			grid-template-columns: 1fr;
-		}
-
-		@include to(580px) {
 			gap: 20rem;
 		}
 	}
@@ -34,13 +33,6 @@
 	&__title {
 		@include from(769px) {
 			grid-column: 2 / 3;
-		}
-	}
-
-	&__button-back {
-		@include from(769px) {
-			grid-row: 2 / 3;
-			grid-column: 1 / 2;
 		}
 	}
 
@@ -63,6 +55,12 @@
 			&:last-child {
 				margin-bottom: 0;
 			}
+		}
+	}
+
+	&__text {
+		&.h6 {
+			line-height: 1.4;
 		}
 	}
 
@@ -95,6 +93,7 @@
 
 	&__box {
 		margin: 40rem 0;
+		color: #fff;
 
 		@include to(580px) {
 			margin: 20rem 0;
@@ -335,7 +334,7 @@
 		}
 
 		&-button {
-			color: #fff;
+			color: $color;
 			text-align: left;
 			transition: color $default-transition-duration $default-transition-function;
 
@@ -359,9 +358,106 @@
 		}
 	}
 
-	&__background {
-		img {
-			z-index: -1;
+	&__block {
+		width: 100%;
+		max-width: 800rem;
+		padding: 20rem;
+		background-color: #fff;
+		border: 1px solid rgb(88 151 251 / 50%);
+		border-radius: 10px;
+
+		@include to(580px) {
+			padding: 10rem;
+		}
+	}
+
+	&__description {
+		@include from(769px) {
+			padding-left: 30rem;
+		}
+
+		&-item {
+			&:not(:last-child) {
+				margin-bottom: 20rem;
+
+				@include to(580px) {
+					margin-bottom: 15rem;
+				}
+			}
+
+			@include to(580px) {
+				flex-flow: column nowrap;
+			}
+		}
+
+		&-photo {
+			@include from(581px) {
+				flex: 0 0 150rem;
+				margin-right: 20rem;
+			}
+
+			@include to(580px) {
+				margin-bottom: 10px;
+			}
+
+			@extend %flex-center;
+		}
+	}
+
+	&__fond {
+		&-item {
+			padding: 20rem;
+			background-color: #fff;
+			border: 1px solid rgb(88 151 251 / 50%);
+			border-radius: 10px;
+
+			@include to(580px) {
+				flex-flow: column nowrap;
+				padding: 15rem;
+			}
+
+			.article_e2e-technologies & {
+				padding: 0;
+				border: none;
+				border-radius: 0;
+			}
+
+			&:not(:last-child) {
+				margin-bottom: 20rem;
+
+				@include to(580px) {
+					margin-bottom: 15px;
+				}
+			}
+		}
+
+		&-photo {
+			@include from(581px) {
+				flex: 0 0 140rem;
+				margin-right: 20rem;
+			}
+
+			@include from(981px) {
+				flex-basis: 170rem;
+				margin-right: 30rem;
+			}
+
+			@include to(580px) {
+				max-width: 125rem;
+				margin-bottom: 10px;
+			}
+
+			@extend %flex-center;
+		}
+
+		&-content {
+			@include from(581px) {
+				flex: 1;
+			}
+
+			> *:not(:last-child) {
+				margin-bottom: 20rem;
+			}
 		}
 	}
 }

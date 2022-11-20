@@ -23,10 +23,10 @@
 +b.SECTION.work.js-work
 	- const { title, features } = workData;
 	+e.wrap.wrap
-		+e.H2.title.h2.font-halvar #{ title }
+		+e.H2.title.h2.font-halvar.js-reveal-slideRight #{ title }
 		+e.features.flex
 			each feature in features
-				+e.feature
+				+e.feature.js-reveal-fadeIn.js-reveal-interval
 					+e.feature-icon
 						img(
 							src=feature.icon

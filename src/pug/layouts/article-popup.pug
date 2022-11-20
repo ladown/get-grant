@@ -32,7 +32,9 @@
 		+e.cell._left
 			+e.H1.title.strong.font-halvar !{ title }
 		+e.cell._right
-			+e.FORM.form(action='#')
+			+e.FORM.form(
+				action='#'
+				autocomplete='off')
 				+e.fields
 					each field in fields
 						+field(field)

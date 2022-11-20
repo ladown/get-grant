@@ -7,6 +7,7 @@ const FaqSlider = {
 	instance: null,
 	nodes: {
 		slider: document.querySelector('.js-slider-faq'),
+		slides: document.querySelectorAll('.js-slider-faq .swiper-slide'),
 		buttons: {
 			prev: document.querySelector('.js-slider-faq-prev'),
 			next: document.querySelector('.js-slider-faq-next'),
@@ -19,7 +20,7 @@ const FaqSlider = {
 			spaceBetween: 10,
 			grabCursor: true,
 			loop: true,
-			loopedSlides: 10,
+			loopedSlides: this.slides * 2,
 			slideToClickedSlide: true,
 			modules: [Navigation, Autoplay],
 			navigation: {
@@ -41,9 +42,9 @@ const FaqSlider = {
 							}
 						}
 					});
-					gsap.killTweensOf(progressbars, 'scaleX');
-					gsap.to(progressbars, { scaleX: 0, duration: 0.1, ease: 'linear' });
-					gsap.to(activeSlideProgressbar, { scaleX: 1, duration: 15, ease: 'linear' });
+					gsap.killTweensOf(progressbars, 'width');
+					gsap.to(progressbars, { width: 0, duration: 0.1, ease: 'linear' });
+					gsap.to(activeSlideProgressbar, { width: '100%', duration: 15, ease: 'linear' });
 				},
 			},
 		});

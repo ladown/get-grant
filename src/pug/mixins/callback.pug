@@ -9,7 +9,9 @@ mixin callback(props = {})
 						else
 							| Получите бесплатную консультацию
 				+e.cell._right
-					+e.FORM.form(action='#')
+					+e.FORM.form(
+						action='#'
+						autocomplete='off')
 						+e.fields.flex._column._nowrap._start
 							each field in props.fields
 								+field(field)

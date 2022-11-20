@@ -6,9 +6,11 @@ mixin article(props = {})
 			+e.H1.title.h1.font-halvar #{ title }
 			+e.content
 				each item in content
-					- const { content, contentClass, contentHref, photo, list, boxContent, columnsContent, rowsContent, threeColumns, contents } = item;
+					- const { content, contentClass, contentHref, photo, list, boxContent, columnsContent, rowsContent, threeColumns, contents, block, imageDescription, fonds } = item;
 					if content
-						+e.text(class=contentClass id=contentHref) #{ content }
+						+e.text(class=contentClass id=contentHref) !{ content }
+					if block
+						+e.block(class=block.contentClass) !{ block.content }
 					if photo
 						+e.photo(class=`${photo.isBorderRadius ? '_radius' : ''}`)
 							img(
@@ -21,9 +23,9 @@ mixin article(props = {})
 								: list.contentType === 'bullet'
 								? 'list__'
 								: list.contentType === 'order'
-								? 'order-list__' : ''} ${list.contentClass}`)
+								? 'order-list__' : ''} ${list.modes ? `_${list.modes.join(' _')}` : ''} ${list.contentClass}`)
 							each listItem in list.content
-								+e.LI.item #{ listItem }
+								+e.LI.item !{ listItem }
 					if boxContent
 						+e.box
 							each box in boxContent
@@ -62,8 +64,8 @@ mixin article(props = {})
 							each cell in columnsContent
 								- const { caption, list } = cell;
 								+e.columns-cell
-									+e.columns-caption(class=caption.contentClass) #{ caption.content }
-									+e.UL.columns-list.list__(class=list.contentClass)
+									+e.columns-caption(class=caption.contentClass) !{ caption.content }
+									+e.UL.columns-list.list__(class=`${list.modes ? `_${list.modes.join(' _')}` : ''} ${list.contentClass}`)
 										each listItem in list.content
 											+e.LI.item #{ listItem }
 					if rowsContent
@@ -87,8 +89,35 @@ mixin article(props = {})
 								each item in list.content
 									+e.LI.item.text-underline
 										button.article__contents-button.js-article-contents(data-href=item.href) #{ item.text }
-
-		+e.background.no-pe
-			img.object-fit(
-				src=background
-				alt='article-background')
+					if imageDescription
+						+e.description
+							each row in imageDescription
+								+e.description-item.flex._nowrap._start
+									+e.description-photo
+										img(
+											src=row.photo
+											alt='photo')
+									+e.description-text(class=row.contentClass) !{ row.content }
+					if fonds
+						+e.fond
+							each fondItem in fonds
+								+e.fond-item.flex._nowrap._start
+									+e.fond-photo
+										img(
+											src=fondItem.photo
+											alt='photo')
+									+e.fond-content.h6
+										each contentItem in fondItem.content
+											- const { content, contentClass, list } = contentItem;
+											if content
+												+e.fond-text(class=contentClass) !{ content }
+											if list
+												+e.UL.fond-list(
+													class=`${list.contentType === 'arrow'
+														? 'arrow-list__'
+														: list.contentType === 'bullet'
+														? 'list__'
+														: list.contentType === 'order'
+														? 'order-list__' : ''} ${list.modes ? `_${list.modes.join(' _')}` : ''} ${list.contentClass}`)
+													each listItem in list.content
+														+e.LI.item !{ listItem }

@@ -3,7 +3,8 @@
 	inset: 0 0 auto 0;
 	z-index: 10;
 	padding: 30rem 0;
-	transition: background-color $default-transition-duration $default-transition-function;
+	transition: background-color $default-transition-duration $default-transition-function,
+		border $default-transition-duration $default-transition-function;
 
 	@include to(580px) {
 		padding: 20rem 0;
@@ -26,6 +27,32 @@
 
 		&.is-sticked {
 			background-color: rgb(49 115 219 / 80%);
+
+			&.is-opened {
+				background-color: $color;
+			}
+		}
+
+		&.is-opened {
+			background-color: $color;
+		}
+	}
+
+	&_transparent {
+		background-color: #fff;
+		border-bottom: 1px solid transparent;
+
+		&.is-sticked {
+			background-color: rgb(255 255 255 / 80%);
+			border-color: $color-blue;
+
+			&.is-opened {
+				background-color: #fff;
+			}
+		}
+
+		&.is-opened {
+			background-color: #fff;
 		}
 	}
 
@@ -46,6 +73,10 @@
 		@include to(580px) {
 			width: 136rem;
 		}
+
+		.header_transparent & {
+			fill: $color-blue;
+		}
 	}
 
 	&__menu {
@@ -57,7 +88,7 @@
 
 		@include to(980px) {
 			position: fixed;
-			inset: 85rem 0 0 0;
+			inset: 83rem 0 0 0;
 			display: none;
 			flex-flow: column nowrap;
 			align-items: flex-start;
@@ -69,6 +100,12 @@
 
 		@include to(580px) {
 			top: 63rem;
+		}
+
+		.header_transparent & {
+			@include to(980px) {
+				background-color: #fff;
+			}
 		}
 
 		&-button {
@@ -85,6 +122,14 @@
 
 				.header.is-opened & {
 					@include burger-to-cross;
+				}
+			}
+
+			.header_transparent & {
+				span,
+				span::before,
+				span::after {
+					background-color: $color;
 				}
 			}
 		}
@@ -105,6 +150,30 @@
 			flex-direction: column;
 			align-items: flex-start;
 		}
+
+		&-subblock {
+			@include to(980px) {
+				display: none;
+			}
+		}
+
+		&-inner {
+			@include from(981px) {
+				padding: 14rem 0;
+				background-color: #fff;
+				border-radius: 5px;
+			}
+
+			@include to(980px) {
+				padding: 10rem 0 0 14rem;
+			}
+
+			.header_transparent & {
+				@include from(981px) {
+					border: 1px solid $color-blue;
+				}
+			}
+		}
 	}
 
 	&__link {
@@ -115,15 +184,84 @@
 		transition: color $default-transition-duration $default-transition-function,
 			opacity $default-transition-duration $default-transition-function;
 
-		.header:not(.header_blue) & {
-			&:hover {
-				color: $color-blue;
+		.header_transparent & {
+			color: $color;
+		}
+
+		&-text {
+			flex-shrink: 1;
+		}
+
+		&-arrow {
+			flex: 0 0 auto;
+			width: 12rem;
+			height: 7rem;
+			margin-left: 5rem;
+			fill: transparent;
+			stroke: $color-blue;
+			stroke-linecap: round;
+			stroke-linejoin: round;
+			stroke-width: 1;
+			will-change: transform;
+			transition: transform $default-transition-duration $default-transition-function;
+
+			.js-tooltip-wrap.is-opened & {
+				transform: rotate(180deg);
+			}
+
+			.header_blue & {
+				stroke: #fff;
 			}
 		}
 
-		.header_blue & {
-			&:hover {
-				opacity: 0.7;
+		.header:not(.header_blue) &:hover,
+		.header:not(.header_blue) .js-tooltip-wrap.is-opened & {
+			color: $color-blue;
+		}
+
+		.header_blue &:hover,
+		.header_blue .js-tooltip-wrap.is-opened & {
+			opacity: 0.7;
+		}
+
+		&-subblock {
+			@include from(981px) {
+				padding: 6rem 20rem;
+				font-size: 16rem;
+				line-height: 1.1;
+				color: rgb(13 33 44 / 80%);
+				background-color: transparent;
+				transition-timing-function: $default-transition-function;
+				transition-duration: $default-transition-duration;
+				transition-property: color, background-color;
+
+				&:hover {
+					color: #0d212c;
+					background-color: #dce9ff;
+				}
+			}
+
+			@include to(980px) {
+				font-size: 16rem;
+				line-height: 1.1;
+				color: #fff;
+				transition: color $default-transition-duration $default-transition-function;
+
+				&:hover {
+					color: $color-blue;
+				}
+
+				&:not(:last-child) {
+					margin-bottom: 10rem;
+				}
+
+				.header_transparent & {
+					color: $color;
+
+					&:hover {
+						color: $color-blue;
+					}
+				}
 			}
 		}
 	}
@@ -157,6 +295,14 @@
 				.button__text {
 					color: $color;
 				}
+			}
+		}
+
+		.header_transparent & {
+			background: #3173db;
+
+			.button__text {
+				color: #fff;
 			}
 		}
 

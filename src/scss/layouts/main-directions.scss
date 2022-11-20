@@ -1,5 +1,6 @@
 .main-directions {
 	padding-top: var(--section-offset-top);
+	overflow: hidden;
 	background-color: #fff;
 
 	&__title {
@@ -73,10 +74,6 @@
 				grid-template-columns: repeat(2, 1fr);
 				gap: 20rem;
 			}
-
-			&:not(:first-child) {
-				display: none;
-			}
 		}
 	}
 
@@ -97,6 +94,12 @@
 		z-index: 1;
 		overflow: hidden;
 		border-radius: 10rem;
+
+		&:hover {
+			img {
+				filter: grayscale(0);
+			}
+		}
 
 		&::before {
 			display: block;
@@ -135,6 +138,9 @@
 		&-photo {
 			img {
 				z-index: -1;
+				filter: grayscale(1);
+				transition: filter $default-transition-duration $default-transition-function;
+				will-change: filter;
 			}
 		}
 	}

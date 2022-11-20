@@ -24,7 +24,9 @@
 		+e.box
 			+e.content
 				+e.H2.title.h2.font-halvar #{ title }
-				+e.FORM.form.flex._nowrap._vertical(action='#')
+				+e.FORM.form.flex._nowrap._vertical(
+					action='#'
+					autocomplete='off')
 					+field(field)
 					+button(button)
 						| #{ button.text }

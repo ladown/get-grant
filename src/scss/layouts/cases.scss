@@ -1,5 +1,6 @@
 .cases {
 	padding: var(--section-offset-top) 0;
+	overflow: hidden;
 
 	&__wrap {
 		display: grid;
@@ -98,6 +99,17 @@
 
 				@include from(769px) {
 					flex: 1;
+				}
+
+				@include from(981px) {
+					margin-left: -30rem;
+					transition: transform 0.4s cubic-bezier(0, 0, 0.4, 1);
+					transform: scale3d(0.97, 0.99, 0.99);
+					will-change: transform;
+
+					&:hover {
+						transform: scale3d(1, 1, 1);
+					}
 				}
 
 				@include to(768px) {

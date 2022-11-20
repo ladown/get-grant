@@ -17,17 +17,29 @@
 		}
 
 		&-preview {
+			height: 50rem;
+
 			@extend %flex-center;
 
-			img {
-				height: 50rem;
+			@include to(980px) {
+				height: 37rem;
+			}
 
-				@include to(980px) {
-					height: 37rem;
-				}
+			@include to(580px) {
+				height: 25rem;
+			}
 
-				@include to(580px) {
-					height: 25rem;
+			svg {
+				max-height: 100%;
+				fill: $color-blue;
+				transition: fill $default-transition-duration $default-transition-function,
+					filter $default-transition-duration $default-transition-function;
+			}
+
+			.features__item:hover & {
+				svg {
+					filter: drop-shadow(0 0 15px rgb(137 183 255 / 20%));
+					fill: #89b7ff;
 				}
 			}
 		}

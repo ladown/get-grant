@@ -8,15 +8,24 @@ block content
 		const featuresData = {
 			items: [
 				{
-					preview: require('Images/feature-item-10.svg'),
+					icon: {
+						name: '70+',
+						viewBox: '0 0 153 48',
+					},
 					caption: 'успешных кейсов привлечения грантов',
 				},
 				{
-					preview: require('Images/feature-item-11.svg'),
+					icon: {
+						name: 'more5year',
+						viewBox: '0 0 261 47',
+					},
 					caption: 'работаем в сфере GR',
 				},
 				{
-					preview: require('Images/feature-item-8.svg'),
+					icon: {
+						name: '80%',
+						viewBox: '0 0 172 48',
+					},
 					caption: 'от всего объема работ выполняем мы',
 				},
 			],
@@ -28,14 +37,3 @@ block content
 	include ../layouts/belief
 	include ../layouts/about
 	include ../layouts/team
-
-block styles
-	link(
-		href=require('Styles/pages/webinar.scss')
-		rel='stylesheet')
-	link(
-		href=require('Styles/layouts/callback.scss')
-		rel='stylesheet')
-	link(
-		href=require('Styles/layouts/callback-popup.scss')
-		rel='stylesheet')

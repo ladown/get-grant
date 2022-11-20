@@ -20,6 +20,7 @@ const CasesSlider = {
 			spaceBetween: 16,
 			grabCursor: true,
 			modules: [Navigation],
+			loop: true,
 			navigation: {
 				nextEl: this.nodes.buttons.next,
 				prevEl: this.nodes.buttons.prev,

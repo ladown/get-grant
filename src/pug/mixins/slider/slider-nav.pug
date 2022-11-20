@@ -7,6 +7,6 @@ mixin slider-nav(props)
 			`${props.id ? `js-slider-${props.id}-next` : '' }`,
 		];
 
-	+e.slider-nav.flex.slider-nav&attributes(attributes)
+	+e.slider-nav.flex.slider-nav&attributes(attributes)(class=`${props.modes ? `_${props.modes.join(' _')}` : ''}`)
 		+slider-button(props.button).slider-button_prev(class=prevClass.join(' '))
 		+slider-button(props.button).slider-button_next(class=nextClass.join(' '))
