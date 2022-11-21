@@ -93,7 +93,7 @@
 								+e.SPAN.link-arrow
 									+icon({name: 'arrowDown', viewBox: '0 0 12 7'})
 						if link.subblock
-							+e.nav-subblock.js-tooltip-content.js-accordion-content
+							+e.nav-subblock.js-tooltip-content.js-accordion-content.invisible-container
 								+e.nav-inner.flex._nowrap._column
 									each sublink in link.subblock
 										+e.A.link-subblock(href=sublink.url) #{ sublink.text }

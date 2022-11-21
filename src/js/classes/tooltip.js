@@ -38,6 +38,7 @@ class Tooltip {
 	}
 
 	setupTooltip() {
+		this.content.classList.remove('invisible-container');
 		this.instance = tippy(
 			this.tooltip,
 			Object.assign(
