@@ -129,7 +129,8 @@
 				font-size: 12rem;
 			}
 
-			.swiper-slide-active & {
+			.swiper-slide-active &,
+			.swiper-slide-duplicate-active & {
 				opacity: 1;
 			}
 		}

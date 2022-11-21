@@ -18,7 +18,7 @@ class StepsClass {
 
 	getCoords(item, index) {
 		const x1 = index % 2 === 0 ? 0 : 300;
-		const y1 = item.offsetTop + item.offsetHeight / 2;
+		const y1 = item.offsetTop + item.offsetHeight - 30;
 		const x2 = index % 2 === 0 ? 300 : 0;
 		return {
 			x1,
@@ -52,10 +52,10 @@ class StepsClass {
 				const timeline = gsap.timeline({
 					scrollTrigger: {
 						trigger: item,
-						start: `bottom bottom-=${this.headerHeight * 2}`,
-						end: 'top center-=100',
-						scrub: true,
-						markers: false,
+						start: `start bottom-=${this.headerHeight}`,
+						end: `bottom bottom-=${this.headerHeight}`,
+						scrub: false,
+						markers: true,
 						pinSpacing: false,
 						invalidateOnRefresh: true,
 					},
@@ -63,7 +63,14 @@ class StepsClass {
 
 				timeline.to(line, {
 					width: '100%',
-					ease: 'none',
+					onStart: () => {
+						gsap.to(item, { opacity: 1, duration: 0.2, ease: 'linear' });
+					},
+					onComplete: () => {
+						if (index + 2 === this.items.length) {
+							gsap.to(this.items[index + 1], { opacity: 1, duration: 0.2, ease: 'linear' });
+						}
+					},
 				});
 
 				this.timelines.push(timeline);
@@ -76,11 +83,14 @@ class StepsClass {
 		const gutter = Number(getComputedStyle(this.content).gap.replace('px', ''));
 
 		this.items.forEach((item, index) => {
+			const itemHeight = item.offsetHeight;
+
 			if (index + 1 !== this.items.length) {
 				const timeline = gsap.timeline({
 					scrollTrigger: {
 						trigger: item,
 						start: `top top+=${headerHeight + gutter}`,
+						end: `bottom top+=${itemHeight + gutter}`,
 						scrub: true,
 						markers: false,
 						pinSpacing: false,

@@ -20,7 +20,7 @@ const FaqSlider = {
 			spaceBetween: 10,
 			grabCursor: true,
 			loop: true,
-			loopedSlides: this.slides * 2,
+			loopedSlides: this.nodes.slides.length * 2,
 			slideToClickedSlide: true,
 			modules: [Navigation, Autoplay],
 			navigation: {

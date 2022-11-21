@@ -3,26 +3,14 @@
 
 	&__items {
 		position: relative;
-		display: grid;
+		display: flex;
+		flex-flow: column nowrap;
+		gap: 30rem;
+		align-items: flex-start;
+		justify-content: space-between;
 		margin-top: 60rem;
 
-		@include from(981px) {
-			grid-template-columns: repeat(2, 400rem);
-			grid-auto-rows: minmax(20rem, auto);
-			gap: 60rem;
-			align-items: flex-start;
-			justify-content: space-between;
-
-			&::before {
-				display: block;
-				grid-row: 1 / 2;
-				grid-column: 2 / 3;
-				content: '';
-			}
-		}
-
 		@include to(980px) {
-			grid-template-columns: 1fr;
 			gap: 150rem;
 		}
 
@@ -37,7 +25,16 @@
 		line-height: 1.1;
 
 		@include from(981px) {
-			grid-row: span 2;
+			max-width: 400rem;
+			opacity: 0;
+
+			&:nth-child(even) {
+				margin-right: auto;
+			}
+
+			&:nth-child(odd) {
+				margin-left: auto;
+			}
 		}
 
 		@include to(980px) {
@@ -56,6 +53,7 @@
 			height: 30rem;
 			content: '';
 			border-radius: 100rem;
+			transition: 0.05s linear;
 
 			.steps__item:nth-child(even) & {
 				left: 0;
@@ -142,6 +140,7 @@
 		height: 50rem;
 		background: linear-gradient(90deg, rgb(13 33 44 / 0%) 4.37%, #19334c 44.77%, #86d7d9 104.83%);
 		border-radius: 100rem;
+		transition: 0.05s linear;
 
 		&:nth-child(odd) {
 			transform: rotate(10deg);

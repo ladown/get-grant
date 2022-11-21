@@ -51,49 +51,35 @@
 			padding: 20rem 10rem;
 		}
 
-		&:not(:first-child) {
-			&::before {
-				position: absolute;
-				inset: 0;
-				z-index: -1;
-				pointer-events: none;
-				content: '';
-				opacity: 0;
-				transition: opacity $default-transition-duration $default-transition-function;
-			}
+		&::before {
+			position: absolute;
+			inset: 0;
+			z-index: -1;
+			pointer-events: none;
+			content: '';
+			opacity: 0;
+			transition: opacity $default-transition-duration $default-transition-function;
+		}
 
-			&:hover {
-				&::before {
-					opacity: 1;
-				}
+		&:hover {
+			&::before {
+				opacity: 1;
 			}
 		}
 
 		.expenses_green & {
-			&:first-child {
+			background: rgb(255 255 255 / 15%);
+
+			&::before {
 				background: linear-gradient(270deg, #c64328 0%, #d9b886 100%);
-			}
-
-			&:not(:first-child) {
-				background: rgb(255 255 255 / 15%);
-
-				&::before {
-					background: linear-gradient(270deg, #c64328 0%, #d9b886 100%);
-				}
 			}
 		}
 
 		.expenses_blue & {
-			&:first-child {
+			background: rgb(88 151 251 / 15%);
+
+			&::before {
 				background: linear-gradient(301.68deg, #c64328 -29.03%, #d9b886 100%);
-			}
-
-			&:not(:first-child) {
-				background: rgb(88 151 251 / 15%);
-
-				&::before {
-					background: linear-gradient(301.68deg, #c64328 -29.03%, #d9b886 100%);
-				}
 			}
 		}
 

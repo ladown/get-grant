@@ -57,9 +57,17 @@
 		&-caption {
 			font-size: 38rem;
 			line-height: 1;
+			transition-timing-function: $default-transition-function;
+			transition-duration: $default-transition-duration;
+			transition-property: color, text-shadow;
 
 			@include to(580px) {
 				font-size: 40rem;
+			}
+
+			.investments-features__item:hover & {
+				color: #89b7ff;
+				text-shadow: 0 0 15px rgb(137 183 255 / 20%);
 			}
 		}
 
