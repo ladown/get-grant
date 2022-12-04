@@ -11,17 +11,17 @@
 				text: 'Конкурсы',
 				subblock: [
 					{
-						url: '#',
+						url: './development.html',
 						text: 'Развитие',
 					},
 					{
-						url: '#',
+						url: './commercialization.html',
 						text: 'Коммерциализация',
 					},
 				],
 			},
 			{
-				url: '#',
+				url: './reporting-support.html',
 				text: 'Отчетность',
 			},
 			{
@@ -29,7 +29,7 @@
 				text: 'Кейсы',
 			},
 			{
-				url: '#',
+				url: './webinar.html',
 				text: 'Вебинар',
 			},
 			{
@@ -76,7 +76,7 @@
 +b.HEADER.header(class=`${headerModes.length ? `_${headerModes.join(' _')}` : ''} js-header`)
 	- const { logo, nav, socials, button } = headerData;
 	+e.wrap.wrap.flex._nowrap._vertical
-		+e.A.logo.flex(href='/')
+		+e.A.logo.flex(href='./')
 			+icon(logo)
 		+e.menu.flex._nowrap._vertical.js-header-menu
 			+e.NAV.nav.flex._nowrap._vertical.js-accordion-wrap(data-responsive='980')

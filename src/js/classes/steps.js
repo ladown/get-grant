@@ -55,7 +55,7 @@ class StepsClass {
 						start: `start bottom-=${this.headerHeight}`,
 						end: `bottom bottom-=${this.headerHeight}`,
 						scrub: false,
-						markers: true,
+						markers: false,
 						pinSpacing: false,
 						invalidateOnRefresh: true,
 					},
