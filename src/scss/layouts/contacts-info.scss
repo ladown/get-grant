@@ -1,0 +1,46 @@
+.contacts-info {
+	background-color: #fff;
+
+	&__header {
+		padding: 80rem 0;
+		color: $color;
+
+		@include to(980px) {
+			padding: 60rem 0;
+		}
+
+		@include to(580px) {
+			padding: 40rem 0;
+		}
+	}
+
+	&__address {
+		margin-top: 20rem;
+		font-style: normal;
+		font-weight: 200;
+
+		@include to(580px) {
+			margin-top: 16rem;
+		}
+	}
+
+	&__map {
+		position: relative;
+		display: block;
+		width: 100%;
+
+		&::before {
+			display: block;
+			padding-top: calc(div(612, 1440) * 100%);
+			content: '';
+
+			@include to(580px) {
+				padding-top: 100%;
+			}
+		}
+
+		iframe {
+			border: none;
+		}
+	}
+}

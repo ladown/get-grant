@@ -1,0 +1,90 @@
+.cases-hero {
+	position: relative;
+	z-index: 1;
+	padding: 150rem 0 75rem;
+	overflow: hidden;
+
+	@include to(980px) {
+		padding: 125rem 0 55rem;
+	}
+
+	@include to(580px) {
+		padding: 100rem 0 40rem;
+	}
+
+	&__wrap {
+		position: relative;
+	}
+
+	&__content {
+		width: 100%;
+		max-width: 700rem;
+
+		@include to(768px) {
+			max-width: 100%;
+		}
+	}
+
+	&__title {
+		margin-top: 24rem;
+
+		@include to(980px) {
+			margin-top: 20rem;
+		}
+
+		@include to(580px) {
+			margin-top: 16rem;
+		}
+	}
+
+	&__list {
+		gap: 20rem;
+		margin-top: 20rem;
+
+		@include to(580px) {
+			gap: 16rem;
+			margin-top: 16rem;
+		}
+
+		.list {
+			&__item {
+				flex: 1 1 calc(50% - 20rem);
+
+				@include to(580px) {
+					flex-basis: 100%;
+				}
+			}
+		}
+	}
+
+	&__button {
+		min-width: 340rem;
+		margin-top: 60rem;
+
+		@include to(980px) {
+			margin-top: 40rem;
+		}
+
+		@include to(580px) {
+			min-width: 100%;
+			margin-top: 20rem;
+		}
+	}
+
+	&__photo {
+		position: absolute;
+		top: 12rem;
+		right: -140rem;
+		width: 500rem;
+
+		@include to(768px) {
+			display: none;
+		}
+
+		&::before {
+			display: block;
+			padding-top: calc(div(502, 504) * 100%);
+			content: '';
+		}
+	}
+}

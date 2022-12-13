@@ -12,10 +12,10 @@ block content
 				classes: '',
 				text: 'Оставить заявку'
 			},
-			text: 'Миссия нашей компании - сделать меры грантовой поддержки проще и доступнее, экономя ресурсы и время вашей компании.',
+			text: 'Наша миссия —  сделать меры грантовой поддержки проще и доступнее, экономя ресурсы и время вашей компании.',
 			videoSrc: '7rgIFbLRkBk',
 		};
-		const callbackMainData = {
+		const callbackInlineMainData = {
 			title: 'Получите бесплатную консультацию',
 			fields: [
 				{
@@ -28,12 +28,6 @@ block content
 					inputmode: 'tel',
 					name: 'phone',
 					placeholder: '+7 (___) ___-__-__',
-				},
-				{
-					type: 'email',
-					inputmode: 'email',
-					name: 'email',
-					placeholder: 'Электронная почта',
 				},
 			],
 			button: {
@@ -104,9 +98,17 @@ block content
 	+hero(heroData)
 	include ../layouts/cases
 	include ../layouts/work
-	+callback(callbackMainData)
+	+callback-inline(callbackInlineMainData)
 	include ../layouts/steps
 	include ../layouts/reasons
 	+faq(faqData)
 	include ../layouts/main-directions
 	include ../layouts/main-callback
+
+//- block post-style
+//- 	link(
+//- 		rel='stylesheet'
+//- 		href=require('Styles/pages/main.scss'))
+//- 	link(
+//- 		rel='stylesheet'
+//- 		href=require('Styles/pages/callback-inline.scss'))

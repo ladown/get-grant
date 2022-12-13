@@ -1,0 +1,44 @@
+extends ../layouts/default.pug
+
+block append vars
+	- title = 'Контакты';
+
+block content
+	-
+		const callbackMainData = {
+			modes: ['light'],
+			title: 'Получите бесплатную консультацию',
+			fields: [
+				{
+					type: 'text',
+					name: 'name',
+					placeholder: 'Ваше имя',
+				},
+				{
+					type: 'tel',
+					inputmode: 'tel',
+					name: 'phone',
+					placeholder: '+7 (___) ___-__-__',
+				},
+				{
+					type: 'email',
+					inputmode: 'email',
+					name: 'email',
+					placeholder: 'Электронная почта',
+				},
+			],
+			button: {
+				text: 'Оставить заявку',
+				modes: ['transparent'],
+			},
+			policy: 'Нажимая кнопку «Оставить заявку», Вы даете свое согласие на обработку <a href="#" class="text-underline">персональных данных.</a>'
+		};
+
+	include ../layouts/contacts-hero
+	include ../layouts/contacts-info
+	+callback(callbackMainData)
+
+//- block post-style
+//- 	link(
+//- 		rel='stylesheet'
+//- 		href=require('Styles/pages/contacts.scss'))

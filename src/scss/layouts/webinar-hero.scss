@@ -1,62 +1,88 @@
 .webinar-hero {
 	position: relative;
 	z-index: 1;
-	padding: 140rem 0 60rem;
+	padding: 200rem 0 100rem;
 	overflow: hidden;
 
+	@include to(1300px) {
+		padding-bottom: 180rem;
+	}
+
 	@include to(980px) {
-		padding: 120rem 0 45rem;
+		padding: 150rem 0 260rem;
+	}
+
+	@include to(768px) {
+		padding: 100rem 0 500rem;
 	}
 
 	@include to(580px) {
-		padding: 100rem 0 30rem;
+		padding-bottom: 460rem;
 	}
 
-	&__box {
-		@include from(769px) {
-			background: rgb(255 255 255 / 10%);
-			backdrop-filter: blur(43rem);
-		}
+	&__wrap {
+		position: relative;
 	}
 
 	&__cell {
 		&_left {
 			@include from(769px) {
 				flex: 0 1 55%;
-				padding: 30rem 30rem 45rem;
 			}
 
 			@include from(981px) {
-				flex-basis: 610rem;
-				padding: 40rem 40rem 60rem;
+				flex-basis: 550rem;
 			}
 		}
 
 		&_right {
-			@include from(769px) {
-				flex: 1;
+			position: absolute;
+			top: -50rem;
+			right: -150rem;
+			display: grid;
+			grid-template-columns: repeat(2, 300rem);
+			grid-auto-rows: minmax(25rem, auto);
+			gap: 30rem 15rem;
+			transform: rotate(-8deg);
+			transform-origin: center center;
+
+			@include to(980px) {
+				grid-template-columns: repeat(2, 260rem);
+				grid-auto-rows: minmax(18rem, auto);
+			}
+
+			@include to(768px) {
+				top: auto;
+				right: 30rem;
+				bottom: -480rem;
+				grid-template-columns: repeat(2, 220rem);
+				grid-auto-rows: minmax(11rem, auto);
+			}
+
+			@include to(580px) {
+				right: -45rem;
+				bottom: -420rem;
+				grid-template-columns: repeat(2, 160rem);
+				grid-auto-rows: minmax(2rem, auto);
+			}
+
+			&::before {
+				display: block;
+				grid-row: 1 / 2;
+				grid-column: 1 / 2;
+				content: '';
 			}
 		}
 	}
 
-	&__text {
-		margin-top: 20rem;
-
-		@include to(580px) {
-			margin-top: 16rem;
-		}
-
-		p {
-			&:not(:last-child) {
-				margin-bottom: 10rem;
-			}
-		}
+	&__title {
+		margin-top: 40rem;
 	}
 
 	&__button {
 		width: 100%;
 		max-width: 350rem;
-		margin-top: 60rem;
+		margin-top: 110rem;
 
 		@include to(980px) {
 			margin-top: 38rem;
@@ -69,8 +95,25 @@
 
 	&__photo {
 		position: relative;
-		width: 100%;
-		height: 100%;
+		grid-row: span 6;
+		overflow: hidden;
+		border-radius: 20rem;
+
+		&:first-child {
+			@include to(1300px) {
+				grid-row: 8 / span 6;
+				grid-column: 1 / 2;
+			}
+		}
+
+		&:nth-child(2) {
+			border: 1px solid #5897fb;
+
+			@include to(1300px) {
+				grid-row: 2 / span 6;
+				grid-column: 1 / 2;
+			}
+		}
 	}
 
 	&__background {

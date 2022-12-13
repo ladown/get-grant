@@ -33,7 +33,6 @@
 			}
 		}
 
-		&:hover,
 		&.is-active {
 			border-color: $color-blue;
 		}
@@ -56,7 +55,6 @@
 				order: 1;
 			}
 
-			.directions__item:hover &,
 			.directions__item.is-active & {
 				color: #fff;
 			}
@@ -92,7 +90,6 @@
 				font-size: 12rem;
 			}
 
-			.directions__item:hover &,
 			.directions__item.is-active & {
 				color: #fff;
 			}
@@ -127,8 +124,7 @@
 			}
 
 			.directions__item.is-active &,
-			.directions__item:hover &,
-			.directions__item:nth-child(3):hover & {
+			.directions__item:nth-child(3).is-active & {
 				stroke: $color-blue;
 			}
 		}

@@ -39,9 +39,26 @@ class DefaultsClass {
 		}
 	}
 
+	hoverEffect() {
+		const items = Array.from(document.querySelectorAll('.js-hover-item'));
+
+		items.forEach((item) => {
+			item.addEventListener('mouseenter', () => {
+				items.forEach((el) => {
+					if (el === item) {
+						item.classList.add('is-active');
+					} else {
+						el.classList.remove('is-active');
+					}
+				});
+			});
+		});
+	}
+
 	init() {
 		this.backButton();
 		this.articleContentButtons();
+		this.hoverEffect();
 	}
 }
 

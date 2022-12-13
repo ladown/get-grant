@@ -32,6 +32,8 @@
 		flex: 0 1 240rem;
 		max-width: 100%;
 
+		@extend %flex-center;
+
 		@include to(580px) {
 			flex-basis: 160rem;
 		}

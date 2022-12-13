@@ -52,6 +52,10 @@
 		&-col {
 			flex: 0 1 auto;
 
+			@include from(769px) {
+				min-width: 175rem;
+			}
+
 			@include to(768px) {
 				flex-grow: 1;
 			}

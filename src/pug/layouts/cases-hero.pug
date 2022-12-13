@@ -1,0 +1,34 @@
+-
+	const casesHeroData = {
+		label: 'Вебинар',
+		title: 'Хотите узнать, как подготовить качественную заявку на грант от Фонда содействия инновациям?',
+		list: [
+			'Расскажем на вебинаре обо всех нюансах взаимодействия с ФСИ',
+			'Поделимся экспертным опытом (лайфхаками) по подготовке качественной заявки на грант',
+		],
+		button: {
+			modes: ['gradient', 'font-halvar', 'big'],
+			text: 'Записаться',
+		},
+		photo: require('Images/cases-hero.svg'),
+		background: require('Images/backgrounds/cases-hero-bg.png'),
+	};
+
++b.SECTION.cases-hero
+	- const { label, title, list, button, photo, background } = casesHeroData;
+	+e.wrap.wrap
+		+e.content
+			+e.label.h5.font-halvar #{ label }
+			+e.H1.title.h3.font-halvar.strong #{ title }
+			+e.UL.list.list__._blue.flex
+				each listItem in list
+					+e.LI.item #{ listItem }
+			+button(button)
+				| #{ button.text }
+		+e.photo
+			img.object-fit(
+				src=photo
+				alt='cases-hero photo')
+	+e.IMG.background.no-pe.object-fit(
+		src=background
+		alt='cases hero background')

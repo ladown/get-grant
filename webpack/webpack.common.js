@@ -13,19 +13,19 @@ module.exports = {
 	output: {
 		path: paths.build.default,
 		publicPath: 'auto',
-		filename: 'js/[name].[contenthash:8].js',
-		chunkFilename: 'js/[name].[id].js',
+		filename: 'js/[name].js',
+		chunkFilename: 'js/[name].js',
 		clean: true,
 	},
 
 	resolve: {
 		alias: {
-			Icons: path.resolve(__dirname, '../src/icons/'),
+			'~': path.resolve(__dirname, '../src/'),
 			Images: path.resolve(__dirname, '../src/img/'),
 			Fonts: path.resolve(__dirname, '../src/fonts/'),
 			Styles: path.resolve(__dirname, '../src/scss/'),
 			Scripts: path.resolve(__dirname, '../src/js/'),
-			Static: path.resolve(__dirname, '../src/static/'),
+			Videos: path.resolve(__dirname, '../src/video/'),
 		},
 	},
 
@@ -46,8 +46,9 @@ module.exports = {
 		}),
 
 		new PugPlugin({
+			pretty: true,
 			extractCss: {
-				filename: 'css/[name].[contenthash:8].css',
+				filename: 'css/[name].css',
 			},
 			postprocess(content, { assetFile }) {
 				if (assetFile.includes('page-list')) {
@@ -102,7 +103,16 @@ module.exports = {
 				include: /[\\/]img/,
 				type: 'asset/resource',
 				generator: {
-					filename: 'img/[name].[hash:8][ext]',
+					filename: 'img/[name][ext]',
+				},
+			},
+
+			{
+				test: /\.(mp3|ogg|wav|mp4|ogv|webm)$/i,
+				include: /[\\/]video/,
+				type: 'asset/resource',
+				generator: {
+					filename: 'video/[name][ext]',
 				},
 			},
 		],

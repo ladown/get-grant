@@ -45,8 +45,8 @@ const generatePagesList = () => {
 			const href = pageName === 'index.pug' ? './' : `/${pageName.replace('.pug', '.html')}`;
 			// const href =
 			// 	pageName === 'index.pug'
-			// 		? `https://portfolio.ermilovee.ru/get-grant/`
-			// 		: `https://portfolio.ermilovee.ru/get-grant/${pageName.replace('.pug', '.html')}`;
+			// 		? `https://portfolio.ermilovee.ru/project-name/`
+			// 		: `https://portfolio.ermilovee.ru/project-name/${pageName.replace('.pug', '.html')}`;
 
 			list += `<li class="page-list__item"><a href=${href} class="page-list__link" target="_blank">${capitilizeWords(
 				name,

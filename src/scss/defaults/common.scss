@@ -37,6 +37,9 @@ html {
 
 body {
 	position: relative;
+	display: flex;
+	flex-flow: column nowrap;
+	min-height: 100vh;
 	font-family: Inter, HalvarBreitschrift, sans-serif;
 	font-size: 16rem;
 	font-style: normal;
@@ -193,6 +196,8 @@ svg {
 }
 
 .main-content {
+	flex: 1;
+
 	&_white {
 		background-color: #fff;
 	}

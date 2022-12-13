@@ -1,0 +1,73 @@
+-
+	const contactsHeroData = {
+		title: 'Свяжитесь с нами:',
+		subtitle: 'Выберите удобный для Вас способ.',
+		items: [
+			{
+				icon: {
+					name: 'whatsapp',
+					viewBox: '0 0 26 26',
+				},
+				href: '#',
+				text: '+7 (499) 647-41-08',
+			},
+			{
+				icon: {
+					name: 'phone',
+					viewBox: '0 0 26 26',
+				},
+				href: 'tel:74996474108',
+				text: '+7 (499) 647-41-08',
+			},
+			{
+				icon: {
+					name: 'email',
+					viewBox: '0 0 26 26',
+				},
+				href: 'mailto:info@get-grant.ru',
+				text: 'info@get-grant.ru',
+			},
+			{
+				icon: {
+					name: 'telegram',
+					viewBox: '0 0 20 17',
+				},
+				href: '#',
+				text: '@get_grant_ru',
+			},
+			{
+				icon: {
+					name: 'vk',
+					viewBox: '0 0 33 20',
+				},
+				href: '#',
+				text: 'vk.com/get_grant',
+			},
+			{
+				icon: {
+					name: 'instagram',
+					viewBox: '0 0 26 26',
+				},
+				href: '#',
+				text: '@get_grant',
+			},
+		],
+	};
+
++b.SECTION.contacts-hero
+	- const { title, subtitle, items } = contactsHeroData;
+	+e.wrap.wrap.flex._nowrap._start._justify
+		+e.cell._left
+			+e.H1.title.h3.font-halvar.strong #{ title }
+			+e.subtitle.h6 #{ subtitle }
+		+e.cell._right
+			+e.items.flex
+				each item in items
+					+e.A.item.flex._nowrap._vertical(href=item.href)
+						+e.SPAN.item-icon
+							+icon(item.icon)
+						+e.SPAN.item-text.h6 #{ item.text }
+	+e.background.no-pe
+		img.object-fit(
+			src=require('Images/backgrounds/contacts-hero-bg.png')
+			alt='hero-background')

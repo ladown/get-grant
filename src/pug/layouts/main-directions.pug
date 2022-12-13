@@ -4,74 +4,118 @@
 		tabs: [
 			'Сквозные цифровые технологии',
 			'Дорожные карты НТИ',
+			'Искусственный интеллект',
 		],
 		content: [
 			[
 				{
 					photo: require('Images/direction-item-1.jpg'),
 					caption: 'Большие данные',
+					href: './e2e-technologies.html',
 				},
 				{
 					photo: require('Images/direction-item-2.jpg'),
 					caption: 'Нейротехнологии и искусственный интеллект',
+					href: './e2e-technologies.html',
 				},
 				{
 					photo: require('Images/direction-item-3.jpg'),
 					caption: 'Системы распределенного реестра',
+					href: './e2e-technologies.html',
 				},
 				{
 					photo: require('Images/direction-item-4.jpg'),
 					caption: 'Квантовые технологии',
+					href: './e2e-technologies.html',
 				},
 				{
 					photo: require('Images/direction-item-5.jpg'),
 					caption: 'Новые производственные технологии',
+					href: './e2e-technologies.html',
 				},
 				{
 					photo: require('Images/direction-item-6.jpg'),
 					caption: 'Промышленный интернет',
+					href: './e2e-technologies.html',
 				},
 				{
 					photo: require('Images/direction-item-7.jpg'),
 					caption: 'Компоненты робототехники и сенсорика',
+					href: './e2e-technologies.html',
 				},
 				{
 					photo: require('Images/direction-item-8.jpg'),
 					caption: 'Технологии беспроводной связи',
+					href: './e2e-technologies.html',
 				},
 			],
 			[
 				{
 					photo: require('Images/direction-item-9.jpg'),
 					caption: '«Кружковое движение»',
+					href: './methodology.html',
 				},
 				{
 					photo: require('Images/direction-item-10.jpg'),
 					caption: '«Технет»',
+					href: './methodology.html',
 				},
 				{
 					photo: require('Images/direction-item-11.jpg'),
 					caption: '«Хелснет»',
+					href: './methodology.html',
 				},
 				{
 					photo: require('Images/direction-item-12.jpg'),
 					caption: '«Нейронет»',
+					href: './methodology.html',
 				},
 				{
 					photo: require('Images/direction-item-13.jpg'),
 					caption: '«Маринет»',
+					href: './methodology.html',
 				},
 				{
 					photo: require('Images/direction-item-14.jpg'),
 					caption: '«Автонет»',
+					href: './methodology.html',
 				},
 				{
 					photo: require('Images/direction-item-15.jpg'),
 					caption: '«Энерджинет»',
+					href: './methodology.html',
 				},
 				{
 					photo: require('Images/direction-item-16.jpg'),
 					caption: '«Аэронет»',
+					href: './methodology.html',
+				},
+			],
+			[
+				{
+					photo: require('Images/direction-item-17.jpg'),
+					caption: 'Компьютерное зрение',
+					href: './ai.html',
+				},
+				{
+					photo: require('Images/direction-item-18.jpg'),
+					caption: 'Обработка естественного языка',
+					href: './ai.html',
+				},
+				{
+					photo: require('Images/direction-item-19.jpg'),
+					caption: 'Распознование и синтез речи',
+					href: './ai.html',
+				},
+				{
+					photo: require('Images/direction-item-20.jpg'),
+					caption: 'Интеллектуальные системы поддержки принятия решений',
+					href: './ai.html',
+				},
+				{
+					photo: require('Images/direction-item-21.jpg'),
+					caption: 'Перспективные методы искусственного интеллекта',
+					href: './ai.html',
 				},
 			],
 		],
@@ -84,11 +128,11 @@
 		+e.tabs.flex._vertical.js-tabs-parent.js-reveal-slideRight
 			each item, index in tabs
 				+e.BUTTON.tab.js-tabs-button(class=index === 0 && 'is-active') #{ item }
-		+e.content.js-reveal-slideUp
+		+e.content
 			each itemContent, index in content
 				+e.tab-content.js-tabs-content(class=index === 0 && 'is-active')
 					each item in itemContent
-						+e.item
+						+e.A.item(href=item.href class=index === 0 && 'js-reveal-slideUp js-reveal-interval')
 							+e.item-inner
 								+e.item-caption #{ item.caption }
 								+e.item-photo

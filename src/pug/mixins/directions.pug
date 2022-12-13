@@ -4,7 +4,7 @@ mixin directions(props = {})
 			+e.H2.title.h2.font-halvar Направления поддержки
 			+e.items
 				each item, index in props.items
-					+e.A.item.flex._nowrap._start(href=item.href class=index === 0 && 'is-active')
+					+e.A.item.flex._nowrap._start.js-hover-item(href=item.href class=index === 0 && 'is-active')
 						+e.item-caption.h4.font-halvar !{ item.caption }
 						+e.item-tags.flex
 							each tag in item.tags

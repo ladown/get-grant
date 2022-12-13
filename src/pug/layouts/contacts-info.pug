@@ -1,0 +1,18 @@
+-
+	const contactsInfoData = {
+		title: 'Мы рады видеть Вас в нашем офисе по адресу:',
+		address: '115191, г. Москва, ул. Малая Тульская, д. 25, стр. 38, офис 4.1',
+		map: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2247.9998478766015!2d37.61572041604497!3d55.70637440303911!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54b43c1efec63%3A0xa3e966534b35559d!2z0JzQsNC70LDRjyDQotGD0LvRjNGB0LrQsNGPINGD0LsuLCAyNSwg0JzQvtGB0LrQstCwLCDQoNC-0YHRgdC40Y8sIDExNTE5MQ!5e0!3m2!1sru!2sua!4v1618262706536!5m2!1sru!2sua',
+	};
+
++b.SECTION.contacts-info
+	- const { title, address, map } = contactsInfoData;
+	+e.wrap.wrap
+		+e.header.text-center
+			+e.H2.title.h3.font-halvar.strong #{ title }
+			+e.ADDRESS.address.h6 #{ address }
+	+e.map
+		iframe.object-fit(
+			src=map
+			allowfullscreen
+			loading='lazy')

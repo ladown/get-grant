@@ -1,33 +1,32 @@
 -
 	const webinarHeroData = {
-		title: 'Онлайн вебинар',
-		text: [
-			'Специалисты компании Get-Grant.ru расскажут об основных нюансах участия в грантовых программах от Фонда содействия инновациям.',
-			'А также о возможностях получить до 30 000 000 руб в виде грантов для отечественных, технологичных и инновационных компаний.',
-			'В процессе вы сможете задать все интересующие вас вопросы.',
-		],
+		label: 'Онлайн вебинар',
+		title: 'Оcновные нюансы участия в грантовых программах от Фонда содействия инновациям',
 		button: {
 			modes: ['gradient', 'font-halvar', 'big'],
 			text: 'Регистрация',
 		},
-		photo: require('Images/webinar-hero.jpg')
+		photo: [
+			require('Images/webinar-hero-2.png'),
+			require('Images/webinar-hero-1.svg'),
+			require('Images/webinar-hero-3.jpg'),
+			require('Images/webinar-hero-4.jpg'),
+		]
 	};
 
 +b.SECTION.webinar-hero
-	- const { title, text, button, photo } = webinarHeroData;
-	+e.wrap.wrap
-		+e.box.flex._nowrap
-			+e.cell._left
-				+e.H1.title.h1.font-halvar #{ title }
-				+e.text.h5
-					each textItem in text
-						p #{ textItem }
-				+button(button)
-					| #{ button.text }
-			+e.cell._right
-				+e.photo
+	- const { label, title, button, photo } = webinarHeroData;
+	+e.wrap.wrap.flex._nowrap._vertical
+		+e.cell._left
+			+e.label.h5.font-halvar #{ label }
+			+e.H1.title.h2.font-halvar #{ title }
+			+button(button)
+				| #{ button.text }
+		+e.cell._right
+			each photoItem in photo
+				+e.photo.js-reveal-slideUp.js-reveal-interval
 					img.object-fit(
-						src=photo
+						src=photoItem
 						alt='webinar hero')
 	+e.PICTURE.background.no-pe
 		source(

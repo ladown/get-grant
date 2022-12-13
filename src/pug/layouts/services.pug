@@ -18,7 +18,7 @@
 		+e.H2.title.h2.font-halvar #{ title }
 		+e.items
 			each item, index in items
-				+e.item.flex._nowrap._vertical._justify
+				+e.item.flex._nowrap._vertical._justify.js-hover-item(class=index === 0 && 'is-active')
 					+e.item-count.h2.font-halvar.medium-weight.color-blue 0#{ index + 1 }
 					+e.item-text.h6 #{ item }
 	+e.background.no-pe

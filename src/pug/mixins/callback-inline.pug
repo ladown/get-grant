@@ -1,0 +1,21 @@
+mixin callback-inline(props = {})
+	+b.SECTION.callback-inline(class=`${props.modes ? `_${props.modes.join(' _')}` : ''}`)
+		+e.wrap.wrap
+			+e.box
+				+e.H2.title.h2.font-halvar
+					if props.title
+						| #{ props.title }
+					else
+						| Получите бесплатную консультацию
+				+e.FORM.form.flex._nowrap._end(
+					action='#'
+					autocomplete='off')
+					each field in props.fields
+						+field(field)
+					+button(props.button)
+						| #{ props.button.text }
+					+e.policy !{ props.policy }
+				+e.background.no-pe
+					img.object-fit(
+						src=require('Images/backgrounds/callback-inline-bg.png')
+						alt='callback-background')
